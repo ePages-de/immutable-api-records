@@ -1,0 +1,41 @@
+{
+  "name": "@epages/immutable-api-records",
+  "description": "ImmutableJS records for the new ePages REST API.",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "npm run lint",
+    "build": "rm -rf build/ && babel src/ --out-dir build/",
+    "lint": "eslint --ext js,jsx *.js src/ test/ public/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ePages-de/immutable-api-records.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ePages-de/immutable-api-records/issues"
+  },
+  "homepage": "https://github.com/ePages-de/immutable-api-records#readme",
+  "license": "MIT",
+  "main": "build/index.js",
+  "peerDependencies": {
+    "immutable": "^3.8.1",
+    "url-template": "^2.0.8"
+  },
+  "devDependencies": {
+    "babel-cli": "6.10.1",
+    "babel-eslint": "6.1.2",
+    "babel-plugin-__coverage__": "11.0.0",
+    "babel-plugin-transform-es2015-modules-umd": "6.12.0",
+    "babel-preset-es2015": "6.9.0",
+    "babel-preset-react": "6.11.1",
+    "babel-preset-stage-1": "6.5.0",
+    "eslint": "3.1.0",
+    "eslint-config-standard": "5.3.5",
+    "eslint-config-standard-react": "3.0.0",
+    "eslint-plugin-promise": "2.0.0",
+    "eslint-plugin-react": "5.2.2",
+    "eslint-plugin-standard": "2.0.0",
+    "immutable": "3.8.1",
+    "url-template": "2.0.8"
+  }
+}

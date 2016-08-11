@@ -65,14 +65,16 @@
   var Image = function (_ImageRecord) {
     _inherits(Image, _ImageRecord);
 
-    function Image(result) {
+    function Image() {
+      var image = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
       _classCallCheck(this, Image);
 
-      var immutable = new ImageRecord(_immutable2.default.fromJS(result));
+      var immutable = _immutable2.default.fromJS(image);
       var parsed = immutable.update('_links', function (ls) {
-        return ls.map(function (l) {
+        return ls ? ls.map(function (l) {
           return new _Link2.default(l);
-        });
+        }) : new _immutable.List();
       });
 
       return _possibleConstructorReturn(this, Object.getPrototypeOf(Image).call(this, parsed));

@@ -89,10 +89,12 @@
   var ProductAttributeDefinition = function (_ProductAttributeDefi) {
     _inherits(ProductAttributeDefinition, _ProductAttributeDefi);
 
-    function ProductAttributeDefinition(productAttributeDefinition) {
+    function ProductAttributeDefinition() {
+      var productAttributeDefinition = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
       _classCallCheck(this, ProductAttributeDefinition);
 
-      var immutable = new ProductAttributeDefinitionRecord(_immutable2.default.fromJS(productAttributeDefinition));
+      var immutable = _immutable2.default.fromJS(productAttributeDefinition);
       var parsed = immutable.set('_id', (0, _extractIdFromSelfLink2.default)(immutable)).update('_links', function (ls) {
         return ls ? ls.map(function (l) {
           return new _Link2.default(l);

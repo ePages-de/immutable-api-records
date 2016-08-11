@@ -1,5 +1,5 @@
 import Link from './Link'
-import Immutable, {Map, Record} from 'immutable'
+import Immutable, {List, Map, Record} from 'immutable'
 
 const AttachmentRecord = new Record({
   _id: '',
@@ -9,10 +9,10 @@ const AttachmentRecord = new Record({
   _links: new Map()
 })
 export default class Attachment extends AttachmentRecord {
-  constructor (result) {
-    const immutable = new AttachmentRecord(Immutable.fromJS(result))
+  constructor (attachment = {}) {
+    const immutable = Immutable.fromJS(attachment)
     const parsed = immutable
-      .update('_links', (ls) => ls.map((l) => new Link(l)))
+      .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new List())
 
     super(parsed)
   }

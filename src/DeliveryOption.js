@@ -10,8 +10,8 @@ const DeliveryOptionRecord = new Record({
   serviceableCountries: new List()
 })
 export default class DeliveryOption extends DeliveryOptionRecord {
-  constructor (result) {
-    const immutable = new DeliveryOptionRecord(Immutable.fromJS(result))
+  constructor (deliveryOption = {}) {
+    const immutable = Immutable.fromJS(deliveryOption)
     const parsed = immutable
       .update('price', (p) => new Price(p))
 

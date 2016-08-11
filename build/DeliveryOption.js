@@ -69,10 +69,12 @@
   var DeliveryOption = function (_DeliveryOptionRecord) {
     _inherits(DeliveryOption, _DeliveryOptionRecord);
 
-    function DeliveryOption(result) {
+    function DeliveryOption() {
+      var deliveryOption = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
       _classCallCheck(this, DeliveryOption);
 
-      var immutable = new DeliveryOptionRecord(_immutable2.default.fromJS(result));
+      var immutable = _immutable2.default.fromJS(deliveryOption);
       var parsed = immutable.update('price', function (p) {
         return new _Price2.default(p);
       });

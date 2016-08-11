@@ -16,6 +16,7 @@
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
+  exports.PaymentLineItem = exports.DeliveryLineItem = exports.ProductLineItem = undefined;
 
   var _DeliveryOption2 = _interopRequireDefault(_DeliveryOption);
 
@@ -81,13 +82,15 @@
     _links: new _immutable.Map()
   });
 
-  var ProductLineItem = function (_ProductLineItemRecor) {
+  var ProductLineItem = exports.ProductLineItem = function (_ProductLineItemRecor) {
     _inherits(ProductLineItem, _ProductLineItemRecor);
 
-    function ProductLineItem(result) {
+    function ProductLineItem() {
+      var cart = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
       _classCallCheck(this, ProductLineItem);
 
-      var immutable = new ProductLineItemRecord(_immutable2.default.fromJS(result));
+      var immutable = _immutable2.default.fromJS(cart);
       var parsed = immutable.update('details', function (d) {
         return new _Product2.default(d);
       }).update('quantity', function (q) {
@@ -97,9 +100,9 @@
       }).update('lineItemPrice', function (lip) {
         return new _Price2.default(lip);
       }).update('_links', function (ls) {
-        return ls.map(function (l) {
+        return ls ? ls.map(function (l) {
           return new _Link2.default(l);
-        });
+        }) : new _immutable.List();
       });
 
       return _possibleConstructorReturn(this, Object.getPrototypeOf(ProductLineItem).call(this, parsed));
@@ -108,21 +111,20 @@
     return ProductLineItem;
   }(ProductLineItemRecord);
 
-  exports.default = ProductLineItem;
-
-
   var DeliveryLineItemRecord = new _immutable.Record({
     deliveryOption: new _DeliveryOption2.default({}),
     lineItemPrice: new _Price2.default()
   });
 
-  var DeliveryLineItem = function (_DeliveryLineItemReco) {
+  var DeliveryLineItem = exports.DeliveryLineItem = function (_DeliveryLineItemReco) {
     _inherits(DeliveryLineItem, _DeliveryLineItemReco);
 
-    function DeliveryLineItem(result) {
+    function DeliveryLineItem() {
+      var deliveryLineItem = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
       _classCallCheck(this, DeliveryLineItem);
 
-      var immutable = new DeliveryLineItemRecord(_immutable2.default.fromJS(result));
+      var immutable = _immutable2.default.fromJS(deliveryLineItem);
       var parsed = immutable.update('deliveryOption', function (pm) {
         return new _DeliveryOption2.default(pm);
       }).update('lineItemPrice', function (lip) {
@@ -140,13 +142,15 @@
     lineItemPrice: new _Price2.default()
   });
 
-  var PaymentLineItem = function (_PaymentLineItemRecor) {
+  var PaymentLineItem = exports.PaymentLineItem = function (_PaymentLineItemRecor) {
     _inherits(PaymentLineItem, _PaymentLineItemRecor);
 
-    function PaymentLineItem(result) {
+    function PaymentLineItem() {
+      var paymentLineItem = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
       _classCallCheck(this, PaymentLineItem);
 
-      var immutable = new PaymentLineItemRecord(_immutable2.default.fromJS(result));
+      var immutable = _immutable2.default.fromJS(paymentLineItem);
       var parsed = immutable.update('paymentMethod', function (pm) {
         return new _PaymentMethod2.default(pm);
       }).update('lineItemPrice', function (lip) {
@@ -171,14 +175,16 @@
   var Cart = function (_CartRecord) {
     _inherits(Cart, _CartRecord);
 
-    function Cart(result) {
+    function Cart() {
+      var cart = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
       _classCallCheck(this, Cart);
 
-      var immutable = new CartRecord(_immutable2.default.fromJS(result));
+      var immutable = _immutable2.default.fromJS(cart);
       var parsed = immutable.update('lineItems', function (lis) {
-        return lis.map(function (li) {
+        return lis ? lis.map(function (li) {
           return new ProductLineItem(li);
-        });
+        }) : new _immutable.List();
       }).update('deliveryLineItem', function (dli) {
         return new DeliveryLineItem(dli);
       }).update('paymentLineItem', function (pli) {
@@ -186,9 +192,9 @@
       }).update('total', function (t) {
         return new _Price2.default(t);
       }).update('_links', function (ls) {
-        return ls.map(function (l) {
+        return ls ? ls.map(function (l) {
           return new _Link2.default(l);
-        });
+        }) : new _immutable.List();
       });
 
       return _possibleConstructorReturn(this, Object.getPrototypeOf(Cart).call(this, parsed));

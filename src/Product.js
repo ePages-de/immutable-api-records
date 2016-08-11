@@ -24,8 +24,8 @@ const ProductRecord = new Record({
   _links: new Map()
 })
 export default class Product extends ProductRecord {
-  constructor (product) {
-    const immutable = new ProductRecord(Immutable.fromJS(product))
+  constructor (product = {}) {
+    const immutable = Immutable.fromJS(product)
     const parsed = immutable
       .set('_id', extractIdFromSelfLink(immutable))
       .update('salesPrice', (sp) => new Price(sp))

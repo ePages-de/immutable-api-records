@@ -11,8 +11,8 @@ const ProductAttributeDefinitionRecord = new Record({
   _links: new Map()
 })
 export default class ProductAttributeDefinition extends ProductAttributeDefinitionRecord {
-  constructor (productAttributeDefinition) {
-    const immutable = new ProductAttributeDefinitionRecord(Immutable.fromJS(productAttributeDefinition))
+  constructor (productAttributeDefinition = {}) {
+    const immutable = Immutable.fromJS(productAttributeDefinition)
     const parsed = immutable
       .set('_id', extractIdFromSelfLink(immutable))
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())

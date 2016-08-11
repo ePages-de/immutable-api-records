@@ -16,6 +16,7 @@
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
+  exports.PageablePage = undefined;
 
   var _Link2 = _interopRequireDefault(_Link);
 
@@ -67,7 +68,7 @@
     totalElements: 0
   });
 
-  var PageablePage = function (_PageablePageRecord) {
+  var PageablePage = exports.PageablePage = function (_PageablePageRecord) {
     _inherits(PageablePage, _PageablePageRecord);
 
     function PageablePage() {
@@ -88,19 +89,20 @@
   var PageableContainer = function (_PageableContainerRec) {
     _inherits(PageableContainer, _PageableContainerRec);
 
-    function PageableContainer(result) {
+    function PageableContainer() {
+      var pageableContainer = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
       var castEmbedded = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
       _classCallCheck(this, PageableContainer);
 
-      var immutable = new PageableContainerRecord(_immutable2.default.fromJS(result));
+      var immutable = _immutable2.default.fromJS(pageableContainer);
 
       var parsed1 = immutable.update('page', function (p) {
         return new PageablePage(p);
       }).update('_links', function (ls) {
-        return ls.map(function (l) {
+        return ls ? ls.map(function (l) {
           return new _Link2.default(l);
-        });
+        }) : new _immutable.List();
       });
 
       // for every key in embeddedKey map over the list of embedded items with the provided casting function

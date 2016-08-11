@@ -69,10 +69,12 @@
   var PaymentMethod = function (_PaymentMethodRecord) {
     _inherits(PaymentMethod, _PaymentMethodRecord);
 
-    function PaymentMethod(result) {
+    function PaymentMethod() {
+      var paymentMethod = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
       _classCallCheck(this, PaymentMethod);
 
-      var immutable = new PaymentMethodRecord(_immutable2.default.fromJS(result));
+      var immutable = _immutable2.default.fromJS(paymentMethod);
       var parsed = immutable.update('price', function (p) {
         return new _Price2.default(p);
       });

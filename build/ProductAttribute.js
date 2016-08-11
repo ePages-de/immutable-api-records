@@ -87,10 +87,12 @@
   var ProductAttribute = function (_ProductAttributeReco) {
     _inherits(ProductAttribute, _ProductAttributeReco);
 
-    function ProductAttribute(productAttribute) {
+    function ProductAttribute() {
+      var productAttribute = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
       _classCallCheck(this, ProductAttribute);
 
-      var immutable = new ProductAttributeRecord(_immutable2.default.fromJS(productAttribute));
+      var immutable = _immutable2.default.fromJS(productAttribute);
       var parsed = immutable.update('_links', function (ls) {
         return ls ? ls.map(function (l) {
           return new _Link2.default(l);

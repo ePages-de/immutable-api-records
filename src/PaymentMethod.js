@@ -10,8 +10,8 @@ const PaymentMethodRecord = new Record({
   serviceableCountries: new List()
 })
 export default class PaymentMethod extends PaymentMethodRecord {
-  constructor (result) {
-    const immutable = new PaymentMethodRecord(Immutable.fromJS(result))
+  constructor (paymentMethod = {}) {
+    const immutable = Immutable.fromJS(paymentMethod)
     const parsed = immutable
       .update('price', (p) => new Price(p))
 

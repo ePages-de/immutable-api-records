@@ -68,14 +68,16 @@
   var Attachment = function (_AttachmentRecord) {
     _inherits(Attachment, _AttachmentRecord);
 
-    function Attachment(result) {
+    function Attachment() {
+      var attachment = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
       _classCallCheck(this, Attachment);
 
-      var immutable = new AttachmentRecord(_immutable2.default.fromJS(result));
+      var immutable = _immutable2.default.fromJS(attachment);
       var parsed = immutable.update('_links', function (ls) {
-        return ls.map(function (l) {
+        return ls ? ls.map(function (l) {
           return new _Link2.default(l);
-        });
+        }) : new _immutable.List();
       });
 
       return _possibleConstructorReturn(this, Object.getPrototypeOf(Attachment).call(this, parsed));

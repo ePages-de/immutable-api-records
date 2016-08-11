@@ -87,10 +87,12 @@
   var Product = function (_ProductRecord) {
     _inherits(Product, _ProductRecord);
 
-    function Product(product) {
+    function Product() {
+      var product = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
       _classCallCheck(this, Product);
 
-      var immutable = new ProductRecord(_immutable2.default.fromJS(product));
+      var immutable = _immutable2.default.fromJS(product);
       var parsed = immutable.set('_id', (0, _extractIdFromSelfLink2.default)(immutable)).update('salesPrice', function (sp) {
         return new _Price2.default(sp);
       }).update('attributes', function (pas) {

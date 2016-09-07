@@ -226,3 +226,8 @@ describe('ProductAttributeDefinition', () => {
 describe('Quantity', () => {
   testConstruction(Models.Quantity)
 })
+
+describe('Shop', () => {
+  testConstruction(Models.Shop)
+  testLinkCasting(Models.Shop)
+})

@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', './Attachment', './Cart', './DeliveryOption', './Gtin', './Image', './Link', './PageableContainer', './PaymentMethod', './Price', './Product', './ProductAttribute', './ProductAttributeDefinition', './Quantity'], factory);
+    define(['exports', './Attachment', './Cart', './DeliveryOption', './Gtin', './Image', './Link', './PageableContainer', './PaymentMethod', './Price', './Product', './ProductAttribute', './ProductAttributeDefinition', './Quantity', './Shop'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('./Attachment'), require('./Cart'), require('./DeliveryOption'), require('./Gtin'), require('./Image'), require('./Link'), require('./PageableContainer'), require('./PaymentMethod'), require('./Price'), require('./Product'), require('./ProductAttribute'), require('./ProductAttributeDefinition'), require('./Quantity'));
+    factory(exports, require('./Attachment'), require('./Cart'), require('./DeliveryOption'), require('./Gtin'), require('./Image'), require('./Link'), require('./PageableContainer'), require('./PaymentMethod'), require('./Price'), require('./Product'), require('./ProductAttribute'), require('./ProductAttributeDefinition'), require('./Quantity'), require('./Shop'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.Attachment, global.Cart, global.DeliveryOption, global.Gtin, global.Image, global.Link, global.PageableContainer, global.PaymentMethod, global.Price, global.Product, global.ProductAttribute, global.ProductAttributeDefinition, global.Quantity);
+    factory(mod.exports, global.Attachment, global.Cart, global.DeliveryOption, global.Gtin, global.Image, global.Link, global.PageableContainer, global.PaymentMethod, global.Price, global.Product, global.ProductAttribute, global.ProductAttributeDefinition, global.Quantity, global.Shop);
     global.index = mod.exports;
   }
-})(this, function (exports, _Attachment, _Cart, _DeliveryOption, _Gtin, _Image, _Link, _PageableContainer, _PaymentMethod, _Price, _Product, _ProductAttribute, _ProductAttributeDefinition, _Quantity) {
+})(this, function (exports, _Attachment, _Cart, _DeliveryOption, _Gtin, _Image, _Link, _PageableContainer, _PaymentMethod, _Price, _Product, _ProductAttribute, _ProductAttributeDefinition, _Quantity, _Shop) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -116,6 +116,12 @@
     enumerable: true,
     get: function () {
       return _interopRequireDefault(_Quantity).default;
+    }
+  });
+  Object.defineProperty(exports, 'Shop', {
+    enumerable: true,
+    get: function () {
+      return _interopRequireDefault(_Shop).default;
     }
   });
 

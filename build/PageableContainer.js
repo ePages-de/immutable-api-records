@@ -74,7 +74,7 @@
     function PageablePage() {
       _classCallCheck(this, PageablePage);
 
-      return _possibleConstructorReturn(this, Object.getPrototypeOf(PageablePage).apply(this, arguments));
+      return _possibleConstructorReturn(this, (PageablePage.__proto__ || Object.getPrototypeOf(PageablePage)).apply(this, arguments));
     }
 
     return PageablePage;
@@ -114,7 +114,7 @@
         });
       }, parsed1);
 
-      return _possibleConstructorReturn(this, Object.getPrototypeOf(PageableContainer).call(this, parsed2));
+      return _possibleConstructorReturn(this, (PageableContainer.__proto__ || Object.getPrototypeOf(PageableContainer)).call(this, parsed2));
     }
 
     return PageableContainer;

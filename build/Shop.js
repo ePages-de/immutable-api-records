@@ -1,23 +1,25 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', './Price', 'immutable'], factory);
+    define(['exports', './extractIdFromSelfLink', './Link', 'immutable'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('./Price'), require('immutable'));
+    factory(exports, require('./extractIdFromSelfLink'), require('./Link'), require('immutable'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.Price, global.immutable);
-    global.PaymentMethod = mod.exports;
+    factory(mod.exports, global.extractIdFromSelfLink, global.Link, global.immutable);
+    global.Shop = mod.exports;
   }
-})(this, function (exports, _Price, _immutable) {
+})(this, function (exports, _extractIdFromSelfLink, _Link, _immutable) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
 
-  var _Price2 = _interopRequireDefault(_Price);
+  var _extractIdFromSelfLink2 = _interopRequireDefault(_extractIdFromSelfLink);
+
+  var _Link2 = _interopRequireDefault(_Link);
 
   var _immutable2 = _interopRequireDefault(_immutable);
 
@@ -57,33 +59,39 @@
     if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
   }
 
-  var PaymentMethodRecord = new _immutable.Record({
-    _id: null,
+  var ShopRecord = new _immutable.Record({
+    _id: '',
     name: '',
-    description: '',
-    taxClass: 'REGULAR',
-    price: new _Price2.default(),
-    serviceableCountries: new _immutable.List()
+    defaultCurrency: null,
+    defaultServiceableCountry: null,
+    defaultShippingCountry: null,
+    taxModel: null,
+    vatExempted: null,
+    defaultLocale: null,
+    closedByMerchant: false,
+    _links: new _immutable.Map()
   });
 
-  var PaymentMethod = function (_PaymentMethodRecord) {
-    _inherits(PaymentMethod, _PaymentMethodRecord);
+  var Shop = function (_ShopRecord) {
+    _inherits(Shop, _ShopRecord);
 
-    function PaymentMethod() {
-      var paymentMethod = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+    function Shop() {
+      var shop = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
-      _classCallCheck(this, PaymentMethod);
+      _classCallCheck(this, Shop);
 
-      var immutable = _immutable2.default.fromJS(paymentMethod);
-      var parsed = immutable.update('price', function (p) {
-        return new _Price2.default(p);
+      var immutable = _immutable2.default.fromJS(shop);
+      var parsed = immutable.set('_id', (0, _extractIdFromSelfLink2.default)(immutable)).update('_links', function (ls) {
+        return ls ? ls.map(function (l) {
+          return new _Link2.default(l);
+        }) : new _immutable.Map();
       });
 
-      return _possibleConstructorReturn(this, (PaymentMethod.__proto__ || Object.getPrototypeOf(PaymentMethod)).call(this, parsed));
+      return _possibleConstructorReturn(this, (Shop.__proto__ || Object.getPrototypeOf(Shop)).call(this, parsed));
     }
 
-    return PaymentMethod;
-  }(PaymentMethodRecord);
+    return Shop;
+  }(ShopRecord);
 
-  exports.default = PaymentMethod;
+  exports.default = Shop;
 });

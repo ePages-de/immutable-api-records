@@ -77,7 +77,7 @@
     function Price() {
       _classCallCheck(this, Price);
 
-      return _possibleConstructorReturn(this, Object.getPrototypeOf(Price).apply(this, arguments));
+      return _possibleConstructorReturn(this, (Price.__proto__ || Object.getPrototypeOf(Price)).apply(this, arguments));
     }
 
     _createClass(Price, [{

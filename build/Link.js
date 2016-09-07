@@ -85,7 +85,7 @@
     function Link() {
       _classCallCheck(this, Link);
 
-      return _possibleConstructorReturn(this, Object.getPrototypeOf(Link).apply(this, arguments));
+      return _possibleConstructorReturn(this, (Link.__proto__ || Object.getPrototypeOf(Link)).apply(this, arguments));
     }
 
     _createClass(Link, [{

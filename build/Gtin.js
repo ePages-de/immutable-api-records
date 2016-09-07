@@ -58,7 +58,7 @@
     function Gtin() {
       _classCallCheck(this, Gtin);
 
-      return _possibleConstructorReturn(this, Object.getPrototypeOf(Gtin).apply(this, arguments));
+      return _possibleConstructorReturn(this, (Gtin.__proto__ || Object.getPrototypeOf(Gtin)).apply(this, arguments));
     }
 
     return Gtin;

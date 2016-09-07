@@ -58,7 +58,7 @@
     function Quantity() {
       _classCallCheck(this, Quantity);
 
-      return _possibleConstructorReturn(this, Object.getPrototypeOf(Quantity).apply(this, arguments));
+      return _possibleConstructorReturn(this, (Quantity.__proto__ || Object.getPrototypeOf(Quantity)).apply(this, arguments));
     }
 
     return Quantity;

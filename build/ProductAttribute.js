@@ -99,7 +99,7 @@
         }) : new _immutable.Map();
       });
 
-      return _possibleConstructorReturn(this, Object.getPrototypeOf(ProductAttribute).call(this, parsed));
+      return _possibleConstructorReturn(this, (ProductAttribute.__proto__ || Object.getPrototypeOf(ProductAttribute)).call(this, parsed));
     }
 
     _createClass(ProductAttribute, [{

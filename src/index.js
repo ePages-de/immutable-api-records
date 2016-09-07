@@ -27,3 +27,5 @@ export {default as ProductAttribute} from './ProductAttribute'
 export {default as ProductAttributeDefinition} from './ProductAttributeDefinition'
 
 export {default as Quantity} from './Quantity'
+
+export {default as Shop} from './Shop'

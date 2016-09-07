@@ -105,7 +105,7 @@
         }) : new _immutable.List();
       });
 
-      return _possibleConstructorReturn(this, Object.getPrototypeOf(ProductLineItem).call(this, parsed));
+      return _possibleConstructorReturn(this, (ProductLineItem.__proto__ || Object.getPrototypeOf(ProductLineItem)).call(this, parsed));
     }
 
     return ProductLineItem;
@@ -131,7 +131,7 @@
         return new _Price2.default(lip);
       });
 
-      return _possibleConstructorReturn(this, Object.getPrototypeOf(DeliveryLineItem).call(this, parsed));
+      return _possibleConstructorReturn(this, (DeliveryLineItem.__proto__ || Object.getPrototypeOf(DeliveryLineItem)).call(this, parsed));
     }
 
     return DeliveryLineItem;
@@ -157,7 +157,7 @@
         return new _Price2.default(lip);
       });
 
-      return _possibleConstructorReturn(this, Object.getPrototypeOf(PaymentLineItem).call(this, parsed));
+      return _possibleConstructorReturn(this, (PaymentLineItem.__proto__ || Object.getPrototypeOf(PaymentLineItem)).call(this, parsed));
     }
 
     return PaymentLineItem;
@@ -197,7 +197,7 @@
         }) : new _immutable.List();
       });
 
-      return _possibleConstructorReturn(this, Object.getPrototypeOf(Cart).call(this, parsed));
+      return _possibleConstructorReturn(this, (Cart.__proto__ || Object.getPrototypeOf(Cart)).call(this, parsed));
     }
 
     return Cart;

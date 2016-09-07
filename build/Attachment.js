@@ -80,7 +80,7 @@
         }) : new _immutable.List();
       });
 
-      return _possibleConstructorReturn(this, Object.getPrototypeOf(Attachment).call(this, parsed));
+      return _possibleConstructorReturn(this, (Attachment.__proto__ || Object.getPrototypeOf(Attachment)).call(this, parsed));
     }
 
     return Attachment;

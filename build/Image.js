@@ -77,7 +77,7 @@
         }) : new _immutable.List();
       });
 
-      return _possibleConstructorReturn(this, Object.getPrototypeOf(Image).call(this, parsed));
+      return _possibleConstructorReturn(this, (Image.__proto__ || Object.getPrototypeOf(Image)).call(this, parsed));
     }
 
     return Image;

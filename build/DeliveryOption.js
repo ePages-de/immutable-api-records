@@ -79,7 +79,7 @@
         return new _Price2.default(p);
       });
 
-      return _possibleConstructorReturn(this, Object.getPrototypeOf(DeliveryOption).call(this, parsed));
+      return _possibleConstructorReturn(this, (DeliveryOption.__proto__ || Object.getPrototypeOf(DeliveryOption)).call(this, parsed));
     }
 
     return DeliveryOption;

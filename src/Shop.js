@@ -13,6 +13,7 @@ const ShopAddressRecord = new Record({
   country: null,
   state: null,
   phone: null,
+  fax: null,
   email: null,
   vatId: null,
   commercialRegister: null

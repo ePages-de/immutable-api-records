@@ -124,6 +124,12 @@
       return _interopRequireDefault(_Shop).default;
     }
   });
+  Object.defineProperty(exports, 'ShopAddress', {
+    enumerable: true,
+    get: function () {
+      return _Shop.ShopAddress;
+    }
+  });
 
   function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : {

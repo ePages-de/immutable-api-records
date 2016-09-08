@@ -29,3 +29,4 @@ export {default as ProductAttributeDefinition} from './ProductAttributeDefinitio
 export {default as Quantity} from './Quantity'
 
 export {default as Shop} from './Shop'
+export {ShopAddress} from './Shop'

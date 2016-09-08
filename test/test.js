@@ -230,4 +230,15 @@ describe('Quantity', () => {
 describe('Shop', () => {
   testConstruction(Models.Shop)
   testLinkCasting(Models.Shop)
+
+  it('casts address', () => {
+    const s = new Models.Shop({
+      address: {
+        company: 'My Company'
+      }
+    })
+
+    expect(s.address.constructor, 'to equal', Models.ShopAddress)
+    expect(s.address.company, 'to equal', 'My Company')
+  })
 })

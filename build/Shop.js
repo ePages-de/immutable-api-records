@@ -16,6 +16,7 @@
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
+  exports.ShopAddress = undefined;
 
   var _extractIdFromSelfLink2 = _interopRequireDefault(_extractIdFromSelfLink);
 
@@ -59,16 +60,52 @@
     if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
   }
 
+  var ShopAddressRecord = new _immutable.Record({
+    company: null,
+    surName: null,
+    firstName: null,
+    street: null,
+    street2: null,
+    city: null,
+    postalCode: null,
+    country: null,
+    state: null,
+    phone: null,
+    email: null,
+    vatId: null,
+    commercialRegister: null
+  });
+
+  var ShopAddress = exports.ShopAddress = function (_ShopAddressRecord) {
+    _inherits(ShopAddress, _ShopAddressRecord);
+
+    function ShopAddress() {
+      _classCallCheck(this, ShopAddress);
+
+      return _possibleConstructorReturn(this, (ShopAddress.__proto__ || Object.getPrototypeOf(ShopAddress)).apply(this, arguments));
+    }
+
+    return ShopAddress;
+  }(ShopAddressRecord);
+
   var ShopRecord = new _immutable.Record({
     _id: '',
     name: '',
+    address: new ShopAddress(),
     defaultCurrency: null,
-    defaultServiceableCountry: null,
+    currencies: new _immutable.List(),
     defaultShippingCountry: null,
+    shippingCountries: new _immutable.List(),
+    defaultServiceableCountry: null,
+    serviceableCountries: new _immutable.List(),
+    defaultLocale: null,
+    locales: new _immutable.List(),
     taxModel: null,
     vatExempted: null,
-    defaultLocale: null,
     closedByMerchant: false,
+    closedShopMessage: null,
+    // TODO
+    // minimumOrderValue: ???
     _links: new _immutable.Map()
   });
 
@@ -81,7 +118,9 @@
       _classCallCheck(this, Shop);
 
       var immutable = _immutable2.default.fromJS(shop);
-      var parsed = immutable.set('_id', (0, _extractIdFromSelfLink2.default)(immutable)).update('_links', function (ls) {
+      var parsed = immutable.set('_id', (0, _extractIdFromSelfLink2.default)(immutable)).update('address', function (a) {
+        return new ShopAddress(a);
+      }).update('_links', function (ls) {
         return ls ? ls.map(function (l) {
           return new _Link2.default(l);
         }) : new _immutable.Map();

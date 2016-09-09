@@ -3,6 +3,7 @@ import Immutable, {List, Map, Record} from 'immutable'
 
 const ImageRecord = new Record({
   _id: '',
+  label: '',
   _links: new Map()
 })
 export default class Image extends ImageRecord {

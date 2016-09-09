@@ -59,6 +59,7 @@
 
   var ImageRecord = new _immutable.Record({
     _id: '',
+    label: '',
     _links: new _immutable.Map()
   });
 

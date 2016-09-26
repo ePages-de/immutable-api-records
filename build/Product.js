@@ -71,7 +71,7 @@
     name: '',
     description: '',
     salesPrice: new _Price2.default(),
-    listPrice: new _Price2.default(),
+    listPrice: null, // new Price()
     taxClass: 'REGULAR',
     manufacturer: '',
     essentialFeatures: '',
@@ -95,7 +95,7 @@
       var parsed = immutable.set('_id', (0, _extractIdFromSelfLink2.default)(immutable)).update('salesPrice', function (sp) {
         return new _Price2.default(sp);
       }).update('listPrice', function (lp) {
-        return new _Price2.default(lp);
+        return lp ? new _Price2.default(lp) : null;
       }).update('attributes', function (pas) {
         return pas ? pas.map(function (pa) {
           return new _ProductAttribute2.default(pa);

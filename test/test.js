@@ -170,6 +170,16 @@ describe('Product', () => {
     expect(p.salesPrice.constructor, 'to equal', Models.Price)
   })
 
+  it('casts list price', () => {
+    const p = new Models.Product({
+      listPrice: {
+        amount: 'EUR 1.00'
+      }
+    })
+
+    expect(p.listPrice.constructor, 'to equal', Models.Price)
+  })
+
   it('casts attributes', () => {
     const p = new Models.Product({
       attributes: [
@@ -183,15 +193,16 @@ describe('Product', () => {
     expect(p.attributes.get(0).constructor, 'to equal', Models.ProductAttribute)
   })
 
-  it('casts gtin', () => {
+  it('casts gtins', () => {
     const p = new Models.Product({
-      gtin: {
+      gtins: [{
         type: 'ISBN',
         value: '12345'
-      }
+      }]
     })
 
-    expect(p.gtin.constructor, 'to equal', Models.Gtin)
+    expect(p.gtins.count(), 'to equal', 1)
+    expect(p.gtins.get(0).constructor, 'to equal', Models.Gtin)
   })
 })
 

@@ -11,16 +11,15 @@ const ProductRecord = new Record({
   name: '',
   description: '',
   salesPrice: new Price(),
+  listPrice: new Price(),
   taxClass: 'REGULAR',
   manufacturer: '',
-  mpn: '',
   essentialFeatures: '',
+  gtins: new List(),
   tags: new List(),
   attributes: new List(),
-  gtin: null,
   stockManaged: false,
   visible: false,
-  purchasable: false,
   _links: new Map()
 })
 export default class Product extends ProductRecord {
@@ -29,8 +28,9 @@ export default class Product extends ProductRecord {
     const parsed = immutable
       .set('_id', extractIdFromSelfLink(immutable))
       .update('salesPrice', (sp) => new Price(sp))
+      .update('listPrice', (lp) => new Price(lp))
       .update('attributes', (pas) => pas ? pas.map((pa) => new ProductAttribute(pa)) : new List())
-      .update('gtin', (g) => g ? new Gtin(g) : null)
+      .update('gtins', (gs) => gs ? gs.map((g) => new Gtin(g)) : new List())
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
 
     super(parsed)

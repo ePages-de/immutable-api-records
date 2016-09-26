@@ -11,7 +11,7 @@ const ProductRecord = new Record({
   name: '',
   description: '',
   salesPrice: new Price(),
-  listPrice: new Price(),
+  listPrice: null, // new Price()
   taxClass: 'REGULAR',
   manufacturer: '',
   essentialFeatures: '',
@@ -28,7 +28,7 @@ export default class Product extends ProductRecord {
     const parsed = immutable
       .set('_id', extractIdFromSelfLink(immutable))
       .update('salesPrice', (sp) => new Price(sp))
-      .update('listPrice', (lp) => new Price(lp))
+      .update('listPrice', (lp) => lp ? new Price(lp) : null)
       .update('attributes', (pas) => pas ? pas.map((pa) => new ProductAttribute(pa)) : new List())
       .update('gtins', (gs) => gs ? gs.map((g) => new Gtin(g)) : new List())
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())

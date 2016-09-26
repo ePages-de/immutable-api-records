@@ -180,6 +180,14 @@ describe('Product', () => {
     expect(p.listPrice.constructor, 'to equal', Models.Price)
   })
 
+  it('has optional list price', () => {
+    const p = new Models.Product({
+      listPrice: null
+    })
+
+    expect(p.listPrice, 'to equal', null)
+  })
+
   it('casts attributes', () => {
     const p = new Models.Product({
       attributes: [

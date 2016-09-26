@@ -71,16 +71,15 @@
     name: '',
     description: '',
     salesPrice: new _Price2.default(),
+    listPrice: new _Price2.default(),
     taxClass: 'REGULAR',
     manufacturer: '',
-    mpn: '',
     essentialFeatures: '',
+    gtins: new _immutable.List(),
     tags: new _immutable.List(),
     attributes: new _immutable.List(),
-    gtin: null,
     stockManaged: false,
     visible: false,
-    purchasable: false,
     _links: new _immutable.Map()
   });
 
@@ -95,12 +94,16 @@
       var immutable = _immutable2.default.fromJS(product);
       var parsed = immutable.set('_id', (0, _extractIdFromSelfLink2.default)(immutable)).update('salesPrice', function (sp) {
         return new _Price2.default(sp);
+      }).update('listPrice', function (lp) {
+        return new _Price2.default(lp);
       }).update('attributes', function (pas) {
         return pas ? pas.map(function (pa) {
           return new _ProductAttribute2.default(pa);
         }) : new _immutable.List();
-      }).update('gtin', function (g) {
-        return g ? new _Gtin2.default(g) : null;
+      }).update('gtins', function (gs) {
+        return gs ? gs.map(function (g) {
+          return new _Gtin2.default(g);
+        }) : new _immutable.List();
       }).update('_links', function (ls) {
         return ls ? ls.map(function (l) {
           return new _Link2.default(l);

@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', './extractIdFromSelfLink', './Gtin', './Link', './Price', './ProductAttribute', 'immutable'], factory);
+    define(['exports', './extractIdFromSelfLink', './Link', './Price', './ProductAttribute', './ProductIdentifier', 'immutable'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('./extractIdFromSelfLink'), require('./Gtin'), require('./Link'), require('./Price'), require('./ProductAttribute'), require('immutable'));
+    factory(exports, require('./extractIdFromSelfLink'), require('./Link'), require('./Price'), require('./ProductAttribute'), require('./ProductIdentifier'), require('immutable'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.extractIdFromSelfLink, global.Gtin, global.Link, global.Price, global.ProductAttribute, global.immutable);
+    factory(mod.exports, global.extractIdFromSelfLink, global.Link, global.Price, global.ProductAttribute, global.ProductIdentifier, global.immutable);
     global.Product = mod.exports;
   }
-})(this, function (exports, _extractIdFromSelfLink, _Gtin, _Link, _Price, _ProductAttribute, _immutable) {
+})(this, function (exports, _extractIdFromSelfLink, _Link, _Price, _ProductAttribute, _ProductIdentifier, _immutable) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -19,13 +19,13 @@
 
   var _extractIdFromSelfLink2 = _interopRequireDefault(_extractIdFromSelfLink);
 
-  var _Gtin2 = _interopRequireDefault(_Gtin);
-
   var _Link2 = _interopRequireDefault(_Link);
 
   var _Price2 = _interopRequireDefault(_Price);
 
   var _ProductAttribute2 = _interopRequireDefault(_ProductAttribute);
+
+  var _ProductIdentifier2 = _interopRequireDefault(_ProductIdentifier);
 
   var _immutable2 = _interopRequireDefault(_immutable);
 
@@ -75,7 +75,7 @@
     taxClass: 'REGULAR',
     manufacturer: '',
     essentialFeatures: '',
-    gtins: new _immutable.List(),
+    productIdentifiers: new _immutable.List(),
     tags: new _immutable.List(),
     attributes: new _immutable.List(),
     stockManaged: false,
@@ -100,9 +100,9 @@
         return pas ? pas.map(function (pa) {
           return new _ProductAttribute2.default(pa);
         }) : new _immutable.List();
-      }).update('gtins', function (gs) {
-        return gs ? gs.map(function (g) {
-          return new _Gtin2.default(g);
+      }).update('productIdentifiers', function (pis) {
+        return pis ? pis.map(function (pi) {
+          return new _ProductIdentifier2.default(pi);
         }) : new _immutable.List();
       }).update('_links', function (ls) {
         return ls ? ls.map(function (l) {

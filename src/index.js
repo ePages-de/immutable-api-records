@@ -7,8 +7,6 @@ export {ProductLineItem} from './Cart'
 
 export {default as DeliveryOption} from './DeliveryOption'
 
-export {default as Gtin} from './Gtin'
-
 export {default as Image} from './Image'
 
 export {default as Link} from './Link'
@@ -25,6 +23,8 @@ export {default as Product} from './Product'
 export {default as ProductAttribute} from './ProductAttribute'
 
 export {default as ProductAttributeDefinition} from './ProductAttributeDefinition'
+
+export {default as ProductIdentifier} from './ProductIdentifier'
 
 export {default as Quantity} from './Quantity'
 

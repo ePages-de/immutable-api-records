@@ -63,10 +63,6 @@ describe('DeliveryOption', () => {
   testConstruction(Models.DeliveryOption)
 })
 
-describe('Gtin', () => {
-  testConstruction(Models.Gtin)
-})
-
 describe('Image', () => {
   testConstruction(Models.Image)
   testLinkCasting(Models.Image)
@@ -201,16 +197,16 @@ describe('Product', () => {
     expect(p.attributes.get(0).constructor, 'to equal', Models.ProductAttribute)
   })
 
-  it('casts gtins', () => {
+  it('casts product identifiers', () => {
     const p = new Models.Product({
-      gtins: [{
+      productIdentifiers: [{
         type: 'ISBN',
         value: '12345'
       }]
     })
 
-    expect(p.gtins.count(), 'to equal', 1)
-    expect(p.gtins.get(0).constructor, 'to equal', Models.Gtin)
+    expect(p.productIdentifiers.count(), 'to equal', 1)
+    expect(p.productIdentifiers.get(0).constructor, 'to equal', Models.ProductIdentifier)
   })
 })
 
@@ -240,6 +236,10 @@ describe('ProductAttributeDefinition', () => {
 
     expect(pad.fullName, 'to equal', 'ns:n')
   })
+})
+
+describe('ProductIdentifier', () => {
+  testConstruction(Models.ProductIdentifier)
 })
 
 describe('Quantity', () => {

@@ -8,7 +8,7 @@
       exports: {}
     };
     factory(mod.exports, global.immutable);
-    global.Gtin = mod.exports;
+    global.ProductIdentifier = mod.exports;
   }
 })(this, function (exports, _immutable) {
   'use strict';
@@ -47,22 +47,22 @@
     if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
   }
 
-  var GtinRecord = new _immutable.Record({
+  var ProductIdentifierRecord = new _immutable.Record({
     type: '',
     value: ''
   });
 
-  var Gtin = function (_GtinRecord) {
-    _inherits(Gtin, _GtinRecord);
+  var ProductIdentifier = function (_ProductIdentifierRec) {
+    _inherits(ProductIdentifier, _ProductIdentifierRec);
 
-    function Gtin() {
-      _classCallCheck(this, Gtin);
+    function ProductIdentifier() {
+      _classCallCheck(this, ProductIdentifier);
 
-      return _possibleConstructorReturn(this, (Gtin.__proto__ || Object.getPrototypeOf(Gtin)).apply(this, arguments));
+      return _possibleConstructorReturn(this, (ProductIdentifier.__proto__ || Object.getPrototypeOf(ProductIdentifier)).apply(this, arguments));
     }
 
-    return Gtin;
-  }(GtinRecord);
+    return ProductIdentifier;
+  }(ProductIdentifierRecord);
 
-  exports.default = Gtin;
+  exports.default = ProductIdentifier;
 });

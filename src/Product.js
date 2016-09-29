@@ -1,8 +1,8 @@
 import extractIdFromSelfLink from './extractIdFromSelfLink'
-import Gtin from './Gtin'
 import Link from './Link'
 import Price from './Price'
 import ProductAttribute from './ProductAttribute'
+import ProductIdentifier from './ProductIdentifier'
 import Immutable, {List, Map, Record} from 'immutable'
 
 const ProductRecord = new Record({
@@ -15,7 +15,7 @@ const ProductRecord = new Record({
   taxClass: 'REGULAR',
   manufacturer: '',
   essentialFeatures: '',
-  gtins: new List(),
+  productIdentifiers: new List(),
   tags: new List(),
   attributes: new List(),
   stockManaged: false,
@@ -30,7 +30,7 @@ export default class Product extends ProductRecord {
       .update('salesPrice', (sp) => new Price(sp))
       .update('listPrice', (lp) => lp ? new Price(lp) : null)
       .update('attributes', (pas) => pas ? pas.map((pa) => new ProductAttribute(pa)) : new List())
-      .update('gtins', (gs) => gs ? gs.map((g) => new Gtin(g)) : new List())
+      .update('productIdentifiers', (pis) => pis ? pis.map((pi) => new ProductIdentifier(pi)) : new List())
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
 
     super(parsed)

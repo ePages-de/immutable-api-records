@@ -62,7 +62,7 @@
 
   var ShopAddressRecord = new _immutable.Record({
     company: null,
-    surName: null,
+    lastName: null,
     firstName: null,
     street: null,
     street2: null,

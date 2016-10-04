@@ -34,10 +34,6 @@ describe('Cart', () => {
   testConstruction(Models.Cart)
   testLinkCasting(Models.Cart)
 
-  describe('DeliveryLineItem', () => {
-    testConstruction(Models.DeliveryLineItem)
-  })
-
   describe('PaymentLineItem', () => {
     testConstruction(Models.PaymentLineItem)
   })
@@ -45,6 +41,10 @@ describe('Cart', () => {
   describe('ProductLineItem', () => {
     testConstruction(Models.ProductLineItem)
     testLinkCasting(Models.ProductLineItem)
+  })
+
+  describe('ShippingLineItem', () => {
+    testConstruction(Models.ShippingLineItem)
   })
 
   it('casts line items', () => {
@@ -59,8 +59,18 @@ describe('Cart', () => {
   })
 })
 
-describe('DeliveryOption', () => {
-  testConstruction(Models.DeliveryOption)
+describe('DiscountOrFee', () => {
+  testConstruction(Models.DiscountOrFee)
+
+  it('casts absolute value', () => {
+    const dof = new Models.DiscountOrFee({
+      absoluteValue: {
+        amount: 'EUR 1.00'
+      }
+    })
+
+    expect(dof.absoluteValue.constructor, 'to equal', Models.Price)
+  })
 })
 
 describe('Image', () => {
@@ -119,6 +129,41 @@ describe('PageableContainer', () => {
 
 describe('PaymentMethod', () => {
   testConstruction(Models.PaymentMethod)
+  testLinkCasting(Models.PaymentMethod)
+
+  it('has optional discount or fee', () => {
+    const pm = new Models.PaymentMethod()
+
+    expect(pm.discountOrFee, 'to equal', null)
+  })
+
+  it('casts discount or fee', () => {
+    const pm = new Models.PaymentMethod({
+      discountOrFee: {
+        absoluteValue: {
+          amount: 'EUR 1.00'
+        }
+      }
+    })
+
+    expect(pm.discountOrFee.constructor, 'to equal', Models.DiscountOrFee)
+  })
+
+  it('has optional minimum order value', () => {
+    const pm = new Models.PaymentMethod()
+
+    expect(pm.discountOrFee, 'to equal', null)
+  })
+
+  it('casts minimum order value', () => {
+    const pm = new Models.PaymentMethod({
+      minimumOrderValue: {
+        amount: 'EUR 1.00'
+      }
+    })
+
+    expect(pm.minimumOrderValue.constructor, 'to equal', Models.Price)
+  })
 })
 
 describe('Price', () => {
@@ -244,6 +289,43 @@ describe('ProductIdentifier', () => {
 
 describe('Quantity', () => {
   testConstruction(Models.Quantity)
+})
+
+describe('ShippingMethod', () => {
+  testConstruction(Models.ShippingMethod)
+  testLinkCasting(Models.ShippingMethod)
+
+  it('has optional fixed price', () => {
+    const sm = new Models.ShippingMethod()
+
+    expect(sm.fixedPrice, 'to equal', null)
+  })
+
+  it('casts fixed price', () => {
+    const sm = new Models.ShippingMethod({
+      fixedPrice: {
+        amount: 'EUR 1.00'
+      }
+    })
+
+    expect(sm.fixedPrice.constructor, 'to equal', Models.Price)
+  })
+
+  it('has optional free shipping value', () => {
+    const sm = new Models.ShippingMethod()
+
+    expect(sm.freeShippingValue, 'to equal', null)
+  })
+
+  it('casts free shipping value', () => {
+    const sm = new Models.ShippingMethod({
+      freeShippingValue: {
+        amount: 'EUR 1.00'
+      }
+    })
+
+    expect(sm.freeShippingValue.constructor, 'to equal', Models.Price)
+  })
 })
 
 describe('Shop', () => {

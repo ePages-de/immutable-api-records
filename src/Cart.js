@@ -1,9 +1,9 @@
-import DeliveryOption from './DeliveryOption'
 import Link from './Link'
 import PaymentMethod from './PaymentMethod'
 import Price from './Price'
 import Product from './Product'
 import Quantity from './Quantity'
+import ShippingMethod from './ShippingMethod'
 import Immutable, {List, Map, Record} from 'immutable'
 
 // Currently there are only products in the line items
@@ -33,15 +33,15 @@ export class ProductLineItem extends ProductLineItemRecord {
   }
 }
 
-const DeliveryLineItemRecord = new Record({
-  deliveryOption: new DeliveryOption({}),
+const ShippingLineItemRecord = new Record({
+  shippingMethod: new ShippingMethod(),
   lineItemPrice: new Price()
 })
-export class DeliveryLineItem extends DeliveryLineItemRecord {
-  constructor (deliveryLineItem = {}) {
-    const immutable = Immutable.fromJS(deliveryLineItem)
+export class ShippingLineItem extends ShippingLineItemRecord {
+  constructor (shippingLineItem = {}) {
+    const immutable = Immutable.fromJS(shippingLineItem)
     const parsed = immutable
-      .update('deliveryOption', (pm) => new DeliveryOption(pm))
+      .update('shippingMethod', (sm) => new ShippingMethod(sm))
       .update('lineItemPrice', (lip) => new Price(lip))
 
     super(parsed)
@@ -66,7 +66,7 @@ export class PaymentLineItem extends PaymentLineItemRecord {
 const CartRecord = new Record({
   _id: null,
   lineItems: new List(),
-  deliveryLineItem: new DeliveryLineItem(),
+  shippingLineItem: new ShippingLineItem(),
   paymentLineItem: new PaymentLineItem(),
   total: new Price(),
   _links: new Map()
@@ -76,7 +76,7 @@ export default class Cart extends CartRecord {
     const immutable = Immutable.fromJS(cart)
     const parsed = immutable
       .update('lineItems', (lis) => lis ? lis.map((li) => new ProductLineItem(li)) : new List())
-      .update('deliveryLineItem', (dli) => new DeliveryLineItem(dli))
+      .update('shippingLineItem', (sli) => new ShippingLineItem(sli))
       .update('paymentLineItem', (pli) => new PaymentLineItem(pli))
       .update('total', (t) => new Price(t))
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new List())

@@ -1,24 +1,22 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', './DeliveryOption', './Link', './PaymentMethod', './Price', './Product', './Quantity', 'immutable'], factory);
+    define(['exports', './Link', './PaymentMethod', './Price', './Product', './Quantity', './ShippingMethod', 'immutable'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('./DeliveryOption'), require('./Link'), require('./PaymentMethod'), require('./Price'), require('./Product'), require('./Quantity'), require('immutable'));
+    factory(exports, require('./Link'), require('./PaymentMethod'), require('./Price'), require('./Product'), require('./Quantity'), require('./ShippingMethod'), require('immutable'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.DeliveryOption, global.Link, global.PaymentMethod, global.Price, global.Product, global.Quantity, global.immutable);
+    factory(mod.exports, global.Link, global.PaymentMethod, global.Price, global.Product, global.Quantity, global.ShippingMethod, global.immutable);
     global.Cart = mod.exports;
   }
-})(this, function (exports, _DeliveryOption, _Link, _PaymentMethod, _Price, _Product, _Quantity, _immutable) {
+})(this, function (exports, _Link, _PaymentMethod, _Price, _Product, _Quantity, _ShippingMethod, _immutable) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  exports.PaymentLineItem = exports.DeliveryLineItem = exports.ProductLineItem = undefined;
-
-  var _DeliveryOption2 = _interopRequireDefault(_DeliveryOption);
+  exports.PaymentLineItem = exports.ShippingLineItem = exports.ProductLineItem = undefined;
 
   var _Link2 = _interopRequireDefault(_Link);
 
@@ -29,6 +27,8 @@
   var _Product2 = _interopRequireDefault(_Product);
 
   var _Quantity2 = _interopRequireDefault(_Quantity);
+
+  var _ShippingMethod2 = _interopRequireDefault(_ShippingMethod);
 
   var _immutable2 = _interopRequireDefault(_immutable);
 
@@ -111,31 +111,31 @@
     return ProductLineItem;
   }(ProductLineItemRecord);
 
-  var DeliveryLineItemRecord = new _immutable.Record({
-    deliveryOption: new _DeliveryOption2.default({}),
+  var ShippingLineItemRecord = new _immutable.Record({
+    shippingMethod: new _ShippingMethod2.default(),
     lineItemPrice: new _Price2.default()
   });
 
-  var DeliveryLineItem = exports.DeliveryLineItem = function (_DeliveryLineItemReco) {
-    _inherits(DeliveryLineItem, _DeliveryLineItemReco);
+  var ShippingLineItem = exports.ShippingLineItem = function (_ShippingLineItemReco) {
+    _inherits(ShippingLineItem, _ShippingLineItemReco);
 
-    function DeliveryLineItem() {
-      var deliveryLineItem = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+    function ShippingLineItem() {
+      var shippingLineItem = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
-      _classCallCheck(this, DeliveryLineItem);
+      _classCallCheck(this, ShippingLineItem);
 
-      var immutable = _immutable2.default.fromJS(deliveryLineItem);
-      var parsed = immutable.update('deliveryOption', function (pm) {
-        return new _DeliveryOption2.default(pm);
+      var immutable = _immutable2.default.fromJS(shippingLineItem);
+      var parsed = immutable.update('shippingMethod', function (sm) {
+        return new _ShippingMethod2.default(sm);
       }).update('lineItemPrice', function (lip) {
         return new _Price2.default(lip);
       });
 
-      return _possibleConstructorReturn(this, (DeliveryLineItem.__proto__ || Object.getPrototypeOf(DeliveryLineItem)).call(this, parsed));
+      return _possibleConstructorReturn(this, (ShippingLineItem.__proto__ || Object.getPrototypeOf(ShippingLineItem)).call(this, parsed));
     }
 
-    return DeliveryLineItem;
-  }(DeliveryLineItemRecord);
+    return ShippingLineItem;
+  }(ShippingLineItemRecord);
 
   var PaymentLineItemRecord = new _immutable.Record({
     paymentMethod: new _PaymentMethod2.default({}),
@@ -166,7 +166,7 @@
   var CartRecord = new _immutable.Record({
     _id: null,
     lineItems: new _immutable.List(),
-    deliveryLineItem: new DeliveryLineItem(),
+    shippingLineItem: new ShippingLineItem(),
     paymentLineItem: new PaymentLineItem(),
     total: new _Price2.default(),
     _links: new _immutable.Map()
@@ -185,8 +185,8 @@
         return lis ? lis.map(function (li) {
           return new ProductLineItem(li);
         }) : new _immutable.List();
-      }).update('deliveryLineItem', function (dli) {
-        return new DeliveryLineItem(dli);
+      }).update('shippingLineItem', function (sli) {
+        return new ShippingLineItem(sli);
       }).update('paymentLineItem', function (pli) {
         return new PaymentLineItem(pli);
       }).update('total', function (t) {

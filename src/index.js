@@ -1,11 +1,11 @@
 export {default as Attachment} from './Attachment'
 
 export {default as Cart} from './Cart'
-export {DeliveryLineItem} from './Cart'
 export {PaymentLineItem} from './Cart'
 export {ProductLineItem} from './Cart'
+export {ShippingLineItem} from './Cart'
 
-export {default as DeliveryOption} from './DeliveryOption'
+export {default as DiscountOrFee} from './DiscountOrFee'
 
 export {default as Image} from './Image'
 
@@ -27,6 +27,8 @@ export {default as ProductAttributeDefinition} from './ProductAttributeDefinitio
 export {default as ProductIdentifier} from './ProductIdentifier'
 
 export {default as Quantity} from './Quantity'
+
+export {default as ShippingMethod} from './ShippingMethod'
 
 export {default as Shop} from './Shop'
 export {ShopAddress} from './Shop'

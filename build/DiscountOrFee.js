@@ -1,25 +1,21 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', './DiscountOrFee', './Link', './Price', 'immutable'], factory);
+    define(['exports', './Price', 'immutable'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('./DiscountOrFee'), require('./Link'), require('./Price'), require('immutable'));
+    factory(exports, require('./Price'), require('immutable'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.DiscountOrFee, global.Link, global.Price, global.immutable);
-    global.PaymentMethod = mod.exports;
+    factory(mod.exports, global.Price, global.immutable);
+    global.DiscountOrFee = mod.exports;
   }
-})(this, function (exports, _DiscountOrFee, _Link, _Price, _immutable) {
+})(this, function (exports, _Price, _immutable) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-
-  var _DiscountOrFee2 = _interopRequireDefault(_DiscountOrFee);
-
-  var _Link2 = _interopRequireDefault(_Link);
 
   var _Price2 = _interopRequireDefault(_Price);
 
@@ -61,41 +57,31 @@
     if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
   }
 
-  var PaymentMethodRecord = new _immutable.Record({
+  var DiscountOrFeeRecord = new _immutable.Record({
     _id: null,
-    position: 0,
-    name: '',
-    description: '',
-    discountOrFee: new _DiscountOrFee2.default(),
-    serviceableCountries: new _immutable.List(),
-    minimumOrderValue: null,
-    _links: new _immutable.Map()
+    type: 'ABSOLUTE',
+    absoluteValue: null,
+    percentageValue: null
   });
 
-  var PaymentMethod = function (_PaymentMethodRecord) {
-    _inherits(PaymentMethod, _PaymentMethodRecord);
+  var DiscountOrFee = function (_DiscountOrFeeRecord) {
+    _inherits(DiscountOrFee, _DiscountOrFeeRecord);
 
-    function PaymentMethod() {
+    function DiscountOrFee() {
       var paymentMethod = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
-      _classCallCheck(this, PaymentMethod);
+      _classCallCheck(this, DiscountOrFee);
 
       var immutable = _immutable2.default.fromJS(paymentMethod);
-      var parsed = immutable.update('discountOrFee', function (dof) {
-        return dof ? new _DiscountOrFee2.default(dof) : null;
-      }).update('minimumOrderValue', function (mov) {
-        return mov ? new _Price2.default(mov) : null;
-      }).update('_links', function (ls) {
-        return ls ? ls.map(function (l) {
-          return new _Link2.default(l);
-        }) : new _immutable.List();
+      var parsed = immutable.update('absoluteValue', function (p) {
+        return p ? new _Price2.default(p) : null;
       });
 
-      return _possibleConstructorReturn(this, (PaymentMethod.__proto__ || Object.getPrototypeOf(PaymentMethod)).call(this, parsed));
+      return _possibleConstructorReturn(this, (DiscountOrFee.__proto__ || Object.getPrototypeOf(DiscountOrFee)).call(this, parsed));
     }
 
-    return PaymentMethod;
-  }(PaymentMethodRecord);
+    return DiscountOrFee;
+  }(DiscountOrFeeRecord);
 
-  exports.default = PaymentMethod;
+  exports.default = DiscountOrFee;
 });

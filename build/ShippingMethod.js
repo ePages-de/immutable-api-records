@@ -1,21 +1,23 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', './Price', 'immutable'], factory);
+    define(['exports', './Link', './Price', 'immutable'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('./Price'), require('immutable'));
+    factory(exports, require('./Link'), require('./Price'), require('immutable'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.Price, global.immutable);
-    global.DeliveryOption = mod.exports;
+    factory(mod.exports, global.Link, global.Price, global.immutable);
+    global.ShippingMethod = mod.exports;
   }
-})(this, function (exports, _Price, _immutable) {
+})(this, function (exports, _Link, _Price, _immutable) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
+
+  var _Link2 = _interopRequireDefault(_Link);
 
   var _Price2 = _interopRequireDefault(_Price);
 
@@ -57,33 +59,44 @@
     if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
   }
 
-  var DeliveryOptionRecord = new _immutable.Record({
+  var ShippingMethodRecord = new _immutable.Record({
     _id: null,
+    position: 0,
     name: '',
     description: '',
     taxClass: 'REGULAR',
-    price: new _Price2.default(),
-    serviceableCountries: new _immutable.List()
+    fixedPrice: null,
+    // TODO not yet typed
+    weightBasedPrice: null,
+    serviceableCountries: new _immutable.List(),
+    freeShippingValue: null,
+    _links: new Map()
   });
 
-  var DeliveryOption = function (_DeliveryOptionRecord) {
-    _inherits(DeliveryOption, _DeliveryOptionRecord);
+  var ShippingMethod = function (_ShippingMethodRecord) {
+    _inherits(ShippingMethod, _ShippingMethodRecord);
 
-    function DeliveryOption() {
-      var deliveryOption = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+    function ShippingMethod() {
+      var shippingMethod = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
-      _classCallCheck(this, DeliveryOption);
+      _classCallCheck(this, ShippingMethod);
 
-      var immutable = _immutable2.default.fromJS(deliveryOption);
-      var parsed = immutable.update('price', function (p) {
-        return new _Price2.default(p);
+      var immutable = _immutable2.default.fromJS(shippingMethod);
+      var parsed = immutable.update('fixedPrice', function (fp) {
+        return fp ? new _Price2.default(fp) : null;
+      }).update('freeShippingValue', function (fsv) {
+        return fsv ? new _Price2.default(fsv) : null;
+      }).update('_links', function (ls) {
+        return ls ? ls.map(function (l) {
+          return new _Link2.default(l);
+        }) : new _immutable.List();
       });
 
-      return _possibleConstructorReturn(this, (DeliveryOption.__proto__ || Object.getPrototypeOf(DeliveryOption)).call(this, parsed));
+      return _possibleConstructorReturn(this, (ShippingMethod.__proto__ || Object.getPrototypeOf(ShippingMethod)).call(this, parsed));
     }
 
-    return DeliveryOption;
-  }(DeliveryOptionRecord);
+    return ShippingMethod;
+  }(ShippingMethodRecord);
 
-  exports.default = DeliveryOption;
+  exports.default = ShippingMethod;
 });

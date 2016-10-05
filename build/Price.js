@@ -67,7 +67,8 @@
 
   var PriceRecord = new _immutable.Record({
     amount: '',
-    currency: '',
+    // TODO reenable as soon as changed in backend
+    // currency: '',
     taxModel: 'GROSS'
   });
 
@@ -83,7 +84,10 @@
     _createClass(Price, [{
       key: 'formatted',
       get: function get() {
-        return typeof this.amount === 'number' ? this.currency + ' ' + this.amount.toFixed(2) : this.amount;
+        // return typeof this.amount === 'number'
+        //   ? `${this.currency} ${this.amount.toFixed(2)}`
+        //   : this.amount
+        return this.amount;
       }
     }]);
 

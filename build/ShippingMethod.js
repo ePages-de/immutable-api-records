@@ -77,7 +77,7 @@
     _inherits(ShippingMethod, _ShippingMethodRecord);
 
     function ShippingMethod() {
-      var shippingMethod = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+      var shippingMethod = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
       _classCallCheck(this, ShippingMethod);
 

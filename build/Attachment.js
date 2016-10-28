@@ -69,7 +69,7 @@
     _inherits(Attachment, _AttachmentRecord);
 
     function Attachment() {
-      var attachment = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+      var attachment = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
       _classCallCheck(this, Attachment);
 

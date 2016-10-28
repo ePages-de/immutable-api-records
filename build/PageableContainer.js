@@ -90,8 +90,8 @@
     _inherits(PageableContainer, _PageableContainerRec);
 
     function PageableContainer() {
-      var pageableContainer = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-      var castEmbedded = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+      var pageableContainer = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var castEmbedded = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
       _classCallCheck(this, PageableContainer);
 

@@ -69,6 +69,8 @@
     discountOrFee: new _DiscountOrFee2.default(),
     serviceableCountries: new _immutable.List(),
     minimumOrderValue: null,
+    activated: false,
+    taxClass: null,
     _links: new _immutable.Map()
   });
 
@@ -76,7 +78,7 @@
     _inherits(PaymentMethod, _PaymentMethodRecord);
 
     function PaymentMethod() {
-      var paymentMethod = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+      var paymentMethod = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
       _classCallCheck(this, PaymentMethod);
 

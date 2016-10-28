@@ -11,6 +11,8 @@ const PaymentMethodRecord = new Record({
   discountOrFee: new DiscountOrFee(),
   serviceableCountries: new List(),
   minimumOrderValue: null,
+  activated: false,
+  taxClass: null,
   _links: new Map()
 })
 export default class PaymentMethod extends PaymentMethodRecord {

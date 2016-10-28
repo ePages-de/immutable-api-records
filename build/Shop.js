@@ -114,7 +114,7 @@
     _inherits(Shop, _ShopRecord);
 
     function Shop() {
-      var shop = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+      var shop = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
       _classCallCheck(this, Shop);
 

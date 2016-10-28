@@ -90,7 +90,7 @@
     _inherits(ProductAttributeDefinition, _ProductAttributeDefi);
 
     function ProductAttributeDefinition() {
-      var productAttributeDefinition = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+      var productAttributeDefinition = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
       _classCallCheck(this, ProductAttributeDefinition);
 

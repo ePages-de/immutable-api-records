@@ -87,7 +87,7 @@
     _inherits(Product, _ProductRecord);
 
     function Product() {
-      var product = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+      var product = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
       _classCallCheck(this, Product);
 

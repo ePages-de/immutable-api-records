@@ -68,7 +68,7 @@
     _inherits(DiscountOrFee, _DiscountOrFeeRecord);
 
     function DiscountOrFee() {
-      var paymentMethod = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+      var paymentMethod = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
       _classCallCheck(this, DiscountOrFee);
 

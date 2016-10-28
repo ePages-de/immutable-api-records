@@ -86,7 +86,7 @@
     _inherits(ProductLineItem, _ProductLineItemRecor);
 
     function ProductLineItem() {
-      var cart = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+      var cart = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
       _classCallCheck(this, ProductLineItem);
 
@@ -120,7 +120,7 @@
     _inherits(ShippingLineItem, _ShippingLineItemReco);
 
     function ShippingLineItem() {
-      var shippingLineItem = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+      var shippingLineItem = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
       _classCallCheck(this, ShippingLineItem);
 
@@ -146,7 +146,7 @@
     _inherits(PaymentLineItem, _PaymentLineItemRecor);
 
     function PaymentLineItem() {
-      var paymentLineItem = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+      var paymentLineItem = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
       _classCallCheck(this, PaymentLineItem);
 
@@ -176,7 +176,7 @@
     _inherits(Cart, _CartRecord);
 
     function Cart() {
-      var cart = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+      var cart = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
       _classCallCheck(this, Cart);
 

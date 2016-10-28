@@ -67,7 +67,7 @@
     _inherits(Image, _ImageRecord);
 
     function Image() {
-      var image = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+      var image = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
       _classCallCheck(this, Image);
 

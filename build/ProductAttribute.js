@@ -88,7 +88,7 @@
     _inherits(ProductAttribute, _ProductAttributeReco);
 
     function ProductAttribute() {
-      var productAttribute = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+      var productAttribute = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
       _classCallCheck(this, ProductAttribute);
 

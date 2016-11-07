@@ -32,3 +32,6 @@ export {default as ShippingMethod} from './ShippingMethod'
 
 export {default as Shop} from './Shop'
 export {ShopAddress} from './Shop'
+
+export {default as WeightBasedPrice} from './WeightBasedPrice'
+export {WeightPriceThreshold} from './WeightBasedPrice'

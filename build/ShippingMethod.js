@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', './Link', './Price', 'immutable'], factory);
+    define(['exports', './Link', './Price', './WeightBasedPrice', 'immutable'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('./Link'), require('./Price'), require('immutable'));
+    factory(exports, require('./Link'), require('./Price'), require('./WeightBasedPrice'), require('immutable'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.Link, global.Price, global.immutable);
+    factory(mod.exports, global.Link, global.Price, global.WeightBasedPrice, global.immutable);
     global.ShippingMethod = mod.exports;
   }
-})(this, function (exports, _Link, _Price, _immutable) {
+})(this, function (exports, _Link, _Price, _WeightBasedPrice, _immutable) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -20,6 +20,8 @@
   var _Link2 = _interopRequireDefault(_Link);
 
   var _Price2 = _interopRequireDefault(_Price);
+
+  var _WeightBasedPrice2 = _interopRequireDefault(_WeightBasedPrice);
 
   var _immutable2 = _interopRequireDefault(_immutable);
 
@@ -66,7 +68,6 @@
     description: '',
     taxClass: 'REGULAR',
     fixedPrice: null,
-    // TODO not yet typed
     weightBasedPrice: null,
     serviceableCountries: new _immutable.List(),
     freeShippingValue: null,
@@ -84,6 +85,8 @@
       var immutable = _immutable2.default.fromJS(shippingMethod);
       var parsed = immutable.update('fixedPrice', function (fp) {
         return fp ? new _Price2.default(fp) : null;
+      }).update('weightBasedPrice', function (wbp) {
+        return wbp ? new _WeightBasedPrice2.default(wbp) : null;
       }).update('freeShippingValue', function (fsv) {
         return fsv ? new _Price2.default(fsv) : null;
       }).update('_links', function (ls) {

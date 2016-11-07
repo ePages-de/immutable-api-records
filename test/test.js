@@ -312,6 +312,23 @@ describe('ShippingMethod', () => {
     expect(sm.fixedPrice.constructor, 'to equal', Models.Price)
   })
 
+  it('casts weight based price', () => {
+    const sm = new Models.ShippingMethod({
+      weightBasedPrice: {
+        weightPriceThresholds: [
+          {
+            maxWeight: 10,
+            price: {
+              amoung: 'EUR 1.00'
+            }
+          }
+        ]
+      }
+    })
+
+    expect(sm.weightBasedPrice.constructor, 'to equal', Models.WeightBasedPrice)
+  })
+
   it('has optional free shipping value', () => {
     const sm = new Models.ShippingMethod()
 
@@ -342,5 +359,48 @@ describe('Shop', () => {
 
     expect(s.address.constructor, 'to equal', Models.ShopAddress)
     expect(s.address.company, 'to equal', 'My Company')
+  })
+
+  describe('ShopAddress', () => {
+    testConstruction(Models.ShopAddress)
+  })
+})
+
+describe('WeightBasedPrice', () => {
+  testConstruction(Models.WeightBasedPrice)
+
+  it('casts weight price thresholds', () => {
+    const wbp = new Models.WeightBasedPrice({
+      weightPriceThresholds: [
+        {
+          maxWeight: 10,
+          price: {
+            amoung: 'EUR 1.00'
+          }
+        },
+        {
+          maxWeight: 20,
+          price: {
+            amoung: 'EUR 2.00'
+          }
+        }
+      ]
+    })
+
+    expect(wbp.weightPriceThresholds.get(0).constructor, 'to equal', Models.WeightPriceThreshold)
+  })
+
+  it('casts unlimited weight price', () => {
+    const wbp = new Models.WeightBasedPrice({
+      unlimitedWeightPrice: {
+        amount: 'EUR 1.00'
+      }
+    })
+
+    expect(wbp.unlimitedWeightPrice.constructor, 'to equal', Models.Price)
+  })
+
+  describe('WeightPriceThreshold', () => {
+    testConstruction(Models.WeightPriceThreshold)
   })
 })

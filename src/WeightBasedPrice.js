@@ -9,7 +9,7 @@ export class WeightPriceThreshold extends WeightPriceThresholdRecord {
   constructor (weightPriceThreshold = {}) {
     const immutable = Immutable.fromJS(weightPriceThreshold)
     const parsed = immutable
-      .update('price', (p) => new Price(p))
+      .update('price', (p) => p ? new Price(p) : null)
 
     super(parsed)
   }

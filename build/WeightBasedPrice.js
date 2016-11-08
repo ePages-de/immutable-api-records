@@ -73,7 +73,7 @@
 
       var immutable = _immutable2.default.fromJS(weightPriceThreshold);
       var parsed = immutable.update('price', function (p) {
-        return new _Price2.default(p);
+        return p ? new _Price2.default(p) : null;
       });
 
       return _possibleConstructorReturn(this, (WeightPriceThreshold.__proto__ || Object.getPrototypeOf(WeightPriceThreshold)).call(this, parsed));

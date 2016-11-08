@@ -72,6 +72,7 @@
     description: '',
     salesPrice: new _Price2.default(),
     listPrice: null, // new Price()
+    onSale: false,
     taxClass: 'REGULAR',
     manufacturer: '',
     essentialFeatures: '',

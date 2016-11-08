@@ -12,6 +12,7 @@ const ProductRecord = new Record({
   description: '',
   salesPrice: new Price(),
   listPrice: null, // new Price()
+  onSale: false,
   taxClass: 'REGULAR',
   manufacturer: '',
   essentialFeatures: '',

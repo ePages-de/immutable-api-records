@@ -243,6 +243,18 @@ describe('Product', () => {
     expect(p.attributes.get(0).constructor, 'to equal', Models.ProductAttribute)
   })
 
+  it('casts reference price', () => {
+    const p = new Models.Product({
+      refPrice: {
+        unit: 'GRAM',
+        refQuantity: 100,
+        quantity: 250
+      }
+    })
+
+    expect(p.refPrice.constructor, 'to equal', Models.ReferencePrice)
+  })
+
   it('casts product identifiers', () => {
     const p = new Models.Product({
       productIdentifiers: [{
@@ -290,6 +302,20 @@ describe('ProductIdentifier', () => {
 
 describe('Quantity', () => {
   testConstruction(Models.Quantity)
+})
+
+describe('ReferencePrice', () => {
+  testConstruction(Models.ReferencePrice)
+
+  it('casts price', () => {
+    const p = new Models.ReferencePrice({
+      price: {
+        amount: 'EUR 1.00'
+      }
+    })
+
+    expect(p.price.constructor, 'to equal', Models.Price)
+  })
 })
 
 describe('ShippingMethod', () => {

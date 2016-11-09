@@ -28,6 +28,8 @@ export {default as ProductIdentifier} from './ProductIdentifier'
 
 export {default as Quantity} from './Quantity'
 
+export {default as ReferencePrice} from './ReferencePrice'
+
 export {default as ShippingMethod} from './ShippingMethod'
 
 export {default as Shop} from './Shop'

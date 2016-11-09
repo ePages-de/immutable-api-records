@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', './extractIdFromSelfLink', './Link', './Price', './ProductAttribute', './ProductIdentifier', 'immutable'], factory);
+    define(['exports', './extractIdFromSelfLink', './Link', './Price', './ProductAttribute', './ProductIdentifier', './ReferencePrice', 'immutable'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('./extractIdFromSelfLink'), require('./Link'), require('./Price'), require('./ProductAttribute'), require('./ProductIdentifier'), require('immutable'));
+    factory(exports, require('./extractIdFromSelfLink'), require('./Link'), require('./Price'), require('./ProductAttribute'), require('./ProductIdentifier'), require('./ReferencePrice'), require('immutable'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.extractIdFromSelfLink, global.Link, global.Price, global.ProductAttribute, global.ProductIdentifier, global.immutable);
+    factory(mod.exports, global.extractIdFromSelfLink, global.Link, global.Price, global.ProductAttribute, global.ProductIdentifier, global.ReferencePrice, global.immutable);
     global.Product = mod.exports;
   }
-})(this, function (exports, _extractIdFromSelfLink, _Link, _Price, _ProductAttribute, _ProductIdentifier, _immutable) {
+})(this, function (exports, _extractIdFromSelfLink, _Link, _Price, _ProductAttribute, _ProductIdentifier, _ReferencePrice, _immutable) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -26,6 +26,8 @@
   var _ProductAttribute2 = _interopRequireDefault(_ProductAttribute);
 
   var _ProductIdentifier2 = _interopRequireDefault(_ProductIdentifier);
+
+  var _ReferencePrice2 = _interopRequireDefault(_ReferencePrice);
 
   var _immutable2 = _interopRequireDefault(_immutable);
 
@@ -73,6 +75,7 @@
     salesPrice: new _Price2.default(),
     listPrice: null, // new Price()
     onSale: false,
+    refPrice: null, // new ReferencePrice()
     taxClass: 'REGULAR',
     manufacturer: '',
     essentialFeatures: '',
@@ -97,6 +100,8 @@
         return new _Price2.default(sp);
       }).update('listPrice', function (lp) {
         return lp ? new _Price2.default(lp) : null;
+      }).update('refPrice', function (rp) {
+        return rp ? new _ReferencePrice2.default(rp) : null;
       }).update('attributes', function (pas) {
         return pas ? pas.map(function (pa) {
           return new _ProductAttribute2.default(pa);

@@ -5,6 +5,8 @@ export {PaymentLineItem} from './Cart'
 export {ProductLineItem} from './Cart'
 export {ShippingLineItem} from './Cart'
 
+export {default as Category} from './Category'
+
 export {default as DiscountOrFee} from './DiscountOrFee'
 
 export {default as Image} from './Image'

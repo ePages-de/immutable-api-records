@@ -59,6 +59,11 @@ describe('Cart', () => {
   })
 })
 
+describe('Category', () => {
+  testConstruction(Models.Category)
+  testLinkCasting(Models.Category)
+})
+
 describe('DiscountOrFee', () => {
   testConstruction(Models.DiscountOrFee)
 

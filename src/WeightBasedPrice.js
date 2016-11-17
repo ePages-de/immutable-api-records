@@ -6,8 +6,8 @@ const WeightPriceThresholdRecord = new Record({
   price: new Price()
 })
 export class WeightPriceThreshold extends WeightPriceThresholdRecord {
-  constructor (weightPriceThreshold = {}) {
-    const immutable = Immutable.fromJS(weightPriceThreshold)
+  constructor (weightPriceThreshold) {
+    const immutable = Immutable.fromJS(weightPriceThreshold || {})
     const parsed = immutable
       .update('price', (p) => p ? new Price(p) : null)
 
@@ -20,8 +20,8 @@ const WeightBasedPriceRecord = new Record({
   unlimitedWeightPrice: null
 })
 export default class WeightBasedPrice extends WeightBasedPriceRecord {
-  constructor (weightBasedPrice = {}) {
-    const immutable = Immutable.fromJS(weightBasedPrice)
+  constructor (weightBasedPrice) {
+    const immutable = Immutable.fromJS(weightBasedPrice || {})
     const parsed = immutable
       .update('weightPriceThresholds', (wbts) => wbts ? wbts.map((wbt) => new WeightPriceThreshold(wbt)) : new List())
       .update('unlimitedWeightPrice', (uwp) => uwp ? new Price(uwp) : null)

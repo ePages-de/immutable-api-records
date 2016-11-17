@@ -77,12 +77,10 @@
   var PaymentMethod = function (_PaymentMethodRecord) {
     _inherits(PaymentMethod, _PaymentMethodRecord);
 
-    function PaymentMethod() {
-      var paymentMethod = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
+    function PaymentMethod(paymentMethod) {
       _classCallCheck(this, PaymentMethod);
 
-      var immutable = _immutable2.default.fromJS(paymentMethod);
+      var immutable = _immutable2.default.fromJS(paymentMethod || {});
       var parsed = immutable.update('discountOrFee', function (dof) {
         return dof ? new _DiscountOrFee2.default(dof) : null;
       }).update('minimumOrderValue', function (mov) {

@@ -19,15 +19,15 @@ const PageableContainerRecord = new Record({
   _links: new Map()
 })
 export default class PageableContainer extends PageableContainerRecord {
-  constructor (pageableContainer = {}, castEmbedded = {}) {
-    const immutable = Immutable.fromJS(pageableContainer)
+  constructor (pageableContainer, castEmbedded) {
+    const immutable = Immutable.fromJS(pageableContainer || {})
 
     const parsed1 = immutable
       .update('page', (p) => new PageablePage(p))
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new List())
 
     // for every key in embeddedKey map over the list of embedded items with the provided casting function
-    const parsed2 = Object.keys(castEmbedded).reduce((acc, embeddedKey) => {
+    const parsed2 = Object.keys(castEmbedded || {}).reduce((acc, embeddedKey) => {
       return acc.updateIn(['_embedded', embeddedKey], (items) => {
         return items
           ? items.map((item) => castEmbedded[embeddedKey](item))

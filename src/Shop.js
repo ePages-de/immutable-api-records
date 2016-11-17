@@ -41,10 +41,9 @@ const ShopRecord = new Record({
   // minimumOrderValue: ???
   _links: new Map()
 })
-
 export default class Shop extends ShopRecord {
-  constructor (shop = {}) {
-    const immutable = Immutable.fromJS(shop)
+  constructor (shop) {
+    const immutable = Immutable.fromJS(shop || {})
     const parsed = immutable
       .set('_id', extractIdFromSelfLink(immutable))
       .update('address', (a) => new ShopAddress(a))

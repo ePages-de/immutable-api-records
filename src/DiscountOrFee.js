@@ -8,8 +8,8 @@ const DiscountOrFeeRecord = new Record({
   percentageValue: null
 })
 export default class DiscountOrFee extends DiscountOrFeeRecord {
-  constructor (paymentMethod = {}) {
-    const immutable = Immutable.fromJS(paymentMethod)
+  constructor (paymentMethod) {
+    const immutable = Immutable.fromJS(paymentMethod || {})
     const parsed = immutable
       .update('absoluteValue', (p) => p ? new Price(p) : null)
 

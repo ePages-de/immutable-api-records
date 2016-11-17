@@ -113,12 +113,10 @@
   var Shop = function (_ShopRecord) {
     _inherits(Shop, _ShopRecord);
 
-    function Shop() {
-      var shop = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
+    function Shop(shop) {
       _classCallCheck(this, Shop);
 
-      var immutable = _immutable2.default.fromJS(shop);
+      var immutable = _immutable2.default.fromJS(shop || {});
       var parsed = immutable.set('_id', (0, _extractIdFromSelfLink2.default)(immutable)).update('address', function (a) {
         return new ShopAddress(a);
       }).update('_links', function (ls) {

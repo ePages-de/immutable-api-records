@@ -10,8 +10,8 @@ const ProductAttributeRecord = new Record({
   _links: new Map()
 })
 export default class ProductAttribute extends ProductAttributeRecord {
-  constructor (productAttribute = {}) {
-    const immutable = Immutable.fromJS(productAttribute)
+  constructor (productAttribute) {
+    const immutable = Immutable.fromJS(productAttribute || {})
     const parsed = immutable
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
 

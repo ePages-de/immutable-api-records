@@ -68,12 +68,10 @@
   var Attachment = function (_AttachmentRecord) {
     _inherits(Attachment, _AttachmentRecord);
 
-    function Attachment() {
-      var attachment = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
+    function Attachment(attachment) {
       _classCallCheck(this, Attachment);
 
-      var immutable = _immutable2.default.fromJS(attachment);
+      var immutable = _immutable2.default.fromJS(attachment || {});
       var parsed = immutable.update('_links', function (ls) {
         return ls ? ls.map(function (l) {
           return new _Link2.default(l);

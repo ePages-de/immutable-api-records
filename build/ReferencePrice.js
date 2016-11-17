@@ -67,12 +67,10 @@
   var ReferencePrice = function (_ReferencePriceRecord) {
     _inherits(ReferencePrice, _ReferencePriceRecord);
 
-    function ReferencePrice() {
-      var referencePrice = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
+    function ReferencePrice(referencePrice) {
       _classCallCheck(this, ReferencePrice);
 
-      var immutable = _immutable2.default.fromJS(referencePrice);
+      var immutable = _immutable2.default.fromJS(referencePrice || {});
       var parsed = immutable.update('price', function (p) {
         return p ? new _Price2.default(p) : null;
       });

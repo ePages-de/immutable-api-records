@@ -16,8 +16,8 @@ const ShippingMethodRecord = new Record({
   _links: new Map()
 })
 export default class ShippingMethod extends ShippingMethodRecord {
-  constructor (shippingMethod = {}) {
-    const immutable = Immutable.fromJS(shippingMethod)
+  constructor (shippingMethod) {
+    const immutable = Immutable.fromJS(shippingMethod || {})
     const parsed = immutable
       .update('fixedPrice', (fp) => fp ? new Price(fp) : null)
       .update('weightBasedPrice', (wbp) => wbp ? new WeightBasedPrice(wbp) : null)

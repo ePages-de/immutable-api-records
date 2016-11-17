@@ -9,8 +9,8 @@ const CategoryRecord = new Record({
   _links: new Map()
 })
 export default class Category extends CategoryRecord {
-  constructor (category = {}) {
-    const immutable = Immutable.fromJS(category)
+  constructor (category) {
+    const immutable = Immutable.fromJS(category || {})
     const parsed = immutable
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new List())
 

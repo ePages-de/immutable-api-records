@@ -66,12 +66,10 @@
   var Image = function (_ImageRecord) {
     _inherits(Image, _ImageRecord);
 
-    function Image() {
-      var image = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
+    function Image(image) {
       _classCallCheck(this, Image);
 
-      var immutable = _immutable2.default.fromJS(image);
+      var immutable = _immutable2.default.fromJS(image || {});
       var parsed = immutable.update('_links', function (ls) {
         return ls ? ls.map(function (l) {
           return new _Link2.default(l);

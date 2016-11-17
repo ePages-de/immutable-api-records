@@ -68,12 +68,10 @@
   var Category = function (_CategoryRecord) {
     _inherits(Category, _CategoryRecord);
 
-    function Category() {
-      var category = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
+    function Category(category) {
       _classCallCheck(this, Category);
 
-      var immutable = _immutable2.default.fromJS(category);
+      var immutable = _immutable2.default.fromJS(category || {});
       var parsed = immutable.update('_links', function (ls) {
         return ls ? ls.map(function (l) {
           return new _Link2.default(l);

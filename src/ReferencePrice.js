@@ -8,8 +8,8 @@ const ReferencePriceRecord = new Record({
   price: null // new Price()
 })
 export default class ReferencePrice extends ReferencePriceRecord {
-  constructor (referencePrice = {}) {
-    const immutable = Immutable.fromJS(referencePrice)
+  constructor (referencePrice) {
+    const immutable = Immutable.fromJS(referencePrice || {})
     const parsed = immutable
       .update('price', (p) => p ? new Price(p) : null)
 

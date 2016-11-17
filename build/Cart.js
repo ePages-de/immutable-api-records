@@ -85,12 +85,10 @@
   var ProductLineItem = exports.ProductLineItem = function (_ProductLineItemRecor) {
     _inherits(ProductLineItem, _ProductLineItemRecor);
 
-    function ProductLineItem() {
-      var cart = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
+    function ProductLineItem(cart) {
       _classCallCheck(this, ProductLineItem);
 
-      var immutable = _immutable2.default.fromJS(cart);
+      var immutable = _immutable2.default.fromJS(cart || {});
       var parsed = immutable.update('details', function (d) {
         return new _Product2.default(d);
       }).update('quantity', function (q) {
@@ -119,12 +117,10 @@
   var ShippingLineItem = exports.ShippingLineItem = function (_ShippingLineItemReco) {
     _inherits(ShippingLineItem, _ShippingLineItemReco);
 
-    function ShippingLineItem() {
-      var shippingLineItem = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
+    function ShippingLineItem(shippingLineItem) {
       _classCallCheck(this, ShippingLineItem);
 
-      var immutable = _immutable2.default.fromJS(shippingLineItem);
+      var immutable = _immutable2.default.fromJS(shippingLineItem || {});
       var parsed = immutable.update('shippingMethod', function (sm) {
         return new _ShippingMethod2.default(sm);
       }).update('lineItemPrice', function (lip) {
@@ -145,12 +141,10 @@
   var PaymentLineItem = exports.PaymentLineItem = function (_PaymentLineItemRecor) {
     _inherits(PaymentLineItem, _PaymentLineItemRecor);
 
-    function PaymentLineItem() {
-      var paymentLineItem = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
+    function PaymentLineItem(paymentLineItem) {
       _classCallCheck(this, PaymentLineItem);
 
-      var immutable = _immutable2.default.fromJS(paymentLineItem);
+      var immutable = _immutable2.default.fromJS(paymentLineItem || {});
       var parsed = immutable.update('paymentMethod', function (pm) {
         return new _PaymentMethod2.default(pm);
       }).update('lineItemPrice', function (lip) {
@@ -175,12 +169,10 @@
   var Cart = function (_CartRecord) {
     _inherits(Cart, _CartRecord);
 
-    function Cart() {
-      var cart = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
+    function Cart(cart) {
       _classCallCheck(this, Cart);
 
-      var immutable = _immutable2.default.fromJS(cart);
+      var immutable = _immutable2.default.fromJS(cart || {});
       var parsed = immutable.update('lineItems', function (lis) {
         return lis ? lis.map(function (li) {
           return new ProductLineItem(li);

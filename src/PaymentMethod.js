@@ -16,8 +16,8 @@ const PaymentMethodRecord = new Record({
   _links: new Map()
 })
 export default class PaymentMethod extends PaymentMethodRecord {
-  constructor (paymentMethod = {}) {
-    const immutable = Immutable.fromJS(paymentMethod)
+  constructor (paymentMethod) {
+    const immutable = Immutable.fromJS(paymentMethod || {})
     const parsed = immutable
       .update('discountOrFee', (dof) => dof ? new DiscountOrFee(dof) : null)
       .update('minimumOrderValue', (mov) => mov ? new Price(mov) : null)

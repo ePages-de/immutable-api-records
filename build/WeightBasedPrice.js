@@ -66,12 +66,10 @@
   var WeightPriceThreshold = exports.WeightPriceThreshold = function (_WeightPriceThreshold) {
     _inherits(WeightPriceThreshold, _WeightPriceThreshold);
 
-    function WeightPriceThreshold() {
-      var weightPriceThreshold = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
+    function WeightPriceThreshold(weightPriceThreshold) {
       _classCallCheck(this, WeightPriceThreshold);
 
-      var immutable = _immutable2.default.fromJS(weightPriceThreshold);
+      var immutable = _immutable2.default.fromJS(weightPriceThreshold || {});
       var parsed = immutable.update('price', function (p) {
         return p ? new _Price2.default(p) : null;
       });
@@ -90,12 +88,10 @@
   var WeightBasedPrice = function (_WeightBasedPriceReco) {
     _inherits(WeightBasedPrice, _WeightBasedPriceReco);
 
-    function WeightBasedPrice() {
-      var weightBasedPrice = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
+    function WeightBasedPrice(weightBasedPrice) {
       _classCallCheck(this, WeightBasedPrice);
 
-      var immutable = _immutable2.default.fromJS(weightBasedPrice);
+      var immutable = _immutable2.default.fromJS(weightBasedPrice || {});
       var parsed = immutable.update('weightPriceThresholds', function (wbts) {
         return wbts ? wbts.map(function (wbt) {
           return new WeightPriceThreshold(wbt);

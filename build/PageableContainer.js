@@ -89,13 +89,10 @@
   var PageableContainer = function (_PageableContainerRec) {
     _inherits(PageableContainer, _PageableContainerRec);
 
-    function PageableContainer() {
-      var pageableContainer = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      var castEmbedded = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
+    function PageableContainer(pageableContainer, castEmbedded) {
       _classCallCheck(this, PageableContainer);
 
-      var immutable = _immutable2.default.fromJS(pageableContainer);
+      var immutable = _immutable2.default.fromJS(pageableContainer || {});
 
       var parsed1 = immutable.update('page', function (p) {
         return new PageablePage(p);
@@ -106,7 +103,7 @@
       });
 
       // for every key in embeddedKey map over the list of embedded items with the provided casting function
-      var parsed2 = Object.keys(castEmbedded).reduce(function (acc, embeddedKey) {
+      var parsed2 = Object.keys(castEmbedded || {}).reduce(function (acc, embeddedKey) {
         return acc.updateIn(['_embedded', embeddedKey], function (items) {
           return items ? items.map(function (item) {
             return castEmbedded[embeddedKey](item);

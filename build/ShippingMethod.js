@@ -77,12 +77,10 @@
   var ShippingMethod = function (_ShippingMethodRecord) {
     _inherits(ShippingMethod, _ShippingMethodRecord);
 
-    function ShippingMethod() {
-      var shippingMethod = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
+    function ShippingMethod(shippingMethod) {
       _classCallCheck(this, ShippingMethod);
 
-      var immutable = _immutable2.default.fromJS(shippingMethod);
+      var immutable = _immutable2.default.fromJS(shippingMethod || {});
       var parsed = immutable.update('fixedPrice', function (fp) {
         return fp ? new _Price2.default(fp) : null;
       }).update('weightBasedPrice', function (wbp) {

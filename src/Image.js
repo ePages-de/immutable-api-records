@@ -7,8 +7,8 @@ const ImageRecord = new Record({
   _links: new Map()
 })
 export default class Image extends ImageRecord {
-  constructor (image = {}) {
-    const immutable = Immutable.fromJS(image)
+  constructor (image) {
+    const immutable = Immutable.fromJS(image || {})
     const parsed = immutable
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new List())
 

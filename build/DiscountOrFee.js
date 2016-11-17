@@ -67,12 +67,10 @@
   var DiscountOrFee = function (_DiscountOrFeeRecord) {
     _inherits(DiscountOrFee, _DiscountOrFeeRecord);
 
-    function DiscountOrFee() {
-      var paymentMethod = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
+    function DiscountOrFee(paymentMethod) {
       _classCallCheck(this, DiscountOrFee);
 
-      var immutable = _immutable2.default.fromJS(paymentMethod);
+      var immutable = _immutable2.default.fromJS(paymentMethod || {});
       var parsed = immutable.update('absoluteValue', function (p) {
         return p ? new _Price2.default(p) : null;
       });

@@ -11,6 +11,8 @@ export {default as DiscountOrFee} from './DiscountOrFee'
 
 export {default as Image} from './Image'
 
+export {default as LegalContent} from './LegalContent'
+
 export {default as Link} from './Link'
 
 export {default as PageableContainer} from './PageableContainer'

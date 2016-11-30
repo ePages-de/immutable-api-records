@@ -83,6 +83,11 @@ describe('Image', () => {
   testLinkCasting(Models.Image)
 })
 
+describe('LegalContent', () => {
+  testConstruction(Models.LegalContent)
+  testLinkCasting(Models.LegalContent)
+})
+
 describe('Link', () => {
   testConstruction(Models.Link)
 

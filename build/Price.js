@@ -66,10 +66,10 @@
   }
 
   var PriceRecord = new _immutable.Record({
-    amount: '',
+    amount: null,
     // TODO reenable as soon as changed in backend
     // currency: '',
-    taxModel: 'GROSS'
+    taxModel: null
   });
 
   var Price = function (_PriceRecord) {

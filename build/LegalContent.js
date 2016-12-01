@@ -61,7 +61,7 @@
     type: null,
     content: null,
     mandatory: false,
-    _links: new _immutable.Map()
+    _links: null
   });
 
   var LegalContent = function (_LegalContentRecord) {
@@ -74,7 +74,7 @@
       var parsed = immutable.update('_links', function (ls) {
         return ls ? ls.map(function (l) {
           return new _Link2.default(l);
-        }) : new _immutable.List();
+        }) : new _immutable.Map();
       });
 
       return _possibleConstructorReturn(this, (LegalContent.__proto__ || Object.getPrototypeOf(LegalContent)).call(this, parsed));

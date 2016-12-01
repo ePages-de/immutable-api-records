@@ -58,10 +58,10 @@
   }
 
   var ReferencePriceRecord = new _immutable.Record({
-    refQuantity: 0,
-    quantity: 0,
+    refQuantity: null,
+    quantity: null,
     unit: null,
-    price: null // new Price()
+    price: null
   });
 
   var ReferencePrice = function (_ReferencePriceRecord) {
@@ -72,7 +72,7 @@
 
       var immutable = _immutable2.default.fromJS(referencePrice || {});
       var parsed = immutable.update('price', function (p) {
-        return p ? new _Price2.default(p) : null;
+        return p && new _Price2.default(p);
       });
 
       return _possibleConstructorReturn(this, (ReferencePrice.__proto__ || Object.getPrototypeOf(ReferencePrice)).call(this, parsed));

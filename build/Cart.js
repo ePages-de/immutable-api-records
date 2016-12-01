@@ -73,13 +73,13 @@
     _type: null,
     _id: null,
     _ref: null,
-    name: '',
-    description: '',
-    details: new _Product2.default(),
-    quantity: new _Quantity2.default(),
-    singleItemPrice: new _Price2.default(),
-    lineItemPrice: new _Price2.default(),
-    _links: new _immutable.Map()
+    name: null,
+    description: null,
+    details: null,
+    quantity: null,
+    singleItemPrice: null,
+    lineItemPrice: null,
+    _links: null
   });
 
   var ProductLineItem = exports.ProductLineItem = function (_ProductLineItemRecor) {
@@ -90,17 +90,17 @@
 
       var immutable = _immutable2.default.fromJS(cart || {});
       var parsed = immutable.update('details', function (d) {
-        return new _Product2.default(d);
+        return d && new _Product2.default(d);
       }).update('quantity', function (q) {
-        return new _Quantity2.default(q);
+        return q && new _Quantity2.default(q);
       }).update('singleItemPrice', function (sip) {
-        return new _Price2.default(sip);
+        return sip && new _Price2.default(sip);
       }).update('lineItemPrice', function (lip) {
-        return new _Price2.default(lip);
+        return lip && new _Price2.default(lip);
       }).update('_links', function (ls) {
         return ls ? ls.map(function (l) {
           return new _Link2.default(l);
-        }) : new _immutable.List();
+        }) : new _immutable.Map();
       });
 
       return _possibleConstructorReturn(this, (ProductLineItem.__proto__ || Object.getPrototypeOf(ProductLineItem)).call(this, parsed));
@@ -110,8 +110,8 @@
   }(ProductLineItemRecord);
 
   var ShippingLineItemRecord = new _immutable.Record({
-    shippingMethod: new _ShippingMethod2.default(),
-    lineItemPrice: new _Price2.default()
+    shippingMethod: null,
+    lineItemPrice: null
   });
 
   var ShippingLineItem = exports.ShippingLineItem = function (_ShippingLineItemReco) {
@@ -122,9 +122,9 @@
 
       var immutable = _immutable2.default.fromJS(shippingLineItem || {});
       var parsed = immutable.update('shippingMethod', function (sm) {
-        return new _ShippingMethod2.default(sm);
+        return sm && new _ShippingMethod2.default(sm);
       }).update('lineItemPrice', function (lip) {
-        return new _Price2.default(lip);
+        return lip && new _Price2.default(lip);
       });
 
       return _possibleConstructorReturn(this, (ShippingLineItem.__proto__ || Object.getPrototypeOf(ShippingLineItem)).call(this, parsed));
@@ -134,8 +134,8 @@
   }(ShippingLineItemRecord);
 
   var PaymentLineItemRecord = new _immutable.Record({
-    paymentMethod: new _PaymentMethod2.default({}),
-    lineItemPrice: new _Price2.default()
+    paymentMethod: null,
+    lineItemPrice: null
   });
 
   var PaymentLineItem = exports.PaymentLineItem = function (_PaymentLineItemRecor) {
@@ -146,9 +146,9 @@
 
       var immutable = _immutable2.default.fromJS(paymentLineItem || {});
       var parsed = immutable.update('paymentMethod', function (pm) {
-        return new _PaymentMethod2.default(pm);
+        return pm && new _PaymentMethod2.default(pm);
       }).update('lineItemPrice', function (lip) {
-        return new _Price2.default(lip);
+        return lip && new _Price2.default(lip);
       });
 
       return _possibleConstructorReturn(this, (PaymentLineItem.__proto__ || Object.getPrototypeOf(PaymentLineItem)).call(this, parsed));
@@ -159,11 +159,11 @@
 
   var CartRecord = new _immutable.Record({
     _id: null,
-    lineItems: new _immutable.List(),
-    shippingLineItem: new ShippingLineItem(),
-    paymentLineItem: new PaymentLineItem(),
-    total: new _Price2.default(),
-    _links: new _immutable.Map()
+    lineItems: null,
+    shippingLineItem: null,
+    paymentLineItem: null,
+    total: null,
+    _links: null
   });
 
   var Cart = function (_CartRecord) {
@@ -178,15 +178,15 @@
           return new ProductLineItem(li);
         }) : new _immutable.List();
       }).update('shippingLineItem', function (sli) {
-        return new ShippingLineItem(sli);
+        return sli && new ShippingLineItem(sli);
       }).update('paymentLineItem', function (pli) {
-        return new PaymentLineItem(pli);
+        return pli && new PaymentLineItem(pli);
       }).update('total', function (t) {
-        return new _Price2.default(t);
+        return t && new _Price2.default(t);
       }).update('_links', function (ls) {
         return ls ? ls.map(function (l) {
           return new _Link2.default(l);
-        }) : new _immutable.List();
+        }) : new _immutable.Map();
       });
 
       return _possibleConstructorReturn(this, (Cart.__proto__ || Object.getPrototypeOf(Cart)).call(this, parsed));

@@ -1,8 +1,8 @@
 import {Record} from 'immutable'
 
 const ProductIdentifierRecord = new Record({
-  type: '',
-  value: ''
+  type: null,
+  value: null
 })
 export default class ProductIdentifier extends ProductIdentifierRecord {
 }

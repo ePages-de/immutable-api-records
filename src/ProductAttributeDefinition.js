@@ -3,12 +3,12 @@ import Link from './Link'
 import Immutable, {Map, Record} from 'immutable'
 
 const ProductAttributeDefinitionRecord = new Record({
-  _id: '',
-  namespace: '',
-  name: '',
-  type: 'STRING',
-  displayName: '',
-  _links: new Map()
+  _id: null,
+  namespace: null,
+  name: null,
+  type: null,
+  displayName: null,
+  _links: null
 })
 export default class ProductAttributeDefinition extends ProductAttributeDefinitionRecord {
   constructor (productAttributeDefinition) {

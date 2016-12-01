@@ -1,31 +1,21 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', './Link', 'immutable'], factory);
+    define(['exports', 'immutable'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('./Link'), require('immutable'));
+    factory(exports, require('immutable'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.Link, global.immutable);
-    global.Category = mod.exports;
+    factory(mod.exports, global.immutable);
+    global.ProductAvailability = mod.exports;
   }
-})(this, function (exports, _Link, _immutable) {
+})(this, function (exports, _immutable) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-
-  var _Link2 = _interopRequireDefault(_Link);
-
-  var _immutable2 = _interopRequireDefault(_immutable);
-
-  function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-      default: obj
-    };
-  }
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -57,32 +47,23 @@
     if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
   }
 
-  var CategoryRecord = new _immutable.Record({
-    _id: null,
-    name: null,
-    type: null,
-    query: null,
-    _links: null
+  var ProductAvailabilityRecord = new _immutable.Record({
+    availableStock: null,
+    stockThreshold: null,
+    availabilityState: null
   });
 
-  var Category = function (_CategoryRecord) {
-    _inherits(Category, _CategoryRecord);
+  var ProductAvailability = function (_ProductAvailabilityR) {
+    _inherits(ProductAvailability, _ProductAvailabilityR);
 
-    function Category(category) {
-      _classCallCheck(this, Category);
+    function ProductAvailability() {
+      _classCallCheck(this, ProductAvailability);
 
-      var immutable = _immutable2.default.fromJS(category || {});
-      var parsed = immutable.update('_links', function (ls) {
-        return ls ? ls.map(function (l) {
-          return new _Link2.default(l);
-        }) : new _immutable.Map();
-      });
-
-      return _possibleConstructorReturn(this, (Category.__proto__ || Object.getPrototypeOf(Category)).call(this, parsed));
+      return _possibleConstructorReturn(this, (ProductAvailability.__proto__ || Object.getPrototypeOf(ProductAvailability)).apply(this, arguments));
     }
 
-    return Category;
-  }(CategoryRecord);
+    return ProductAvailability;
+  }(ProductAvailabilityRecord);
 
-  exports.default = Category;
+  exports.default = ProductAvailability;
 });

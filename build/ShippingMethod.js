@@ -63,15 +63,15 @@
 
   var ShippingMethodRecord = new _immutable.Record({
     _id: null,
-    position: 0,
-    name: '',
-    description: '',
-    taxClass: 'REGULAR',
+    position: null,
+    name: null,
+    description: null,
+    taxClass: null,
     fixedPrice: null,
     weightBasedPrice: null,
-    serviceableCountries: new _immutable.List(),
+    serviceableCountries: null,
     freeShippingValue: null,
-    _links: new Map()
+    _links: null
   });
 
   var ShippingMethod = function (_ShippingMethodRecord) {

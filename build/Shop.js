@@ -90,24 +90,24 @@
   }(ShopAddressRecord);
 
   var ShopRecord = new _immutable.Record({
-    _id: '',
-    name: '',
-    address: new ShopAddress(),
+    _id: null,
+    name: null,
+    address: null,
     defaultCurrency: null,
-    currencies: new _immutable.List(),
+    currencies: null,
     defaultShippingCountry: null,
-    shippingCountries: new _immutable.List(),
+    shippingCountries: null,
     defaultServiceableCountry: null,
-    serviceableCountries: new _immutable.List(),
+    serviceableCountries: null,
     defaultLocale: null,
-    locales: new _immutable.List(),
+    locales: null,
     taxModel: null,
     vatExempted: null,
     closedByMerchant: false,
     closedShopMessage: null,
     // TODO
     // minimumOrderValue: ???
-    _links: new _immutable.Map()
+    _links: null
   });
 
   var Shop = function (_ShopRecord) {
@@ -118,7 +118,7 @@
 
       var immutable = _immutable2.default.fromJS(shop || {});
       var parsed = immutable.set('_id', (0, _extractIdFromSelfLink2.default)(immutable)).update('address', function (a) {
-        return new ShopAddress(a);
+        return a && new ShopAddress(a);
       }).update('_links', function (ls) {
         return ls ? ls.map(function (l) {
           return new _Link2.default(l);

@@ -11,53 +11,53 @@ const ProductLineItemRecord = new Record({
   _type: null,
   _id: null,
   _ref: null,
-  name: '',
-  description: '',
-  details: new Product(),
-  quantity: new Quantity(),
-  singleItemPrice: new Price(),
-  lineItemPrice: new Price(),
-  _links: new Map()
+  name: null,
+  description: null,
+  details: null,
+  quantity: null,
+  singleItemPrice: null,
+  lineItemPrice: null,
+  _links: null
 })
 export class ProductLineItem extends ProductLineItemRecord {
   constructor (cart) {
     const immutable = Immutable.fromJS(cart || {})
     const parsed = immutable
-      .update('details', (d) => new Product(d))
-      .update('quantity', (q) => new Quantity(q))
-      .update('singleItemPrice', (sip) => new Price(sip))
-      .update('lineItemPrice', (lip) => new Price(lip))
-      .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new List())
+      .update('details', (d) => d && new Product(d))
+      .update('quantity', (q) => q && new Quantity(q))
+      .update('singleItemPrice', (sip) => sip && new Price(sip))
+      .update('lineItemPrice', (lip) => lip && new Price(lip))
+      .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
 
     super(parsed)
   }
 }
 
 const ShippingLineItemRecord = new Record({
-  shippingMethod: new ShippingMethod(),
-  lineItemPrice: new Price()
+  shippingMethod: null,
+  lineItemPrice: null
 })
 export class ShippingLineItem extends ShippingLineItemRecord {
   constructor (shippingLineItem) {
     const immutable = Immutable.fromJS(shippingLineItem || {})
     const parsed = immutable
-      .update('shippingMethod', (sm) => new ShippingMethod(sm))
-      .update('lineItemPrice', (lip) => new Price(lip))
+      .update('shippingMethod', (sm) => sm && new ShippingMethod(sm))
+      .update('lineItemPrice', (lip) => lip && new Price(lip))
 
     super(parsed)
   }
 }
 
 const PaymentLineItemRecord = new Record({
-  paymentMethod: new PaymentMethod({}),
-  lineItemPrice: new Price()
+  paymentMethod: null,
+  lineItemPrice: null
 })
 export class PaymentLineItem extends PaymentLineItemRecord {
   constructor (paymentLineItem) {
     const immutable = Immutable.fromJS(paymentLineItem || {})
     const parsed = immutable
-      .update('paymentMethod', (pm) => new PaymentMethod(pm))
-      .update('lineItemPrice', (lip) => new Price(lip))
+      .update('paymentMethod', (pm) => pm && new PaymentMethod(pm))
+      .update('lineItemPrice', (lip) => lip && new Price(lip))
 
     super(parsed)
   }
@@ -65,21 +65,21 @@ export class PaymentLineItem extends PaymentLineItemRecord {
 
 const CartRecord = new Record({
   _id: null,
-  lineItems: new List(),
-  shippingLineItem: new ShippingLineItem(),
-  paymentLineItem: new PaymentLineItem(),
-  total: new Price(),
-  _links: new Map()
+  lineItems: null,
+  shippingLineItem: null,
+  paymentLineItem: null,
+  total: null,
+  _links: null
 })
 export default class Cart extends CartRecord {
   constructor (cart) {
     const immutable = Immutable.fromJS(cart || {})
     const parsed = immutable
       .update('lineItems', (lis) => lis ? lis.map((li) => new ProductLineItem(li)) : new List())
-      .update('shippingLineItem', (sli) => new ShippingLineItem(sli))
-      .update('paymentLineItem', (pli) => new PaymentLineItem(pli))
-      .update('total', (t) => new Price(t))
-      .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new List())
+      .update('shippingLineItem', (sli) => sli && new ShippingLineItem(sli))
+      .update('paymentLineItem', (pli) => pli && new PaymentLineItem(pli))
+      .update('total', (t) => t && new Price(t))
+      .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
 
     super(parsed)
   }

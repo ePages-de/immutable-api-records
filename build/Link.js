@@ -74,8 +74,8 @@
   }
 
   var LinkRecord = new _immutable.Record({
-    href: '',
-    rel: '',
+    href: null,
+    rel: null,
     templated: false
   });
 

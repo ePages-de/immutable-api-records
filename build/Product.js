@@ -68,23 +68,22 @@
   }
 
   var ProductRecord = new _immutable.Record({
-    _id: '',
-    sku: '',
-    name: '',
-    description: '',
-    salesPrice: new _Price2.default(),
-    listPrice: null, // new Price()
-    onSale: false,
-    refPrice: null, // new ReferencePrice()
-    taxClass: 'REGULAR',
-    manufacturer: '',
-    essentialFeatures: '',
-    productIdentifiers: new _immutable.List(),
-    tags: new _immutable.List(),
-    attributes: new _immutable.List(),
-    stockManaged: false,
-    visible: false,
-    _links: new _immutable.Map()
+    _id: null,
+    sku: null,
+    name: null,
+    description: null,
+    salesPrice: null,
+    listPrice: null,
+    onSale: null,
+    refPrice: null,
+    taxClass: null,
+    manufacturer: null,
+    essentialFeatures: null,
+    productIdentifiers: null,
+    tags: null,
+    attributes: null,
+    visible: null,
+    _links: null
   });
 
   var Product = function (_ProductRecord) {
@@ -95,11 +94,11 @@
 
       var immutable = _immutable2.default.fromJS(product || {});
       var parsed = immutable.set('_id', (0, _extractIdFromSelfLink2.default)(immutable)).update('salesPrice', function (sp) {
-        return new _Price2.default(sp);
+        return sp && new _Price2.default(sp);
       }).update('listPrice', function (lp) {
-        return lp ? new _Price2.default(lp) : null;
+        return lp && new _Price2.default(lp);
       }).update('refPrice', function (rp) {
-        return rp ? new _ReferencePrice2.default(rp) : null;
+        return rp && new _ReferencePrice2.default(rp);
       }).update('attributes', function (pas) {
         return pas ? pas.map(function (pa) {
           return new _ProductAttribute2.default(pa);

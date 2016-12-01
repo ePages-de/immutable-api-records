@@ -78,12 +78,12 @@
   }
 
   var ProductAttributeDefinitionRecord = new _immutable.Record({
-    _id: '',
-    namespace: '',
-    name: '',
-    type: 'STRING',
-    displayName: '',
-    _links: new _immutable.Map()
+    _id: null,
+    namespace: null,
+    name: null,
+    type: null,
+    displayName: null,
+    _links: null
   });
 
   var ProductAttributeDefinition = function (_ProductAttributeDefi) {

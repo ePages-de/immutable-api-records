@@ -58,11 +58,11 @@
   }
 
   var AttachmentRecord = new _immutable.Record({
-    _id: '',
-    label: '',
-    length: 0,
-    mimeType: '',
-    _links: new _immutable.Map()
+    _id: null,
+    label: null,
+    length: null,
+    mimeType: null,
+    _links: null
   });
 
   var Attachment = function (_AttachmentRecord) {
@@ -75,7 +75,7 @@
       var parsed = immutable.update('_links', function (ls) {
         return ls ? ls.map(function (l) {
           return new _Link2.default(l);
-        }) : new _immutable.List();
+        }) : new _immutable.Map();
       });
 
       return _possibleConstructorReturn(this, (Attachment.__proto__ || Object.getPrototypeOf(Attachment)).call(this, parsed));

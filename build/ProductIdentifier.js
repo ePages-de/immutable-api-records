@@ -48,8 +48,8 @@
   }
 
   var ProductIdentifierRecord = new _immutable.Record({
-    type: '',
-    value: ''
+    type: null,
+    value: null
   });
 
   var ProductIdentifier = function (_ProductIdentifierRec) {

@@ -28,6 +28,8 @@ export {default as ProductAttribute} from './ProductAttribute'
 
 export {default as ProductAttributeDefinition} from './ProductAttributeDefinition'
 
+export {default as ProductAvailability} from './ProductAvailability'
+
 export {default as ProductIdentifier} from './ProductIdentifier'
 
 export {default as Quantity} from './Quantity'

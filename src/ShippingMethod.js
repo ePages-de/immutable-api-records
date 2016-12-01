@@ -5,15 +5,15 @@ import Immutable, {List, Record} from 'immutable'
 
 const ShippingMethodRecord = new Record({
   _id: null,
-  position: 0,
-  name: '',
-  description: '',
-  taxClass: 'REGULAR',
+  position: null,
+  name: null,
+  description: null,
+  taxClass: null,
   fixedPrice: null,
   weightBasedPrice: null,
-  serviceableCountries: new List(),
+  serviceableCountries: null,
   freeShippingValue: null,
-  _links: new Map()
+  _links: null
 })
 export default class ShippingMethod extends ShippingMethodRecord {
   constructor (shippingMethod) {

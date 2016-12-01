@@ -59,7 +59,7 @@
 
   var DiscountOrFeeRecord = new _immutable.Record({
     _id: null,
-    type: 'ABSOLUTE',
+    type: null,
     absoluteValue: null,
     percentageValue: null
   });
@@ -72,7 +72,7 @@
 
       var immutable = _immutable2.default.fromJS(paymentMethod || {});
       var parsed = immutable.update('absoluteValue', function (p) {
-        return p ? new _Price2.default(p) : null;
+        return p && new _Price2.default(p);
       });
 
       return _possibleConstructorReturn(this, (DiscountOrFee.__proto__ || Object.getPrototypeOf(DiscountOrFee)).call(this, parsed));

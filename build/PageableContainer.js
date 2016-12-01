@@ -59,13 +59,13 @@
   }
 
   var PageablePageRecord = new _immutable.Record({
-    number: 0,
+    number: null,
     // TODO Size cannot be used, because this throws an invariant error on Immutable.Record.
     // Here it is not really a problem, since this information is redundant in this particular case.
     // (For immutable records size is a read only property indicating, how many fields there are in the record.)
     // size: 0,
-    totalPages: 0,
-    totalElements: 0
+    totalPages: null,
+    totalElements: null
   });
 
   var PageablePage = exports.PageablePage = function (_PageablePageRecord) {
@@ -81,9 +81,9 @@
   }(PageablePageRecord);
 
   var PageableContainerRecord = new _immutable.Record({
-    page: new PageablePage(),
-    _embedded: new _immutable.Map(),
-    _links: new _immutable.Map()
+    page: null,
+    _links: null,
+    _embedded: new _immutable.Map()
   });
 
   var PageableContainer = function (_PageableContainerRec) {
@@ -95,11 +95,11 @@
       var immutable = _immutable2.default.fromJS(pageableContainer || {});
 
       var parsed1 = immutable.update('page', function (p) {
-        return new PageablePage(p);
+        return p && new PageablePage(p);
       }).update('_links', function (ls) {
         return ls ? ls.map(function (l) {
           return new _Link2.default(l);
-        }) : new _immutable.List();
+        }) : new _immutable.Map();
       });
 
       // for every key in embeddedKey map over the list of embedded items with the provided casting function

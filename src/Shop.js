@@ -1,6 +1,6 @@
 import extractIdFromSelfLink from './extractIdFromSelfLink'
 import Link from './Link'
-import Immutable, {List, Map, Record} from 'immutable'
+import Immutable, {Map, Record} from 'immutable'
 
 const ShopAddressRecord = new Record({
   company: null,
@@ -22,31 +22,31 @@ export class ShopAddress extends ShopAddressRecord {
 }
 
 const ShopRecord = new Record({
-  _id: '',
-  name: '',
-  address: new ShopAddress(),
+  _id: null,
+  name: null,
+  address: null,
   defaultCurrency: null,
-  currencies: new List(),
+  currencies: null,
   defaultShippingCountry: null,
-  shippingCountries: new List(),
+  shippingCountries: null,
   defaultServiceableCountry: null,
-  serviceableCountries: new List(),
+  serviceableCountries: null,
   defaultLocale: null,
-  locales: new List(),
+  locales: null,
   taxModel: null,
   vatExempted: null,
   closedByMerchant: false,
   closedShopMessage: null,
   // TODO
   // minimumOrderValue: ???
-  _links: new Map()
+  _links: null
 })
 export default class Shop extends ShopRecord {
   constructor (shop) {
     const immutable = Immutable.fromJS(shop || {})
     const parsed = immutable
       .set('_id', extractIdFromSelfLink(immutable))
-      .update('address', (a) => new ShopAddress(a))
+      .update('address', (a) => a && new ShopAddress(a))
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
 
     super(parsed)

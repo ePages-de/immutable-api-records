@@ -59,8 +59,8 @@
   }
 
   var WeightPriceThresholdRecord = new _immutable.Record({
-    maxWeight: 0,
-    price: new _Price2.default()
+    maxWeight: null,
+    price: null
   });
 
   var WeightPriceThreshold = exports.WeightPriceThreshold = function (_WeightPriceThreshold) {
@@ -71,7 +71,7 @@
 
       var immutable = _immutable2.default.fromJS(weightPriceThreshold || {});
       var parsed = immutable.update('price', function (p) {
-        return p ? new _Price2.default(p) : null;
+        return p && new _Price2.default(p);
       });
 
       return _possibleConstructorReturn(this, (WeightPriceThreshold.__proto__ || Object.getPrototypeOf(WeightPriceThreshold)).call(this, parsed));
@@ -97,7 +97,7 @@
           return new WeightPriceThreshold(wbt);
         }) : new _immutable.List();
       }).update('unlimitedWeightPrice', function (uwp) {
-        return uwp ? new _Price2.default(uwp) : null;
+        return uwp && new _Price2.default(uwp);
       });
 
       return _possibleConstructorReturn(this, (WeightBasedPrice.__proto__ || Object.getPrototypeOf(WeightBasedPrice)).call(this, parsed));

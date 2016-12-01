@@ -58,9 +58,9 @@
   }
 
   var ImageRecord = new _immutable.Record({
-    _id: '',
-    label: '',
-    _links: new _immutable.Map()
+    _id: null,
+    label: null,
+    _links: null
   });
 
   var Image = function (_ImageRecord) {
@@ -73,7 +73,7 @@
       var parsed = immutable.update('_links', function (ls) {
         return ls ? ls.map(function (l) {
           return new _Link2.default(l);
-        }) : new _immutable.List();
+        }) : new _immutable.Map();
       });
 
       return _possibleConstructorReturn(this, (Image.__proto__ || Object.getPrototypeOf(Image)).call(this, parsed));

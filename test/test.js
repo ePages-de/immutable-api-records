@@ -36,15 +36,79 @@ describe('Cart', () => {
 
   describe('PaymentLineItem', () => {
     testConstruction(Models.PaymentLineItem)
+
+    it('casts line item price', () => {
+      const pli = new Models.PaymentLineItem({
+        lineItemPrice: {}
+      })
+
+      expect(pli.lineItemPrice.constructor, 'to equal', Models.Price)
+    })
+
+    it('casts payment method', () => {
+      const pli = new Models.PaymentLineItem({
+        paymentMethod: {}
+      })
+
+      expect(pli.paymentMethod.constructor, 'to equal', Models.PaymentMethod)
+    })
+  })
+
+  describe('ShippingLineItem', () => {
+    testConstruction(Models.ShippingLineItem)
+
+    it('casts line item price', () => {
+      const sli = new Models.ShippingLineItem({
+        lineItemPrice: {}
+      })
+
+      expect(sli.lineItemPrice.constructor, 'to equal', Models.Price)
+    })
+
+    it('casts shipping method', () => {
+      const sli = new Models.ShippingLineItem({
+        shippingMethod: {}
+      })
+
+      expect(sli.shippingMethod.constructor, 'to equal', Models.ShippingMethod)
+    })
   })
 
   describe('ProductLineItem', () => {
     testConstruction(Models.ProductLineItem)
     testLinkCasting(Models.ProductLineItem)
-  })
 
-  describe('ShippingLineItem', () => {
-    testConstruction(Models.ShippingLineItem)
+    it('casts details', () => {
+      const pli = new Models.ProductLineItem({
+        details: {}
+      })
+
+      expect(pli.details.constructor, 'to equal', Models.Product)
+    })
+
+    it('casts quantity', () => {
+      const pli = new Models.ProductLineItem({
+        quantity: {}
+      })
+
+      expect(pli.quantity.constructor, 'to equal', Models.Quantity)
+    })
+
+    it('casts single item price', () => {
+      const pli = new Models.ProductLineItem({
+        singleItemPrice: {}
+      })
+
+      expect(pli.singleItemPrice.constructor, 'to equal', Models.Price)
+    })
+
+    it('casts line item price', () => {
+      const pli = new Models.ProductLineItem({
+        lineItemPrice: {}
+      })
+
+      expect(pli.lineItemPrice.constructor, 'to equal', Models.Price)
+    })
   })
 
   it('casts line items', () => {
@@ -56,6 +120,30 @@ describe('Cart', () => {
     })
 
     expect(p.lineItems.get(0).constructor, 'to equal', Models.ProductLineItem)
+  })
+
+  it('casts shipping line item', () => {
+    const p = new Models.Cart({
+      shippingLineItem: {}
+    })
+
+    expect(p.shippingLineItem.constructor, 'to equal', Models.ShippingLineItem)
+  })
+
+  it('casts payment line item', () => {
+    const p = new Models.Cart({
+      paymentLineItem: {}
+    })
+
+    expect(p.paymentLineItem.constructor, 'to equal', Models.PaymentLineItem)
+  })
+
+  it('casts total', () => {
+    const p = new Models.Cart({
+      total: {}
+    })
+
+    expect(p.total.constructor, 'to equal', Models.Price)
   })
 })
 
@@ -114,6 +202,7 @@ describe('PageableContainer', () => {
 
   it('casts embedded rels', () => {
     const pc = new Models.PageableContainer({
+      page: {},
       _embedded: {
         products: [
           {}
@@ -128,6 +217,7 @@ describe('PageableContainer', () => {
       unknown: (u) => {}
     })
 
+    expect(pc.page.constructor, 'to equal', Models.PageablePage)
     expect(pc._embedded.get('products').get(0).constructor, 'to equal', Models.Product)
     expect(pc._embedded.get('prices').get(0).constructor, 'to equal', Models.Price)
   })
@@ -304,6 +394,10 @@ describe('ProductAttributeDefinition', () => {
 
     expect(pad.fullName, 'to equal', 'ns:n')
   })
+})
+
+describe('ProductAvailability', () => {
+  testConstruction(Models.ProductAvailability)
 })
 
 describe('ProductIdentifier', () => {

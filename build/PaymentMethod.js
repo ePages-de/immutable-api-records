@@ -63,15 +63,15 @@
 
   var PaymentMethodRecord = new _immutable.Record({
     _id: null,
-    position: 0,
-    name: '',
-    description: '',
-    discountOrFee: new _DiscountOrFee2.default(),
-    serviceableCountries: new _immutable.List(),
+    position: null,
+    name: null,
+    description: null,
+    discountOrFee: null,
+    serviceableCountries: null,
     minimumOrderValue: null,
-    activated: false,
+    activated: null,
     taxClass: null,
-    _links: new _immutable.Map()
+    _links: null
   });
 
   var PaymentMethod = function (_PaymentMethodRecord) {
@@ -88,7 +88,7 @@
       }).update('_links', function (ls) {
         return ls ? ls.map(function (l) {
           return new _Link2.default(l);
-        }) : new _immutable.List();
+        }) : new _immutable.Map();
       });
 
       return _possibleConstructorReturn(this, (PaymentMethod.__proto__ || Object.getPrototypeOf(PaymentMethod)).call(this, parsed));

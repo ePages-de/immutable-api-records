@@ -48,8 +48,8 @@
   }
 
   var QuantityRecord = new _immutable.Record({
-    value: 0,
-    unit: 'PIECE'
+    value: null,
+    unit: null
   });
 
   var Quantity = function (_QuantityRecord) {

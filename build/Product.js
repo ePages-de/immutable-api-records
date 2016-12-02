@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', './extractIdFromSelfLink', './Link', './Price', './ProductAttribute', './ProductIdentifier', './ReferencePrice', 'immutable'], factory);
+    define(['exports', './extractIdFromSelfLink', './Link', './Price', './ProductAttribute', './ProductIdentifier', './ReferencePrice', './ShippingDimension', 'immutable'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('./extractIdFromSelfLink'), require('./Link'), require('./Price'), require('./ProductAttribute'), require('./ProductIdentifier'), require('./ReferencePrice'), require('immutable'));
+    factory(exports, require('./extractIdFromSelfLink'), require('./Link'), require('./Price'), require('./ProductAttribute'), require('./ProductIdentifier'), require('./ReferencePrice'), require('./ShippingDimension'), require('immutable'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.extractIdFromSelfLink, global.Link, global.Price, global.ProductAttribute, global.ProductIdentifier, global.ReferencePrice, global.immutable);
+    factory(mod.exports, global.extractIdFromSelfLink, global.Link, global.Price, global.ProductAttribute, global.ProductIdentifier, global.ReferencePrice, global.ShippingDimension, global.immutable);
     global.Product = mod.exports;
   }
-})(this, function (exports, _extractIdFromSelfLink, _Link, _Price, _ProductAttribute, _ProductIdentifier, _ReferencePrice, _immutable) {
+})(this, function (exports, _extractIdFromSelfLink, _Link, _Price, _ProductAttribute, _ProductIdentifier, _ReferencePrice, _ShippingDimension, _immutable) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -28,6 +28,8 @@
   var _ProductIdentifier2 = _interopRequireDefault(_ProductIdentifier);
 
   var _ReferencePrice2 = _interopRequireDefault(_ReferencePrice);
+
+  var _ShippingDimension2 = _interopRequireDefault(_ShippingDimension);
 
   var _immutable2 = _interopRequireDefault(_immutable);
 
@@ -83,6 +85,10 @@
     tags: null,
     attributes: null,
     visible: null,
+    maxOrderQuantity: null,
+    shippingPeriod: null,
+    shippingWeight: null,
+    shippingDimension: null,
     _links: null
   });
 
@@ -99,6 +105,8 @@
         return lp && new _Price2.default(lp);
       }).update('refPrice', function (rp) {
         return rp && new _ReferencePrice2.default(rp);
+      }).update('shippingDimension', function (sd) {
+        return sd && new _ShippingDimension2.default(sd);
       }).update('attributes', function (pas) {
         return pas ? pas.map(function (pa) {
           return new _ProductAttribute2.default(pa);

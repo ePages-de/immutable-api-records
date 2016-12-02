@@ -366,6 +366,16 @@ describe('Product', () => {
     expect(p.productIdentifiers.count(), 'to equal', 1)
     expect(p.productIdentifiers.get(0).constructor, 'to equal', Models.ProductIdentifier)
   })
+
+  it('casts shipping dimension', () => {
+    const p = new Models.Product({
+      shippingDimension: {
+        length: 10
+      }
+    })
+
+    expect(p.shippingDimension.constructor, 'to equal', Models.ShippingDimension)
+  })
 })
 
 describe('ProductAttribute', () => {
@@ -420,6 +430,10 @@ describe('ReferencePrice', () => {
 
     expect(p.price.constructor, 'to equal', Models.Price)
   })
+})
+
+describe('ShippingDimension', () => {
+  testConstruction(Models.ShippingDimension)
 })
 
 describe('ShippingMethod', () => {

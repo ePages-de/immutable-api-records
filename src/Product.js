@@ -4,6 +4,7 @@ import Price from './Price'
 import ProductAttribute from './ProductAttribute'
 import ProductIdentifier from './ProductIdentifier'
 import ReferencePrice from './ReferencePrice'
+import ShippingDimension from './ShippingDimension'
 import Immutable, {List, Map, Record} from 'immutable'
 
 const ProductRecord = new Record({
@@ -22,6 +23,10 @@ const ProductRecord = new Record({
   tags: null,
   attributes: null,
   visible: null,
+  maxOrderQuantity: null,
+  shippingPeriod: null,
+  shippingWeight: null,
+  shippingDimension: null,
   _links: null
 })
 export default class Product extends ProductRecord {
@@ -32,6 +37,7 @@ export default class Product extends ProductRecord {
       .update('salesPrice', (sp) => sp && new Price(sp))
       .update('listPrice', (lp) => lp && new Price(lp))
       .update('refPrice', (rp) => rp && new ReferencePrice(rp))
+      .update('shippingDimension', (sd) => sd && new ShippingDimension(sd))
       .update('attributes', (pas) => pas ? pas.map((pa) => new ProductAttribute(pa)) : new List())
       .update('productIdentifiers', (pis) => pis ? pis.map((pi) => new ProductIdentifier(pi)) : new List())
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())

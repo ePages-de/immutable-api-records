@@ -36,6 +36,8 @@ export {default as Quantity} from './Quantity'
 
 export {default as ReferencePrice} from './ReferencePrice'
 
+export {default as ShippingDimension} from './ShippingDimension'
+
 export {default as ShippingMethod} from './ShippingMethod'
 
 export {default as Shop} from './Shop'

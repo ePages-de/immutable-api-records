@@ -271,18 +271,17 @@ describe('Price', () => {
 
   it('renders formatted', () => {
     const p1 = new Models.Price({
-      amount: 'EUR 1.00'
+      amount: 'EUR 1'
     })
 
-    expect(p1.formatted, 'to equal', 'EUR 1.00')
+    expect(p1.formatted, 'to equal', 'EUR 1')
 
-    // TODO reenable as soon as changed in backend
-    // const p2 = new Models.Price({
-    //   amount: 1.5,
-    //   currency: 'USD'
-    // })
-    //
-    // expect(p2.formatted, 'to equal', 'USD 1.50')
+    const p2 = new Models.Price({
+      amount: 1.5,
+      currency: 'USD'
+    })
+
+    expect(p2.formatted, 'to equal', 'USD 1.50')
   })
 })
 

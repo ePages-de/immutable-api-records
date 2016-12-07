@@ -2,6 +2,7 @@ import extractIdFromSelfLink from './extractIdFromSelfLink'
 import Link from './Link'
 import Price from './Price'
 import ProductAttribute from './ProductAttribute'
+import ProductAvailability from './ProductAvailability'
 import ProductIdentifier from './ProductIdentifier'
 import ReferencePrice from './ReferencePrice'
 import ShippingDimension from './ShippingDimension'
@@ -27,7 +28,8 @@ const ProductRecord = new Record({
   shippingPeriod: null,
   shippingWeight: null,
   shippingDimension: null,
-  _links: null
+  _links: null,
+  _embedded: new Map()
 })
 export default class Product extends ProductRecord {
   constructor (product) {
@@ -41,6 +43,7 @@ export default class Product extends ProductRecord {
       .update('attributes', (pas) => pas ? pas.map((pa) => new ProductAttribute(pa)) : new List())
       .update('productIdentifiers', (pis) => pis ? pis.map((pi) => new ProductIdentifier(pi)) : new List())
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
+      .updateIn(['_embedded', 'availability'], (a) => a && new ProductAvailability(a))
 
     super(parsed)
   }

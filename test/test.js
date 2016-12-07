@@ -321,14 +321,6 @@ describe('Product', () => {
     expect(p.listPrice.constructor, 'to equal', Models.Price)
   })
 
-  it('has optional list price', () => {
-    const p = new Models.Product({
-      listPrice: null
-    })
-
-    expect(p.listPrice, 'to equal', null)
-  })
-
   it('casts attributes', () => {
     const p = new Models.Product({
       attributes: [
@@ -374,6 +366,16 @@ describe('Product', () => {
     })
 
     expect(p.shippingDimension.constructor, 'to equal', Models.ShippingDimension)
+  })
+
+  it('casts embedded availability', () => {
+    const p = new Models.Product({
+      _embedded: {
+        availability: {}
+      }
+    })
+
+    expect(p._embedded.get('availability').constructor, 'to equal', Models.ProductAvailability)
   })
 })
 

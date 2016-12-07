@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', './extractIdFromSelfLink', './Link', './Price', './ProductAttribute', './ProductIdentifier', './ReferencePrice', './ShippingDimension', 'immutable'], factory);
+    define(['exports', './extractIdFromSelfLink', './Link', './Price', './ProductAttribute', './ProductAvailability', './ProductIdentifier', './ReferencePrice', './ShippingDimension', 'immutable'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('./extractIdFromSelfLink'), require('./Link'), require('./Price'), require('./ProductAttribute'), require('./ProductIdentifier'), require('./ReferencePrice'), require('./ShippingDimension'), require('immutable'));
+    factory(exports, require('./extractIdFromSelfLink'), require('./Link'), require('./Price'), require('./ProductAttribute'), require('./ProductAvailability'), require('./ProductIdentifier'), require('./ReferencePrice'), require('./ShippingDimension'), require('immutable'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.extractIdFromSelfLink, global.Link, global.Price, global.ProductAttribute, global.ProductIdentifier, global.ReferencePrice, global.ShippingDimension, global.immutable);
+    factory(mod.exports, global.extractIdFromSelfLink, global.Link, global.Price, global.ProductAttribute, global.ProductAvailability, global.ProductIdentifier, global.ReferencePrice, global.ShippingDimension, global.immutable);
     global.Product = mod.exports;
   }
-})(this, function (exports, _extractIdFromSelfLink, _Link, _Price, _ProductAttribute, _ProductIdentifier, _ReferencePrice, _ShippingDimension, _immutable) {
+})(this, function (exports, _extractIdFromSelfLink, _Link, _Price, _ProductAttribute, _ProductAvailability, _ProductIdentifier, _ReferencePrice, _ShippingDimension, _immutable) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -24,6 +24,8 @@
   var _Price2 = _interopRequireDefault(_Price);
 
   var _ProductAttribute2 = _interopRequireDefault(_ProductAttribute);
+
+  var _ProductAvailability2 = _interopRequireDefault(_ProductAvailability);
 
   var _ProductIdentifier2 = _interopRequireDefault(_ProductIdentifier);
 
@@ -89,7 +91,8 @@
     shippingPeriod: null,
     shippingWeight: null,
     shippingDimension: null,
-    _links: null
+    _links: null,
+    _embedded: new _immutable.Map()
   });
 
   var Product = function (_ProductRecord) {
@@ -119,6 +122,8 @@
         return ls ? ls.map(function (l) {
           return new _Link2.default(l);
         }) : new _immutable.Map();
+      }).updateIn(['_embedded', 'availability'], function (a) {
+        return a && new _ProductAvailability2.default(a);
       });
 
       return _possibleConstructorReturn(this, (Product.__proto__ || Object.getPrototypeOf(Product)).call(this, parsed));

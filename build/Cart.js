@@ -162,7 +162,10 @@
     lineItems: null,
     shippingLineItem: null,
     paymentLineItem: null,
-    total: null,
+    grandTotal: null,
+    netTotal: null,
+    taxTotal: null,
+    taxable: null,
     _links: null
   });
 
@@ -181,8 +184,12 @@
         return sli && new ShippingLineItem(sli);
       }).update('paymentLineItem', function (pli) {
         return pli && new PaymentLineItem(pli);
-      }).update('total', function (t) {
-        return t && new _Price2.default(t);
+      }).update('grandTotal', function (gt) {
+        return gt && new _Price2.default(gt);
+      }).update('netTotal', function (nt) {
+        return nt && new _Price2.default(nt);
+      }).update('taxTotal', function (tt) {
+        return tt && new _Price2.default(tt);
       }).update('_links', function (ls) {
         return ls ? ls.map(function (l) {
           return new _Link2.default(l);

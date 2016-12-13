@@ -68,7 +68,10 @@ const CartRecord = new Record({
   lineItems: null,
   shippingLineItem: null,
   paymentLineItem: null,
-  total: null,
+  grandTotal: null,
+  netTotal: null,
+  taxTotal: null,
+  taxable: null,
   _links: null
 })
 export default class Cart extends CartRecord {
@@ -78,7 +81,9 @@ export default class Cart extends CartRecord {
       .update('lineItems', (lis) => lis ? lis.map((li) => new ProductLineItem(li)) : new List())
       .update('shippingLineItem', (sli) => sli && new ShippingLineItem(sli))
       .update('paymentLineItem', (pli) => pli && new PaymentLineItem(pli))
-      .update('total', (t) => t && new Price(t))
+      .update('grandTotal', (gt) => gt && new Price(gt))
+      .update('netTotal', (nt) => nt && new Price(nt))
+      .update('taxTotal', (tt) => tt && new Price(tt))
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
 
     super(parsed)

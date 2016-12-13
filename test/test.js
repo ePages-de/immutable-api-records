@@ -138,12 +138,28 @@ describe('Cart', () => {
     expect(p.paymentLineItem.constructor, 'to equal', Models.PaymentLineItem)
   })
 
-  it('casts total', () => {
+  it('casts grand total', () => {
     const p = new Models.Cart({
-      total: {}
+      grandTotal: {}
     })
 
-    expect(p.total.constructor, 'to equal', Models.Price)
+    expect(p.grandTotal.constructor, 'to equal', Models.Price)
+  })
+
+  it('casts net total', () => {
+    const p = new Models.Cart({
+      netTotal: {}
+    })
+
+    expect(p.netTotal.constructor, 'to equal', Models.Price)
+  })
+
+  it('casts tax total', () => {
+    const p = new Models.Cart({
+      taxTotal: {}
+    })
+
+    expect(p.taxTotal.constructor, 'to equal', Models.Price)
   })
 })
 

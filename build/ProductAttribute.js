@@ -81,7 +81,8 @@
     type: null,
     locale: null,
     value: null,
-    _links: null
+    _links: null,
+    _embedded: new _immutable.Map()
   });
 
   var ProductAttribute = function (_ProductAttributeReco) {

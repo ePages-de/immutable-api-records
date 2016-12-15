@@ -166,7 +166,8 @@
     netTotal: null,
     taxTotal: null,
     taxable: null,
-    _links: null
+    _links: null,
+    _embedded: new _immutable.Map()
   });
 
   var Cart = function (_CartRecord) {

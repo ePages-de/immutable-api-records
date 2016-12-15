@@ -7,7 +7,8 @@ const ProductAttributeRecord = new Record({
   type: null,
   locale: null,
   value: null,
-  _links: null
+  _links: null,
+  _embedded: new Map()
 })
 export default class ProductAttribute extends ProductAttributeRecord {
   constructor (productAttribute) {

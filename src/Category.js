@@ -6,7 +6,8 @@ const CategoryRecord = new Record({
   name: null,
   type: null,
   query: null,
-  _links: null
+  _links: null,
+  _embedded: new Map()
 })
 export default class Category extends CategoryRecord {
   constructor (category) {

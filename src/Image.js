@@ -4,7 +4,8 @@ import Immutable, {Map, Record} from 'immutable'
 const ImageRecord = new Record({
   _id: null,
   label: null,
-  _links: null
+  _links: null,
+  _embedded: new Map()
 })
 export default class Image extends ImageRecord {
   constructor (image) {

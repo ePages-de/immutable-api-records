@@ -61,7 +61,8 @@
     type: null,
     content: null,
     mandatory: false,
-    _links: null
+    _links: null,
+    _embedded: new _immutable.Map()
   });
 
   var LegalContent = function (_LegalContentRecord) {

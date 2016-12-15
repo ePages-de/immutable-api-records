@@ -72,7 +72,8 @@ const CartRecord = new Record({
   netTotal: null,
   taxTotal: null,
   taxable: null,
-  _links: null
+  _links: null,
+  _embedded: new Map()
 })
 export default class Cart extends CartRecord {
   constructor (cart) {

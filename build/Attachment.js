@@ -62,7 +62,8 @@
     label: null,
     length: null,
     mimeType: null,
-    _links: null
+    _links: null,
+    _embedded: new _immutable.Map()
   });
 
   var Attachment = function (_AttachmentRecord) {

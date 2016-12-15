@@ -62,7 +62,8 @@
     name: null,
     type: null,
     query: null,
-    _links: null
+    _links: null,
+    _embedded: new _immutable.Map()
   });
 
   var Category = function (_CategoryRecord) {

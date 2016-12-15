@@ -6,7 +6,8 @@ const AttachmentRecord = new Record({
   label: null,
   length: null,
   mimeType: null,
-  _links: null
+  _links: null,
+  _embedded: new Map()
 })
 export default class Attachment extends AttachmentRecord {
   constructor (attachment) {

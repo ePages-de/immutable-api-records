@@ -39,7 +39,8 @@ const ShopRecord = new Record({
   closedShopMessage: null,
   // TODO
   // minimumOrderValue: ???
-  _links: null
+  _links: null,
+  _embedded: new Map()
 })
 export default class Shop extends ShopRecord {
   constructor (shop) {

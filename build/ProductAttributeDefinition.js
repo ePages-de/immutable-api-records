@@ -83,7 +83,8 @@
     name: null,
     type: null,
     displayName: null,
-    _links: null
+    _links: null,
+    _embedded: new _immutable.Map()
   });
 
   var ProductAttributeDefinition = function (_ProductAttributeDefi) {

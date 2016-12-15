@@ -5,7 +5,8 @@ const LegalContentRecord = new Record({
   type: null,
   content: null,
   mandatory: false,
-  _links: null
+  _links: null,
+  _embedded: new Map()
 })
 export default class LegalContent extends LegalContentRecord {
   constructor (image) {

@@ -71,7 +71,8 @@
     weightBasedPrice: null,
     serviceableCountries: null,
     freeShippingValue: null,
-    _links: null
+    _links: null,
+    _embedded: new Map()
   });
 
   var ShippingMethod = function (_ShippingMethodRecord) {

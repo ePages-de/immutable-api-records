@@ -60,7 +60,8 @@
   var ImageRecord = new _immutable.Record({
     _id: null,
     label: null,
-    _links: null
+    _links: null,
+    _embedded: new _immutable.Map()
   });
 
   var Image = function (_ImageRecord) {

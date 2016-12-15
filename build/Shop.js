@@ -107,7 +107,8 @@
     closedShopMessage: null,
     // TODO
     // minimumOrderValue: ???
-    _links: null
+    _links: null,
+    _embedded: new _immutable.Map()
   });
 
   var Shop = function (_ShopRecord) {

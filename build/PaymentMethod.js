@@ -71,7 +71,8 @@
     minimumOrderValue: null,
     activated: null,
     taxClass: null,
-    _links: null
+    _links: null,
+    _embedded: new _immutable.Map()
   });
 
   var PaymentMethod = function (_PaymentMethodRecord) {

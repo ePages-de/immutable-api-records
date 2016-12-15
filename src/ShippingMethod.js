@@ -13,7 +13,8 @@ const ShippingMethodRecord = new Record({
   weightBasedPrice: null,
   serviceableCountries: null,
   freeShippingValue: null,
-  _links: null
+  _links: null,
+  _embedded: new Map()
 })
 export default class ShippingMethod extends ShippingMethodRecord {
   constructor (shippingMethod) {

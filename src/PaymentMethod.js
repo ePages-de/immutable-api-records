@@ -13,7 +13,8 @@ const PaymentMethodRecord = new Record({
   minimumOrderValue: null,
   activated: null,
   taxClass: null,
-  _links: null
+  _links: null,
+  _embedded: new Map()
 })
 export default class PaymentMethod extends PaymentMethodRecord {
   constructor (paymentMethod) {

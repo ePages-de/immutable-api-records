@@ -1,10 +1,24 @@
+import BillingAddress from './BillingAddress'
 import Link from './Link'
 import PaymentMethod from './PaymentMethod'
 import Price from './Price'
 import Product from './Product'
 import Quantity from './Quantity'
+import ShippingAddress from './ShippingAddress'
 import ShippingMethod from './ShippingMethod'
 import Immutable, {List, Map, Record} from 'immutable'
+
+const CheckoutStateRecord = new Record({
+  billingAddressSet: null,
+  paymentMethodSelectable: null,
+  paymentMethodValid: null,
+  priceValidToOrder: null,
+  readyToOrder: null,
+  shippingMethodSelectable: null,
+  shippingMethodValid: null
+})
+export class CheckoutState extends CheckoutStateRecord {
+}
 
 // Currently there are only products in the line items
 const ProductLineItemRecord = new Record({
@@ -68,10 +82,13 @@ const CartRecord = new Record({
   lineItems: null,
   shippingLineItem: null,
   paymentLineItem: null,
+  billingAddress: null,
+  shippingAddress: null,
   grandTotal: null,
   netTotal: null,
   taxTotal: null,
   taxable: null,
+  checkoutState: null,
   _links: null,
   _embedded: new Map()
 })
@@ -82,9 +99,12 @@ export default class Cart extends CartRecord {
       .update('lineItems', (lis) => lis ? lis.map((li) => new ProductLineItem(li)) : new List())
       .update('shippingLineItem', (sli) => sli && new ShippingLineItem(sli))
       .update('paymentLineItem', (pli) => pli && new PaymentLineItem(pli))
+      .update('billingAddress', (ba) => ba && new BillingAddress(ba))
+      .update('shippingAddress', (sa) => sa && new ShippingAddress(sa))
       .update('grandTotal', (gt) => gt && new Price(gt))
       .update('netTotal', (nt) => nt && new Price(nt))
       .update('taxTotal', (tt) => tt && new Price(tt))
+      .update('checkoutState', (cs) => cs && new CheckoutState(cs))
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
 
     super(parsed)

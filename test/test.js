@@ -30,9 +30,17 @@ describe('Attachment', () => {
   testLinkCasting(Models.Attachment)
 })
 
+describe('BillingAddress', () => {
+  testConstruction(Models.BillingAddress)
+})
+
 describe('Cart', () => {
   testConstruction(Models.Cart)
   testLinkCasting(Models.Cart)
+
+  describe('CheckoutState', () => {
+    testConstruction(Models.CheckoutState)
+  })
 
   describe('PaymentLineItem', () => {
     testConstruction(Models.PaymentLineItem)
@@ -138,6 +146,22 @@ describe('Cart', () => {
     expect(p.paymentLineItem.constructor, 'to equal', Models.PaymentLineItem)
   })
 
+  it('casts billing address', () => {
+    const p = new Models.Cart({
+      billingAddress: {}
+    })
+
+    expect(p.billingAddress.constructor, 'to equal', Models.BillingAddress)
+  })
+
+  it('casts shipping address item', () => {
+    const p = new Models.Cart({
+      shippingAddress: {}
+    })
+
+    expect(p.shippingAddress.constructor, 'to equal', Models.ShippingAddress)
+  })
+
   it('casts grand total', () => {
     const p = new Models.Cart({
       grandTotal: {}
@@ -160,6 +184,14 @@ describe('Cart', () => {
     })
 
     expect(p.taxTotal.constructor, 'to equal', Models.Price)
+  })
+
+  it('casts checkout state', () => {
+    const p = new Models.Cart({
+      checkoutState: {}
+    })
+
+    expect(p.checkoutState.constructor, 'to equal', Models.CheckoutState)
   })
 })
 
@@ -447,6 +479,10 @@ describe('ReferencePrice', () => {
 
     expect(p.price.constructor, 'to equal', Models.Price)
   })
+})
+
+describe('ShippingAddress', () => {
+  testConstruction(Models.ShippingAddress)
 })
 
 describe('ShippingDimension', () => {

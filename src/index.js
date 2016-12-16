@@ -1,6 +1,9 @@
 export {default as Attachment} from './Attachment'
 
+export {default as BillingAddress} from './BillingAddress'
+
 export {default as Cart} from './Cart'
+export {CheckoutState} from './Cart'
 export {PaymentLineItem} from './Cart'
 export {ProductLineItem} from './Cart'
 export {ShippingLineItem} from './Cart'
@@ -35,6 +38,8 @@ export {default as ProductIdentifier} from './ProductIdentifier'
 export {default as Quantity} from './Quantity'
 
 export {default as ReferencePrice} from './ReferencePrice'
+
+export {default as ShippingAddress} from './ShippingAddress'
 
 export {default as ShippingDimension} from './ShippingDimension'
 

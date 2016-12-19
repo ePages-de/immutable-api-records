@@ -13,6 +13,7 @@ const PaymentMethodRecord = new Record({
   minimumOrderValue: null,
   activated: null,
   taxClass: null,
+  selectable: false,
   _links: null,
   _embedded: new Map()
 })

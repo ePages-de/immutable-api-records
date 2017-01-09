@@ -38,26 +38,6 @@ describe('Cart', () => {
   testConstruction(Models.Cart)
   testLinkCasting(Models.Cart)
 
-  it('casts embedded applicable payment method', () => {
-    const sli = new Models.Cart({
-      _embedded: {
-        'applicable-payment-methods': [{}]
-      }
-    })
-
-    expect(sli._embedded.get('applicable-payment-methods').get(0).constructor, 'to equal', Models.PaymentMethod)
-  })
-
-  it('casts embedded applicable shipping method', () => {
-    const sli = new Models.Cart({
-      _embedded: {
-        'applicable-shipping-methods': [{}]
-      }
-    })
-
-    expect(sli._embedded.get('applicable-shipping-methods').get(0).constructor, 'to equal', Models.ShippingMethod)
-  })
-
   describe('CheckoutState', () => {
     testConstruction(Models.CheckoutState)
   })

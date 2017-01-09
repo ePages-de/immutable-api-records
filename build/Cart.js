@@ -242,6 +242,14 @@
         return ls ? ls.map(function (l) {
           return new _Link2.default(l);
         }) : new _immutable.Map();
+      }).updateIn(['_embedded', 'applicable-payment-methods'], function (pms) {
+        return pms && pms.map(function (pm) {
+          return new _PaymentMethod2.default(pm);
+        });
+      }).updateIn(['_embedded', 'applicable-shipping-methods'], function (sms) {
+        return sms && sms.map(function (sm) {
+          return new _ShippingMethod2.default(sm);
+        });
       });
 
       return _possibleConstructorReturn(this, (Cart.__proto__ || Object.getPrototypeOf(Cart)).call(this, parsed));

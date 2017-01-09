@@ -112,6 +112,8 @@ export default class Cart extends CartRecord {
       .update('taxTotal', (tt) => tt && new Price(tt))
       .update('checkoutState', (cs) => cs && new CheckoutState(cs))
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
+      .updateIn(['_embedded', 'applicable-payment-methods'], (pms) => pms && pms.map((pm) => new PaymentMethod(pm)))
+      .updateIn(['_embedded', 'applicable-shipping-methods'], (sms) => sms && sms.map((sm) => new ShippingMethod(sm)))
 
     super(parsed)
   }

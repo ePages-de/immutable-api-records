@@ -44,6 +44,7 @@ describe('Cart', () => {
 
   describe('PaymentLineItem', () => {
     testConstruction(Models.PaymentLineItem)
+    testLinkCasting(Models.PaymentLineItem)
 
     it('casts line item price', () => {
       const pli = new Models.PaymentLineItem({
@@ -53,17 +54,20 @@ describe('Cart', () => {
       expect(pli.lineItemPrice.constructor, 'to equal', Models.Price)
     })
 
-    it('casts payment method', () => {
+    it('casts embedded payment method', () => {
       const pli = new Models.PaymentLineItem({
-        paymentMethod: {}
+        _embedded: {
+          'payment-method': {}
+        }
       })
 
-      expect(pli.paymentMethod.constructor, 'to equal', Models.PaymentMethod)
+      expect(pli._embedded.get('payment-method').constructor, 'to equal', Models.PaymentMethod)
     })
   })
 
   describe('ShippingLineItem', () => {
     testConstruction(Models.ShippingLineItem)
+    testLinkCasting(Models.ShippingLineItem)
 
     it('casts line item price', () => {
       const sli = new Models.ShippingLineItem({
@@ -73,26 +77,20 @@ describe('Cart', () => {
       expect(sli.lineItemPrice.constructor, 'to equal', Models.Price)
     })
 
-    it('casts shipping method', () => {
+    it('casts embedded shipping method', () => {
       const sli = new Models.ShippingLineItem({
-        shippingMethod: {}
+        _embedded: {
+          'shipping-method': {}
+        }
       })
 
-      expect(sli.shippingMethod.constructor, 'to equal', Models.ShippingMethod)
+      expect(sli._embedded.get('shipping-method').constructor, 'to equal', Models.ShippingMethod)
     })
   })
 
   describe('ProductLineItem', () => {
     testConstruction(Models.ProductLineItem)
     testLinkCasting(Models.ProductLineItem)
-
-    it('casts details', () => {
-      const pli = new Models.ProductLineItem({
-        details: {}
-      })
-
-      expect(pli.details.constructor, 'to equal', Models.Product)
-    })
 
     it('casts quantity', () => {
       const pli = new Models.ProductLineItem({
@@ -116,6 +114,16 @@ describe('Cart', () => {
       })
 
       expect(pli.lineItemPrice.constructor, 'to equal', Models.Price)
+    })
+
+    it('casts embedded product', () => {
+      const pli = new Models.ProductLineItem({
+        _embedded: {
+          product: {}
+        }
+      })
+
+      expect(pli._embedded.get('product').constructor, 'to equal', Models.Product)
     })
   })
 

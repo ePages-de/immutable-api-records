@@ -27,21 +27,21 @@ const ProductLineItemRecord = new Record({
   _ref: null,
   name: null,
   description: null,
-  details: null,
   quantity: null,
   singleItemPrice: null,
   lineItemPrice: null,
-  _links: null
+  _links: null,
+  _embedded: new Map()
 })
 export class ProductLineItem extends ProductLineItemRecord {
   constructor (cart) {
     const immutable = Immutable.fromJS(cart || {})
     const parsed = immutable
-      .update('details', (d) => d && new Product(d))
       .update('quantity', (q) => q && new Quantity(q))
       .update('singleItemPrice', (sip) => sip && new Price(sip))
       .update('lineItemPrice', (lip) => lip && new Price(lip))
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
+      .updateIn(['_embedded', 'product'], (p) => p && new Product(p))
 
     super(parsed)
   }
@@ -49,14 +49,17 @@ export class ProductLineItem extends ProductLineItemRecord {
 
 const ShippingLineItemRecord = new Record({
   shippingMethod: null,
-  lineItemPrice: null
+  lineItemPrice: null,
+  _links: null,
+  _embedded: new Map()
 })
 export class ShippingLineItem extends ShippingLineItemRecord {
   constructor (shippingLineItem) {
     const immutable = Immutable.fromJS(shippingLineItem || {})
     const parsed = immutable
-      .update('shippingMethod', (sm) => sm && new ShippingMethod(sm))
       .update('lineItemPrice', (lip) => lip && new Price(lip))
+      .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
+      .updateIn(['_embedded', 'shipping-method'], (sm) => sm && new ShippingMethod(sm))
 
     super(parsed)
   }
@@ -64,14 +67,17 @@ export class ShippingLineItem extends ShippingLineItemRecord {
 
 const PaymentLineItemRecord = new Record({
   paymentMethod: null,
-  lineItemPrice: null
+  lineItemPrice: null,
+  _links: null,
+  _embedded: new Map()
 })
 export class PaymentLineItem extends PaymentLineItemRecord {
   constructor (paymentLineItem) {
     const immutable = Immutable.fromJS(paymentLineItem || {})
     const parsed = immutable
-      .update('paymentMethod', (pm) => pm && new PaymentMethod(pm))
       .update('lineItemPrice', (lip) => lip && new Price(lip))
+      .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
+      .updateIn(['_embedded', 'payment-method'], (pm) => pm && new PaymentMethod(pm))
 
     super(parsed)
   }

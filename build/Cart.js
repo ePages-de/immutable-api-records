@@ -101,11 +101,11 @@
     _ref: null,
     name: null,
     description: null,
-    details: null,
     quantity: null,
     singleItemPrice: null,
     lineItemPrice: null,
-    _links: null
+    _links: null,
+    _embedded: new _immutable.Map()
   });
 
   var ProductLineItem = exports.ProductLineItem = function (_ProductLineItemRecor) {
@@ -115,9 +115,7 @@
       _classCallCheck(this, ProductLineItem);
 
       var immutable = _immutable2.default.fromJS(cart || {});
-      var parsed = immutable.update('details', function (d) {
-        return d && new _Product2.default(d);
-      }).update('quantity', function (q) {
+      var parsed = immutable.update('quantity', function (q) {
         return q && new _Quantity2.default(q);
       }).update('singleItemPrice', function (sip) {
         return sip && new _Price2.default(sip);
@@ -127,6 +125,8 @@
         return ls ? ls.map(function (l) {
           return new _Link2.default(l);
         }) : new _immutable.Map();
+      }).updateIn(['_embedded', 'product'], function (p) {
+        return p && new _Product2.default(p);
       });
 
       return _possibleConstructorReturn(this, (ProductLineItem.__proto__ || Object.getPrototypeOf(ProductLineItem)).call(this, parsed));
@@ -137,7 +137,9 @@
 
   var ShippingLineItemRecord = new _immutable.Record({
     shippingMethod: null,
-    lineItemPrice: null
+    lineItemPrice: null,
+    _links: null,
+    _embedded: new _immutable.Map()
   });
 
   var ShippingLineItem = exports.ShippingLineItem = function (_ShippingLineItemReco) {
@@ -147,10 +149,14 @@
       _classCallCheck(this, ShippingLineItem);
 
       var immutable = _immutable2.default.fromJS(shippingLineItem || {});
-      var parsed = immutable.update('shippingMethod', function (sm) {
-        return sm && new _ShippingMethod2.default(sm);
-      }).update('lineItemPrice', function (lip) {
+      var parsed = immutable.update('lineItemPrice', function (lip) {
         return lip && new _Price2.default(lip);
+      }).update('_links', function (ls) {
+        return ls ? ls.map(function (l) {
+          return new _Link2.default(l);
+        }) : new _immutable.Map();
+      }).updateIn(['_embedded', 'shipping-method'], function (sm) {
+        return sm && new _ShippingMethod2.default(sm);
       });
 
       return _possibleConstructorReturn(this, (ShippingLineItem.__proto__ || Object.getPrototypeOf(ShippingLineItem)).call(this, parsed));
@@ -161,7 +167,9 @@
 
   var PaymentLineItemRecord = new _immutable.Record({
     paymentMethod: null,
-    lineItemPrice: null
+    lineItemPrice: null,
+    _links: null,
+    _embedded: new _immutable.Map()
   });
 
   var PaymentLineItem = exports.PaymentLineItem = function (_PaymentLineItemRecor) {
@@ -171,10 +179,14 @@
       _classCallCheck(this, PaymentLineItem);
 
       var immutable = _immutable2.default.fromJS(paymentLineItem || {});
-      var parsed = immutable.update('paymentMethod', function (pm) {
-        return pm && new _PaymentMethod2.default(pm);
-      }).update('lineItemPrice', function (lip) {
+      var parsed = immutable.update('lineItemPrice', function (lip) {
         return lip && new _Price2.default(lip);
+      }).update('_links', function (ls) {
+        return ls ? ls.map(function (l) {
+          return new _Link2.default(l);
+        }) : new _immutable.Map();
+      }).updateIn(['_embedded', 'payment-method'], function (pm) {
+        return pm && new _PaymentMethod2.default(pm);
       });
 
       return _possibleConstructorReturn(this, (PaymentLineItem.__proto__ || Object.getPrototypeOf(PaymentLineItem)).call(this, parsed));

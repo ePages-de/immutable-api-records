@@ -128,78 +128,78 @@ describe('Cart', () => {
   })
 
   it('casts line items', () => {
-    const p = new Models.Cart({
+    const c = new Models.Cart({
       lineItems: [
         {
         }
       ]
     })
 
-    expect(p.lineItems.get(0).constructor, 'to equal', Models.ProductLineItem)
+    expect(c.lineItems.get(0).constructor, 'to equal', Models.ProductLineItem)
   })
 
   it('casts shipping line item', () => {
-    const p = new Models.Cart({
+    const c = new Models.Cart({
       shippingLineItem: {}
     })
 
-    expect(p.shippingLineItem.constructor, 'to equal', Models.ShippingLineItem)
+    expect(c.shippingLineItem.constructor, 'to equal', Models.ShippingLineItem)
   })
 
   it('casts payment line item', () => {
-    const p = new Models.Cart({
+    const c = new Models.Cart({
       paymentLineItem: {}
     })
 
-    expect(p.paymentLineItem.constructor, 'to equal', Models.PaymentLineItem)
+    expect(c.paymentLineItem.constructor, 'to equal', Models.PaymentLineItem)
   })
 
   it('casts billing address', () => {
-    const p = new Models.Cart({
+    const c = new Models.Cart({
       billingAddress: {}
     })
 
-    expect(p.billingAddress.constructor, 'to equal', Models.BillingAddress)
+    expect(c.billingAddress.constructor, 'to equal', Models.BillingAddress)
   })
 
   it('casts shipping address item', () => {
-    const p = new Models.Cart({
+    const c = new Models.Cart({
       shippingAddress: {}
     })
 
-    expect(p.shippingAddress.constructor, 'to equal', Models.ShippingAddress)
+    expect(c.shippingAddress.constructor, 'to equal', Models.ShippingAddress)
   })
 
   it('casts grand total', () => {
-    const p = new Models.Cart({
+    const c = new Models.Cart({
       grandTotal: {}
     })
 
-    expect(p.grandTotal.constructor, 'to equal', Models.Price)
+    expect(c.grandTotal.constructor, 'to equal', Models.Price)
   })
 
   it('casts net total', () => {
-    const p = new Models.Cart({
+    const c = new Models.Cart({
       netTotal: {}
     })
 
-    expect(p.netTotal.constructor, 'to equal', Models.Price)
+    expect(c.netTotal.constructor, 'to equal', Models.Price)
   })
 
   it('casts tax total', () => {
-    const p = new Models.Cart({
+    const c = new Models.Cart({
       taxTotal: {}
     })
 
-    expect(p.taxTotal.constructor, 'to equal', Models.Price)
+    expect(c.taxTotal.constructor, 'to equal', Models.Price)
   })
 
   it('casts checkout state', () => {
-    const p = new Models.Cart({
+    const c = new Models.Cart({
       checkoutState: {}
     })
 
-    expect(p.checkoutState.constructor, 'to equal', Models.CheckoutState)
+    expect(c.checkoutState.constructor, 'to equal', Models.CheckoutState)
   })
 })
 
@@ -230,6 +230,86 @@ describe('Image', () => {
 describe('LegalContent', () => {
   testConstruction(Models.LegalContent)
   testLinkCasting(Models.LegalContent)
+})
+
+describe('Order', () => {
+  testConstruction(Models.Order)
+  testLinkCasting(Models.Order)
+
+  it('casts line items', () => {
+    const o = new Models.Order({
+      productLineItems: [
+        {
+        }
+      ]
+    })
+
+    expect(o.productLineItems.get(0).constructor, 'to equal', Models.ProductLineItem)
+  })
+
+  it('casts shipping line item', () => {
+    const o = new Models.Order({
+      shippingLineItem: {}
+    })
+
+    expect(o.shippingLineItem.constructor, 'to equal', Models.ShippingLineItem)
+  })
+
+  it('casts payment line item', () => {
+    const o = new Models.Order({
+      paymentLineItem: {}
+    })
+
+    expect(o.paymentLineItem.constructor, 'to equal', Models.PaymentLineItem)
+  })
+
+  it('casts billing address', () => {
+    const o = new Models.Order({
+      billingAddress: {}
+    })
+
+    expect(o.billingAddress.constructor, 'to equal', Models.BillingAddress)
+  })
+
+  it('casts shipping address item', () => {
+    const p = new Models.Order({
+      shippingAddress: {}
+    })
+
+    expect(p.shippingAddress.constructor, 'to equal', Models.ShippingAddress)
+  })
+
+  it('casts grand total', () => {
+    const o = new Models.Order({
+      grandTotal: {}
+    })
+
+    expect(o.grandTotal.constructor, 'to equal', Models.Price)
+  })
+
+  it('casts net total', () => {
+    const o = new Models.Order({
+      netTotal: {}
+    })
+
+    expect(o.netTotal.constructor, 'to equal', Models.Price)
+  })
+
+  it('casts tax total', () => {
+    const o = new Models.Order({
+      taxTotal: {}
+    })
+
+    expect(o.taxTotal.constructor, 'to equal', Models.Price)
+  })
+
+  it('casts balance due', () => {
+    const o = new Models.Order({
+      balanceDue: {}
+    })
+
+    expect(o.balanceDue.constructor, 'to equal', Models.Price)
+  })
 })
 
 describe('Link', () => {

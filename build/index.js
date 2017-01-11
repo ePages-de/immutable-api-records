@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', './Attachment', './BillingAddress', './Cart', './Category', './DiscountOrFee', './Image', './LegalContent', './Link', './PageableContainer', './PaymentMethod', './Price', './Product', './ProductAttribute', './ProductAttributeDefinition', './ProductAvailability', './ProductIdentifier', './Quantity', './ReferencePrice', './ShippingAddress', './ShippingDimension', './ShippingMethod', './Shop', './WeightBasedPrice'], factory);
+    define(['exports', './Attachment', './BillingAddress', './Cart', './Category', './DiscountOrFee', './Image', './LegalContent', './Order', './Link', './PageableContainer', './PaymentMethod', './Price', './Product', './ProductAttribute', './ProductAttributeDefinition', './ProductAvailability', './ProductIdentifier', './Quantity', './ReferencePrice', './ShippingAddress', './ShippingDimension', './ShippingMethod', './Shop', './WeightBasedPrice'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('./Attachment'), require('./BillingAddress'), require('./Cart'), require('./Category'), require('./DiscountOrFee'), require('./Image'), require('./LegalContent'), require('./Link'), require('./PageableContainer'), require('./PaymentMethod'), require('./Price'), require('./Product'), require('./ProductAttribute'), require('./ProductAttributeDefinition'), require('./ProductAvailability'), require('./ProductIdentifier'), require('./Quantity'), require('./ReferencePrice'), require('./ShippingAddress'), require('./ShippingDimension'), require('./ShippingMethod'), require('./Shop'), require('./WeightBasedPrice'));
+    factory(exports, require('./Attachment'), require('./BillingAddress'), require('./Cart'), require('./Category'), require('./DiscountOrFee'), require('./Image'), require('./LegalContent'), require('./Order'), require('./Link'), require('./PageableContainer'), require('./PaymentMethod'), require('./Price'), require('./Product'), require('./ProductAttribute'), require('./ProductAttributeDefinition'), require('./ProductAvailability'), require('./ProductIdentifier'), require('./Quantity'), require('./ReferencePrice'), require('./ShippingAddress'), require('./ShippingDimension'), require('./ShippingMethod'), require('./Shop'), require('./WeightBasedPrice'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.Attachment, global.BillingAddress, global.Cart, global.Category, global.DiscountOrFee, global.Image, global.LegalContent, global.Link, global.PageableContainer, global.PaymentMethod, global.Price, global.Product, global.ProductAttribute, global.ProductAttributeDefinition, global.ProductAvailability, global.ProductIdentifier, global.Quantity, global.ReferencePrice, global.ShippingAddress, global.ShippingDimension, global.ShippingMethod, global.Shop, global.WeightBasedPrice);
+    factory(mod.exports, global.Attachment, global.BillingAddress, global.Cart, global.Category, global.DiscountOrFee, global.Image, global.LegalContent, global.Order, global.Link, global.PageableContainer, global.PaymentMethod, global.Price, global.Product, global.ProductAttribute, global.ProductAttributeDefinition, global.ProductAvailability, global.ProductIdentifier, global.Quantity, global.ReferencePrice, global.ShippingAddress, global.ShippingDimension, global.ShippingMethod, global.Shop, global.WeightBasedPrice);
     global.index = mod.exports;
   }
-})(this, function (exports, _Attachment, _BillingAddress, _Cart, _Category, _DiscountOrFee, _Image, _LegalContent, _Link, _PageableContainer, _PaymentMethod, _Price, _Product, _ProductAttribute, _ProductAttributeDefinition, _ProductAvailability, _ProductIdentifier, _Quantity, _ReferencePrice, _ShippingAddress, _ShippingDimension, _ShippingMethod, _Shop, _WeightBasedPrice) {
+})(this, function (exports, _Attachment, _BillingAddress, _Cart, _Category, _DiscountOrFee, _Image, _LegalContent, _Order, _Link, _PageableContainer, _PaymentMethod, _Price, _Product, _ProductAttribute, _ProductAttributeDefinition, _ProductAvailability, _ProductIdentifier, _Quantity, _ReferencePrice, _ShippingAddress, _ShippingDimension, _ShippingMethod, _Shop, _WeightBasedPrice) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -80,6 +80,12 @@
     enumerable: true,
     get: function () {
       return _interopRequireDefault(_LegalContent).default;
+    }
+  });
+  Object.defineProperty(exports, 'Order', {
+    enumerable: true,
+    get: function () {
+      return _interopRequireDefault(_Order).default;
     }
   });
   Object.defineProperty(exports, 'Link', {

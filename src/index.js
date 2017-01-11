@@ -16,6 +16,8 @@ export {default as Image} from './Image'
 
 export {default as LegalContent} from './LegalContent'
 
+export {default as Order} from './Order'
+
 export {default as Link} from './Link'
 
 export {default as PageableContainer} from './PageableContainer'

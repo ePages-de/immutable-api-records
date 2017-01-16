@@ -15,7 +15,7 @@ export default class ProductAttributeDefinition extends ProductAttributeDefiniti
   constructor (productAttributeDefinition) {
     const immutable = Immutable.fromJS(productAttributeDefinition || {})
     const parsed = immutable
-      .set('_id', extractIdFromSelfLink(immutable))
+      .update('_id', (id) => id || extractIdFromSelfLink(immutable))
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
 
     super(parsed)

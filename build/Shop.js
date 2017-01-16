@@ -118,7 +118,9 @@
       _classCallCheck(this, Shop);
 
       var immutable = _immutable2.default.fromJS(shop || {});
-      var parsed = immutable.set('_id', (0, _extractIdFromSelfLink2.default)(immutable)).update('address', function (a) {
+      var parsed = immutable.update('_id', function (id) {
+        return id || (0, _extractIdFromSelfLink2.default)(immutable);
+      }).update('address', function (a) {
         return a && new ShopAddress(a);
       }).update('_links', function (ls) {
         return ls ? ls.map(function (l) {

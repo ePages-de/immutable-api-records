@@ -1,33 +1,21 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', './extractIdFromSelfLink', './Link', 'immutable'], factory);
+    define(['exports', 'immutable'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('./extractIdFromSelfLink'), require('./Link'), require('immutable'));
+    factory(exports, require('immutable'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.extractIdFromSelfLink, global.Link, global.immutable);
-    global.ProductAttributeDefinition = mod.exports;
+    factory(mod.exports, global.immutable);
+    global.Tax = mod.exports;
   }
-})(this, function (exports, _extractIdFromSelfLink, _Link, _immutable) {
+})(this, function (exports, _immutable) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-
-  var _extractIdFromSelfLink2 = _interopRequireDefault(_extractIdFromSelfLink);
-
-  var _Link2 = _interopRequireDefault(_Link);
-
-  var _immutable2 = _interopRequireDefault(_immutable);
-
-  function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-      default: obj
-    };
-  }
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -77,43 +65,31 @@
     if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
   }
 
-  var ProductAttributeDefinitionRecord = new _immutable.Record({
-    _id: null,
-    namespace: null,
-    name: null,
-    type: null,
-    displayName: null,
-    _links: null,
-    _embedded: new _immutable.Map()
+  var TaxRecord = new _immutable.Record({
+    amount: null,
+    currency: null,
+    taxClass: null,
+    taxRate: null
   });
 
-  var ProductAttributeDefinition = function (_ProductAttributeDefi) {
-    _inherits(ProductAttributeDefinition, _ProductAttributeDefi);
+  var Tax = function (_TaxRecord) {
+    _inherits(Tax, _TaxRecord);
 
-    function ProductAttributeDefinition(productAttributeDefinition) {
-      _classCallCheck(this, ProductAttributeDefinition);
+    function Tax() {
+      _classCallCheck(this, Tax);
 
-      var immutable = _immutable2.default.fromJS(productAttributeDefinition || {});
-      var parsed = immutable.update('_id', function (id) {
-        return id || (0, _extractIdFromSelfLink2.default)(immutable);
-      }).update('_links', function (ls) {
-        return ls ? ls.map(function (l) {
-          return new _Link2.default(l);
-        }) : new _immutable.Map();
-      });
-
-      return _possibleConstructorReturn(this, (ProductAttributeDefinition.__proto__ || Object.getPrototypeOf(ProductAttributeDefinition)).call(this, parsed));
+      return _possibleConstructorReturn(this, (Tax.__proto__ || Object.getPrototypeOf(Tax)).apply(this, arguments));
     }
 
-    _createClass(ProductAttributeDefinition, [{
-      key: 'fullName',
+    _createClass(Tax, [{
+      key: 'formatted',
       get: function get() {
-        return this.namespace + ':' + this.name;
+        return typeof this.amount === 'number' ? this.currency + ' ' + this.amount.toFixed(2) : this.amount;
       }
     }]);
 
-    return ProductAttributeDefinition;
-  }(ProductAttributeDefinitionRecord);
+    return Tax;
+  }(TaxRecord);
 
-  exports.default = ProductAttributeDefinition;
+  exports.default = Tax;
 });

@@ -102,7 +102,9 @@
       _classCallCheck(this, Product);
 
       var immutable = _immutable2.default.fromJS(product || {});
-      var parsed = immutable.set('_id', (0, _extractIdFromSelfLink2.default)(immutable)).update('salesPrice', function (sp) {
+      var parsed = immutable.update('_id', function (id) {
+        return id || (0, _extractIdFromSelfLink2.default)(immutable);
+      }).update('salesPrice', function (sp) {
         return sp && new _Price2.default(sp);
       }).update('listPrice', function (lp) {
         return lp && new _Price2.default(lp);

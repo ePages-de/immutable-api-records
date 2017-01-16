@@ -35,7 +35,7 @@ export default class Product extends ProductRecord {
   constructor (product) {
     const immutable = Immutable.fromJS(product || {})
     const parsed = immutable
-      .set('_id', extractIdFromSelfLink(immutable))
+      .update('_id', (id) => id || extractIdFromSelfLink(immutable))
       .update('salesPrice', (sp) => sp && new Price(sp))
       .update('listPrice', (lp) => lp && new Price(lp))
       .update('refPrice', (rp) => rp && new ReferencePrice(rp))

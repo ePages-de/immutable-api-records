@@ -1,10 +1,38 @@
 import BillingAddress from './BillingAddress'
 import extractIdFromSelfLink from './extractIdFromSelfLink'
 import Link from './Link'
+import PaymentLineItem from './PaymentLineItem'
 import Price from './Price'
+import Product from './Product'
+import Quantity from './Quantity'
 import ShippingAddress from './ShippingAddress'
+import ShippingLineItem from './ShippingLineItem'
+import Tax from './Tax'
 import Immutable, {List, Map, Record} from 'immutable'
-import {PaymentLineItem, ProductLineItem, ShippingLineItem} from './Cart'
+
+const ProductLineItemRecord = new Record({
+  product: null,
+  quantity: null,
+  lineItemPrice: null,
+  lineItemTax: null,
+  unitPrice: null,
+  _links: null,
+  _embedded: new Map()
+})
+export class ProductLineItem extends ProductLineItemRecord {
+  constructor (cart) {
+    const immutable = Immutable.fromJS(cart || {})
+    const parsed = immutable
+      .update('product', (p) => p && new Product(p))
+      .update('quantity', (q) => q && new Quantity(q))
+      .update('lineItemPrice', (lip) => lip && new Price(lip))
+      .update('lineItemTax', (lit) => lit && new Tax(lit))
+      .update('unitPrice', (up) => up && new Price(up))
+      .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
+
+    super(parsed)
+  }
+}
 
 const OrderRecord = new Record({
   _id: null,
@@ -21,7 +49,7 @@ const OrderRecord = new Record({
   netTotal: null,
   taxTotal: null,
   balanceDue: null,
-  // taxes
+  taxes: null,
   billingAddress: null,
   shippingAddress: null,
   orderStatus: null,
@@ -35,7 +63,7 @@ export default class Order extends OrderRecord {
   constructor (order) {
     const immutable = Immutable.fromJS(order || {})
     const parsed = immutable
-      .set('_id', extractIdFromSelfLink(immutable))
+      .update('_id', (id) => id || extractIdFromSelfLink(immutable))
       .update('productLineItems', (lis) => lis ? lis.map((li) => new ProductLineItem(li)) : new List())
       .update('shippingLineItem', (sli) => sli && new ShippingLineItem(sli))
       .update('paymentLineItem', (pli) => pli && new PaymentLineItem(pli))
@@ -45,6 +73,7 @@ export default class Order extends OrderRecord {
       .update('netTotal', (nt) => nt && new Price(nt))
       .update('taxTotal', (tt) => tt && new Price(tt))
       .update('balanceDue', (bd) => bd && new Price(bd))
+      .update('taxes', (ts) => ts && ts.map((t) => new Tax(t)))
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
 
     super(parsed)

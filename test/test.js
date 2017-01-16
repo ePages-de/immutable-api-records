@@ -39,61 +39,15 @@ describe('Cart', () => {
   testLinkCasting(Models.Cart)
 
   describe('CheckoutState', () => {
-    testConstruction(Models.CheckoutState)
-  })
-
-  describe('PaymentLineItem', () => {
-    testConstruction(Models.PaymentLineItem)
-    testLinkCasting(Models.PaymentLineItem)
-
-    it('casts line item price', () => {
-      const pli = new Models.PaymentLineItem({
-        lineItemPrice: {}
-      })
-
-      expect(pli.lineItemPrice.constructor, 'to equal', Models.Price)
-    })
-
-    it('casts embedded payment method', () => {
-      const pli = new Models.PaymentLineItem({
-        _embedded: {
-          'payment-method': {}
-        }
-      })
-
-      expect(pli._embedded.get('payment-method').constructor, 'to equal', Models.PaymentMethod)
-    })
-  })
-
-  describe('ShippingLineItem', () => {
-    testConstruction(Models.ShippingLineItem)
-    testLinkCasting(Models.ShippingLineItem)
-
-    it('casts line item price', () => {
-      const sli = new Models.ShippingLineItem({
-        lineItemPrice: {}
-      })
-
-      expect(sli.lineItemPrice.constructor, 'to equal', Models.Price)
-    })
-
-    it('casts embedded shipping method', () => {
-      const sli = new Models.ShippingLineItem({
-        _embedded: {
-          'shipping-method': {}
-        }
-      })
-
-      expect(sli._embedded.get('shipping-method').constructor, 'to equal', Models.ShippingMethod)
-    })
+    testConstruction(Models.CartCheckoutState)
   })
 
   describe('ProductLineItem', () => {
-    testConstruction(Models.ProductLineItem)
-    testLinkCasting(Models.ProductLineItem)
+    testConstruction(Models.CartProductLineItem)
+    testLinkCasting(Models.CartProductLineItem)
 
     it('casts quantity', () => {
-      const pli = new Models.ProductLineItem({
+      const pli = new Models.CartProductLineItem({
         quantity: {}
       })
 
@@ -101,7 +55,7 @@ describe('Cart', () => {
     })
 
     it('casts single item price', () => {
-      const pli = new Models.ProductLineItem({
+      const pli = new Models.CartProductLineItem({
         singleItemPrice: {}
       })
 
@@ -109,7 +63,7 @@ describe('Cart', () => {
     })
 
     it('casts line item price', () => {
-      const pli = new Models.ProductLineItem({
+      const pli = new Models.CartProductLineItem({
         lineItemPrice: {}
       })
 
@@ -117,7 +71,7 @@ describe('Cart', () => {
     })
 
     it('casts embedded product', () => {
-      const pli = new Models.ProductLineItem({
+      const pli = new Models.CartProductLineItem({
         _embedded: {
           product: {}
         }
@@ -135,7 +89,7 @@ describe('Cart', () => {
       ]
     })
 
-    expect(c.lineItems.get(0).constructor, 'to equal', Models.ProductLineItem)
+    expect(c.lineItems.get(0).constructor, 'to equal', Models.CartProductLineItem)
   })
 
   it('casts shipping line item', () => {
@@ -199,7 +153,7 @@ describe('Cart', () => {
       checkoutState: {}
     })
 
-    expect(c.checkoutState.constructor, 'to equal', Models.CheckoutState)
+    expect(c.checkoutState.constructor, 'to equal', Models.CartCheckoutState)
   })
 })
 
@@ -236,6 +190,51 @@ describe('Order', () => {
   testConstruction(Models.Order)
   testLinkCasting(Models.Order)
 
+  describe('ProductLineItem', () => {
+    testConstruction(Models.OrderProductLineItem)
+    testLinkCasting(Models.OrderProductLineItem)
+
+    it('casts product', () => {
+      const pli = new Models.OrderProductLineItem({
+        product: {}
+      })
+
+      expect(pli.product.constructor, 'to equal', Models.Product)
+    })
+
+    it('casts quantity', () => {
+      const pli = new Models.OrderProductLineItem({
+        quantity: {}
+      })
+
+      expect(pli.quantity.constructor, 'to equal', Models.Quantity)
+    })
+
+    it('casts line item price', () => {
+      const pli = new Models.OrderProductLineItem({
+        lineItemPrice: {}
+      })
+
+      expect(pli.lineItemPrice.constructor, 'to equal', Models.Price)
+    })
+
+    it('casts line item tax', () => {
+      const pli = new Models.OrderProductLineItem({
+        lineItemTax: {}
+      })
+
+      expect(pli.lineItemTax.constructor, 'to equal', Models.Tax)
+    })
+
+    it('casts unit price', () => {
+      const pli = new Models.OrderProductLineItem({
+        unitPrice: {}
+      })
+
+      expect(pli.unitPrice.constructor, 'to equal', Models.Price)
+    })
+  })
+
   it('casts line items', () => {
     const o = new Models.Order({
       productLineItems: [
@@ -244,7 +243,7 @@ describe('Order', () => {
       ]
     })
 
-    expect(o.productLineItems.get(0).constructor, 'to equal', Models.ProductLineItem)
+    expect(o.productLineItems.get(0).constructor, 'to equal', Models.OrderProductLineItem)
   })
 
   it('casts shipping line item', () => {
@@ -310,6 +309,20 @@ describe('Order', () => {
 
     expect(o.balanceDue.constructor, 'to equal', Models.Price)
   })
+
+  it('casts taxes', () => {
+    const o = new Models.Order({
+      taxes: [
+        {}
+      ]
+    })
+
+    expect(o.taxes.get(0).constructor, 'to equal', Models.Tax)
+  })
+})
+
+describe('OrderStatusLogEntry', () => {
+  testConstruction(Models.OrderStatusLogEntry)
 })
 
 describe('Link', () => {
@@ -360,6 +373,29 @@ describe('PageableContainer', () => {
 
   describe('PageablePage', () => {
     testConstruction(Models.PageablePage)
+  })
+})
+
+describe('PaymentLineItem', () => {
+  testConstruction(Models.PaymentLineItem)
+  testLinkCasting(Models.PaymentLineItem)
+
+  it('casts line item price', () => {
+    const pli = new Models.PaymentLineItem({
+      lineItemPrice: {}
+    })
+
+    expect(pli.lineItemPrice.constructor, 'to equal', Models.Price)
+  })
+
+  it('casts embedded payment method', () => {
+    const pli = new Models.PaymentLineItem({
+      _embedded: {
+        'payment-method': {}
+      }
+    })
+
+    expect(pli._embedded.get('payment-method').constructor, 'to equal', Models.PaymentMethod)
   })
 })
 
@@ -577,6 +613,29 @@ describe('ShippingDimension', () => {
   testConstruction(Models.ShippingDimension)
 })
 
+describe('ShippingLineItem', () => {
+  testConstruction(Models.ShippingLineItem)
+  testLinkCasting(Models.ShippingLineItem)
+
+  it('casts line item price', () => {
+    const sli = new Models.ShippingLineItem({
+      lineItemPrice: {}
+    })
+
+    expect(sli.lineItemPrice.constructor, 'to equal', Models.Price)
+  })
+
+  it('casts embedded shipping method', () => {
+    const sli = new Models.ShippingLineItem({
+      _embedded: {
+        'shipping-method': {}
+      }
+    })
+
+    expect(sli._embedded.get('shipping-method').constructor, 'to equal', Models.ShippingMethod)
+  })
+})
+
 describe('ShippingMethod', () => {
   testConstruction(Models.ShippingMethod)
   testLinkCasting(Models.ShippingMethod)
@@ -648,6 +707,27 @@ describe('Shop', () => {
 
   describe('ShopAddress', () => {
     testConstruction(Models.ShopAddress)
+  })
+})
+
+describe('Tax', () => {
+  testConstruction(Models.Tax)
+
+  it('renders formatted', () => {
+    const p1 = new Models.Tax({
+      amount: 'EUR 1'
+    })
+
+    expect(p1.formatted, 'to equal', 'EUR 1')
+
+    const p2 = new Models.Tax({
+      amount: 1.5,
+      currency: 'USD',
+      taxClass: 'REGULAR',
+      taxRate: 0.19
+    })
+
+    expect(p2.formatted, 'to equal', 'USD 1.50')
   })
 })
 

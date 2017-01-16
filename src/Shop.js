@@ -46,7 +46,7 @@ export default class Shop extends ShopRecord {
   constructor (shop) {
     const immutable = Immutable.fromJS(shop || {})
     const parsed = immutable
-      .set('_id', extractIdFromSelfLink(immutable))
+      .update('_id', (id) => id || extractIdFromSelfLink(immutable))
       .update('address', (a) => a && new ShopAddress(a))
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
 

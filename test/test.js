@@ -25,6 +25,52 @@ function testLinkCasting (Model) {
   })
 }
 
+describe('ApplicablePaymentMethod', () => {
+  testConstruction(Models.ApplicablePaymentMethod)
+  testLinkCasting(Models.ApplicablePaymentMethod)
+
+  it('casts line item price', () => {
+    const c = new Models.ApplicablePaymentMethod({
+      lineItemPrice: {}
+    })
+
+    expect(c.lineItemPrice.constructor, 'to equal', Models.Price)
+  })
+
+  it('casts embedded payment method', () => {
+    const pli = new Models.ApplicablePaymentMethod({
+      _embedded: {
+        'payment-method': {}
+      }
+    })
+
+    expect(pli._embedded.get('payment-method').constructor, 'to equal', Models.PaymentMethod)
+  })
+})
+
+describe('ApplicableShippingMethod', () => {
+  testConstruction(Models.ApplicableShippingMethod)
+  testLinkCasting(Models.ApplicableShippingMethod)
+
+  it('casts line item price', () => {
+    const c = new Models.ApplicableShippingMethod({
+      lineItemPrice: {}
+    })
+
+    expect(c.lineItemPrice.constructor, 'to equal', Models.Price)
+  })
+
+  it('casts embedded shipping method', () => {
+    const pli = new Models.ApplicableShippingMethod({
+      _embedded: {
+        'shipping-method': {}
+      }
+    })
+
+    expect(pli._embedded.get('shipping-method').constructor, 'to equal', Models.ShippingMethod)
+  })
+})
+
 describe('Attachment', () => {
   testConstruction(Models.Attachment)
   testLinkCasting(Models.Attachment)

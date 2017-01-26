@@ -1,20 +1,32 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', './Attachment', './BillingAddress', './Cart', './Category', './DiscountOrFee', './Image', './LegalContent', './Order', './OrderStatusLogEntry', './Link', './PageableContainer', './PaymentLineItem', './PaymentMethod', './Price', './Product', './ProductAttribute', './ProductAttributeDefinition', './ProductAvailability', './ProductIdentifier', './Quantity', './ReferencePrice', './ShippingAddress', './ShippingDimension', './ShippingLineItem', './ShippingMethod', './Shop', './Tax', './WeightBasedPrice'], factory);
+    define(['exports', './ApplicablePaymentMethod', './ApplicableShippingMethod', './Attachment', './BillingAddress', './Cart', './Category', './DiscountOrFee', './Image', './LegalContent', './Order', './OrderStatusLogEntry', './Link', './PageableContainer', './PaymentLineItem', './PaymentMethod', './Price', './Product', './ProductAttribute', './ProductAttributeDefinition', './ProductAvailability', './ProductIdentifier', './Quantity', './ReferencePrice', './ShippingAddress', './ShippingDimension', './ShippingLineItem', './ShippingMethod', './Shop', './Tax', './WeightBasedPrice'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('./Attachment'), require('./BillingAddress'), require('./Cart'), require('./Category'), require('./DiscountOrFee'), require('./Image'), require('./LegalContent'), require('./Order'), require('./OrderStatusLogEntry'), require('./Link'), require('./PageableContainer'), require('./PaymentLineItem'), require('./PaymentMethod'), require('./Price'), require('./Product'), require('./ProductAttribute'), require('./ProductAttributeDefinition'), require('./ProductAvailability'), require('./ProductIdentifier'), require('./Quantity'), require('./ReferencePrice'), require('./ShippingAddress'), require('./ShippingDimension'), require('./ShippingLineItem'), require('./ShippingMethod'), require('./Shop'), require('./Tax'), require('./WeightBasedPrice'));
+    factory(exports, require('./ApplicablePaymentMethod'), require('./ApplicableShippingMethod'), require('./Attachment'), require('./BillingAddress'), require('./Cart'), require('./Category'), require('./DiscountOrFee'), require('./Image'), require('./LegalContent'), require('./Order'), require('./OrderStatusLogEntry'), require('./Link'), require('./PageableContainer'), require('./PaymentLineItem'), require('./PaymentMethod'), require('./Price'), require('./Product'), require('./ProductAttribute'), require('./ProductAttributeDefinition'), require('./ProductAvailability'), require('./ProductIdentifier'), require('./Quantity'), require('./ReferencePrice'), require('./ShippingAddress'), require('./ShippingDimension'), require('./ShippingLineItem'), require('./ShippingMethod'), require('./Shop'), require('./Tax'), require('./WeightBasedPrice'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.Attachment, global.BillingAddress, global.Cart, global.Category, global.DiscountOrFee, global.Image, global.LegalContent, global.Order, global.OrderStatusLogEntry, global.Link, global.PageableContainer, global.PaymentLineItem, global.PaymentMethod, global.Price, global.Product, global.ProductAttribute, global.ProductAttributeDefinition, global.ProductAvailability, global.ProductIdentifier, global.Quantity, global.ReferencePrice, global.ShippingAddress, global.ShippingDimension, global.ShippingLineItem, global.ShippingMethod, global.Shop, global.Tax, global.WeightBasedPrice);
+    factory(mod.exports, global.ApplicablePaymentMethod, global.ApplicableShippingMethod, global.Attachment, global.BillingAddress, global.Cart, global.Category, global.DiscountOrFee, global.Image, global.LegalContent, global.Order, global.OrderStatusLogEntry, global.Link, global.PageableContainer, global.PaymentLineItem, global.PaymentMethod, global.Price, global.Product, global.ProductAttribute, global.ProductAttributeDefinition, global.ProductAvailability, global.ProductIdentifier, global.Quantity, global.ReferencePrice, global.ShippingAddress, global.ShippingDimension, global.ShippingLineItem, global.ShippingMethod, global.Shop, global.Tax, global.WeightBasedPrice);
     global.index = mod.exports;
   }
-})(this, function (exports, _Attachment, _BillingAddress, _Cart, _Category, _DiscountOrFee, _Image, _LegalContent, _Order, _OrderStatusLogEntry, _Link, _PageableContainer, _PaymentLineItem, _PaymentMethod, _Price, _Product, _ProductAttribute, _ProductAttributeDefinition, _ProductAvailability, _ProductIdentifier, _Quantity, _ReferencePrice, _ShippingAddress, _ShippingDimension, _ShippingLineItem, _ShippingMethod, _Shop, _Tax, _WeightBasedPrice) {
+})(this, function (exports, _ApplicablePaymentMethod, _ApplicableShippingMethod, _Attachment, _BillingAddress, _Cart, _Category, _DiscountOrFee, _Image, _LegalContent, _Order, _OrderStatusLogEntry, _Link, _PageableContainer, _PaymentLineItem, _PaymentMethod, _Price, _Product, _ProductAttribute, _ProductAttributeDefinition, _ProductAvailability, _ProductIdentifier, _Quantity, _ReferencePrice, _ShippingAddress, _ShippingDimension, _ShippingLineItem, _ShippingMethod, _Shop, _Tax, _WeightBasedPrice) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
     value: true
+  });
+  Object.defineProperty(exports, 'ApplicablePaymentMethod', {
+    enumerable: true,
+    get: function () {
+      return _interopRequireDefault(_ApplicablePaymentMethod).default;
+    }
+  });
+  Object.defineProperty(exports, 'ApplicableShippingMethod', {
+    enumerable: true,
+    get: function () {
+      return _interopRequireDefault(_ApplicableShippingMethod).default;
+    }
   });
   Object.defineProperty(exports, 'Attachment', {
     enumerable: true,

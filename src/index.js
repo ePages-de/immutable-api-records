@@ -1,3 +1,7 @@
+export {default as ApplicablePaymentMethod} from './ApplicablePaymentMethod'
+
+export {default as ApplicableShippingMethod} from './ApplicableShippingMethod'
+
 export {default as Attachment} from './Attachment'
 
 export {default as BillingAddress} from './BillingAddress'

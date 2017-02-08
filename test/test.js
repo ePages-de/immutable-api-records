@@ -576,6 +576,15 @@ describe('Product', () => {
     expect(p.productIdentifiers.get(0).constructor, 'to equal', Models.ProductIdentifier)
   })
 
+  it('casts shipping period', () => {
+    const p = new Models.Product({
+      shippingPeriod: {
+      }
+    })
+
+    expect(p.shippingPeriod.constructor, 'to equal', Models.ShippingPeriod)
+  })
+
   it('casts shipping dimension', () => {
     const p = new Models.Product({
       shippingDimension: {
@@ -734,6 +743,10 @@ describe('ShippingMethod', () => {
 
     expect(sm.freeShippingValue.constructor, 'to equal', Models.Price)
   })
+})
+
+describe('ShippingPeriod', () => {
+  testConstruction(Models.ShippingPeriod)
 })
 
 describe('Shop', () => {

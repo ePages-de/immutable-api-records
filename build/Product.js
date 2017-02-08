@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', './extractIdFromSelfLink', './Link', './Price', './ProductAttribute', './ProductAvailability', './ProductIdentifier', './ReferencePrice', './ShippingDimension', 'immutable'], factory);
+    define(['exports', './extractIdFromSelfLink', './Link', './Price', './ProductAttribute', './ProductAvailability', './ProductIdentifier', './ReferencePrice', './ShippingDimension', './ShippingPeriod', 'immutable'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('./extractIdFromSelfLink'), require('./Link'), require('./Price'), require('./ProductAttribute'), require('./ProductAvailability'), require('./ProductIdentifier'), require('./ReferencePrice'), require('./ShippingDimension'), require('immutable'));
+    factory(exports, require('./extractIdFromSelfLink'), require('./Link'), require('./Price'), require('./ProductAttribute'), require('./ProductAvailability'), require('./ProductIdentifier'), require('./ReferencePrice'), require('./ShippingDimension'), require('./ShippingPeriod'), require('immutable'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.extractIdFromSelfLink, global.Link, global.Price, global.ProductAttribute, global.ProductAvailability, global.ProductIdentifier, global.ReferencePrice, global.ShippingDimension, global.immutable);
+    factory(mod.exports, global.extractIdFromSelfLink, global.Link, global.Price, global.ProductAttribute, global.ProductAvailability, global.ProductIdentifier, global.ReferencePrice, global.ShippingDimension, global.ShippingPeriod, global.immutable);
     global.Product = mod.exports;
   }
-})(this, function (exports, _extractIdFromSelfLink, _Link, _Price, _ProductAttribute, _ProductAvailability, _ProductIdentifier, _ReferencePrice, _ShippingDimension, _immutable) {
+})(this, function (exports, _extractIdFromSelfLink, _Link, _Price, _ProductAttribute, _ProductAvailability, _ProductIdentifier, _ReferencePrice, _ShippingDimension, _ShippingPeriod, _immutable) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -32,6 +32,8 @@
   var _ReferencePrice2 = _interopRequireDefault(_ReferencePrice);
 
   var _ShippingDimension2 = _interopRequireDefault(_ShippingDimension);
+
+  var _ShippingPeriod2 = _interopRequireDefault(_ShippingPeriod);
 
   var _immutable2 = _interopRequireDefault(_immutable);
 
@@ -110,6 +112,8 @@
         return lp && new _Price2.default(lp);
       }).update('refPrice', function (rp) {
         return rp && new _ReferencePrice2.default(rp);
+      }).update('shippingPeriod', function (sp) {
+        return sp && new _ShippingPeriod2.default(sp);
       }).update('shippingDimension', function (sd) {
         return sd && new _ShippingDimension2.default(sd);
       }).update('attributes', function (pas) {

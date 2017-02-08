@@ -751,6 +751,15 @@ describe('Shop', () => {
     expect(s.address.company, 'to equal', 'My Company')
   })
 
+  it('casts minimum order value', () => {
+    const s = new Models.Shop({
+      minimumOrderValue: {
+      }
+    })
+
+    expect(s.minimumOrderValue.constructor, 'to equal', Models.Price)
+  })
+
   describe('ShopAddress', () => {
     testConstruction(Models.ShopAddress)
   })

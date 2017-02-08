@@ -1,5 +1,6 @@
 import extractIdFromSelfLink from './extractIdFromSelfLink'
 import Link from './Link'
+import Price from './Price'
 import Immutable, {Map, Record} from 'immutable'
 
 const ShopAddressRecord = new Record({
@@ -37,8 +38,7 @@ const ShopRecord = new Record({
   vatExempted: null,
   closedByMerchant: false,
   closedShopMessage: null,
-  // TODO
-  // minimumOrderValue: ???
+  minimumOrderValue: null,
   _links: null,
   _embedded: new Map()
 })
@@ -48,6 +48,7 @@ export default class Shop extends ShopRecord {
     const parsed = immutable
       .update('_id', (id) => id || extractIdFromSelfLink(immutable))
       .update('address', (a) => a && new ShopAddress(a))
+      .update('minimumOrderValue', (mov) => mov && new Price(mov))
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
 
     super(parsed)

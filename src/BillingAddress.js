@@ -21,7 +21,8 @@ const BillingAddressRecord = new Record({
   mobile: null,
   vatId: null,
   taxNumber: null,
-  birthDate: null
+  birthDate: null,
+  displayAddressLines: null
 })
 export default class BillingAddress extends BillingAddressRecord {
 }

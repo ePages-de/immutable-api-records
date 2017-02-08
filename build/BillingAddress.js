@@ -68,7 +68,8 @@
     mobile: null,
     vatId: null,
     taxNumber: null,
-    birthDate: null
+    birthDate: null,
+    displayAddressLines: null
   });
 
   var BillingAddress = function (_BillingAddressRecord) {

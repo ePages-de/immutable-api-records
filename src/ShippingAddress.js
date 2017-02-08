@@ -19,7 +19,8 @@ const ShippingAddressRecord = new Record({
   email: null,
   phone: null,
   mobile: null,
-  doorCode: null
+  doorCode: null,
+  displayAddressLines: null
 })
 export default class ShippingAddress extends ShippingAddressRecord {
 }

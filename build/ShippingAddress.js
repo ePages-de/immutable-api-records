@@ -66,7 +66,8 @@
     email: null,
     phone: null,
     mobile: null,
-    doorCode: null
+    doorCode: null,
+    displayAddressLines: null
   });
 
   var ShippingAddress = function (_ShippingAddressRecor) {

@@ -749,6 +749,24 @@ describe('ShippingPeriod', () => {
   testConstruction(Models.ShippingPeriod)
 })
 
+describe('ShippingZone', () => {
+  testConstruction(Models.ShippingZone)
+  testLinkCasting(Models.ShippingZone)
+
+  it('casts shipping methods', () => {
+    const s = new Models.ShippingZone({
+      shippingMethods: [
+        {
+          name: 'Shipping zone'
+        }
+      ]
+    })
+
+    expect(s.shippingMethods.get(0).constructor, 'to equal', Models.ShippingMethod)
+    expect(s.shippingMethods.get(0).name, 'to equal', 'Shipping zone')
+  })
+})
+
 describe('Shop', () => {
   testConstruction(Models.Shop)
   testLinkCasting(Models.Shop)

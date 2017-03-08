@@ -58,6 +58,8 @@ export {default as ShippingMethod} from './ShippingMethod'
 
 export {default as ShippingPeriod} from './ShippingPeriod'
 
+export {default as ShippingZone} from './ShippingZone'
+
 export {default as Shop} from './Shop'
 export {ShopAddress} from './Shop'
 

@@ -73,7 +73,7 @@
     freeShippingValue: null,
     selectable: false,
     _links: null,
-    _embedded: new Map()
+    _embedded: new _immutable.Map()
   });
 
   var ShippingMethod = function (_ShippingMethodRecord) {
@@ -92,7 +92,7 @@
       }).update('_links', function (ls) {
         return ls ? ls.map(function (l) {
           return new _Link2.default(l);
-        }) : new _immutable.List();
+        }) : new _immutable.Map();
       });
 
       return _possibleConstructorReturn(this, (ShippingMethod.__proto__ || Object.getPrototypeOf(ShippingMethod)).call(this, parsed));

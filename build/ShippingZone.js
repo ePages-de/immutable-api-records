@@ -67,7 +67,7 @@
     serviceableCountries: null,
     shippingMethods: null,
     _links: null,
-    _embedded: new Map()
+    _embedded: new _immutable.Map()
   });
 
   var ShippingZone = function (_ShippingZoneRecord) {
@@ -86,7 +86,7 @@
       }).update('_links', function (ls) {
         return ls ? ls.map(function (l) {
           return new _Link2.default(l);
-        }) : new _immutable.List();
+        }) : new _immutable.Map();
       });
 
       return _possibleConstructorReturn(this, (ShippingZone.__proto__ || Object.getPrototypeOf(ShippingZone)).call(this, parsed));

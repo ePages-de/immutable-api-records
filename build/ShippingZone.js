@@ -64,7 +64,7 @@
   var ShippingZoneRecord = new _immutable.Record({
     _id: null,
     name: null,
-    description: null,
+    serviceableCountries: null,
     shippingMethods: null,
     _links: null,
     _embedded: new Map()

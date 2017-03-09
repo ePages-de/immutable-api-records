@@ -6,7 +6,7 @@ import Immutable, {List, Record} from 'immutable'
 const ShippingZoneRecord = new Record({
   _id: null,
   name: null,
-  description: null,
+  serviceableCountries: null,
   shippingMethods: null,
   _links: null,
   _embedded: new Map()

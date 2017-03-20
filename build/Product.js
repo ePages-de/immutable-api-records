@@ -93,6 +93,7 @@
     shippingPeriod: null,
     shippingWeight: null,
     shippingDimension: null,
+    listPriceText: null,
     _links: null,
     _embedded: new _immutable.Map()
   });

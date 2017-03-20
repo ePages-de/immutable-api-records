@@ -29,6 +29,7 @@ const ProductRecord = new Record({
   shippingPeriod: null,
   shippingWeight: null,
   shippingDimension: null,
+  listPriceText: null,
   _links: null,
   _embedded: new Map()
 })

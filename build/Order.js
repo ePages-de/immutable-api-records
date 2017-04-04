@@ -122,7 +122,6 @@
     taxModel: null,
     taxable: null,
     orderNumber: null,
-    orderReceiptPdfUri: null,
     productLineItems: null,
     shippingLineItem: null,
     paymentLineItem: null,

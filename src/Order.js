@@ -55,6 +55,7 @@ const OrderRecord = new Record({
   paymentStatus: null,
   fulfillmentStatus: null,
   customerComment: null,
+  createdAt: null,
   // legalContent
   _links: null,
   _embedded: new Map()

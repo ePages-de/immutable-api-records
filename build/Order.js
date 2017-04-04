@@ -136,6 +136,7 @@
     paymentStatus: null,
     fulfillmentStatus: null,
     customerComment: null,
+    createdAt: null,
     // legalContent
     _links: null,
     _embedded: new _immutable.Map()

@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', './Link', './Price', './WeightBasedPrice', 'immutable'], factory);
+    define(['exports', './Link', './Price', './SimplePrice', './WeightBasedPrice', 'immutable'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('./Link'), require('./Price'), require('./WeightBasedPrice'), require('immutable'));
+    factory(exports, require('./Link'), require('./Price'), require('./SimplePrice'), require('./WeightBasedPrice'), require('immutable'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.Link, global.Price, global.WeightBasedPrice, global.immutable);
+    factory(mod.exports, global.Link, global.Price, global.SimplePrice, global.WeightBasedPrice, global.immutable);
     global.ShippingMethod = mod.exports;
   }
-})(this, function (exports, _Link, _Price, _WeightBasedPrice, _immutable) {
+})(this, function (exports, _Link, _Price, _SimplePrice, _WeightBasedPrice, _immutable) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -20,6 +20,8 @@
   var _Link2 = _interopRequireDefault(_Link);
 
   var _Price2 = _interopRequireDefault(_Price);
+
+  var _SimplePrice2 = _interopRequireDefault(_SimplePrice);
 
   var _WeightBasedPrice2 = _interopRequireDefault(_WeightBasedPrice);
 
@@ -88,7 +90,7 @@
       }).update('weightBasedPrice', function (wbp) {
         return wbp ? new _WeightBasedPrice2.default(wbp) : null;
       }).update('freeShippingValue', function (fsv) {
-        return fsv ? new _Price2.default(fsv) : null;
+        return fsv ? new _SimplePrice2.default(fsv) : null;
       }).update('_links', function (ls) {
         return ls ? ls.map(function (l) {
           return new _Link2.default(l);

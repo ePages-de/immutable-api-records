@@ -1,5 +1,6 @@
 import Link from './Link'
 import Price from './Price'
+import SimplePrice from './SimplePrice'
 import WeightBasedPrice from './WeightBasedPrice'
 import Immutable, {Map, Record} from 'immutable'
 
@@ -23,7 +24,7 @@ export default class ShippingMethod extends ShippingMethodRecord {
     const parsed = immutable
       .update('fixedPrice', (fp) => fp ? new Price(fp) : null)
       .update('weightBasedPrice', (wbp) => wbp ? new WeightBasedPrice(wbp) : null)
-      .update('freeShippingValue', (fsv) => fsv ? new Price(fsv) : null)
+      .update('freeShippingValue', (fsv) => fsv ? new SimplePrice(fsv) : null)
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
 
     super(parsed)

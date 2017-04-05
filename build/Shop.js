@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', './extractIdFromSelfLink', './Link', './Price', 'immutable'], factory);
+    define(['exports', './extractIdFromSelfLink', './Link', './SimplePrice', 'immutable'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('./extractIdFromSelfLink'), require('./Link'), require('./Price'), require('immutable'));
+    factory(exports, require('./extractIdFromSelfLink'), require('./Link'), require('./SimplePrice'), require('immutable'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.extractIdFromSelfLink, global.Link, global.Price, global.immutable);
+    factory(mod.exports, global.extractIdFromSelfLink, global.Link, global.SimplePrice, global.immutable);
     global.Shop = mod.exports;
   }
-})(this, function (exports, _extractIdFromSelfLink, _Link, _Price, _immutable) {
+})(this, function (exports, _extractIdFromSelfLink, _Link, _SimplePrice, _immutable) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -22,7 +22,7 @@
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _Price2 = _interopRequireDefault(_Price);
+  var _SimplePrice2 = _interopRequireDefault(_SimplePrice);
 
   var _immutable2 = _interopRequireDefault(_immutable);
 
@@ -125,7 +125,7 @@
       }).update('address', function (a) {
         return a && new ShopAddress(a);
       }).update('minimumOrderValue', function (mov) {
-        return mov && new _Price2.default(mov);
+        return mov && new _SimplePrice2.default(mov);
       }).update('_links', function (ls) {
         return ls ? ls.map(function (l) {
           return new _Link2.default(l);

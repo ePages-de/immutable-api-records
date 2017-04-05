@@ -63,6 +63,8 @@ export {default as ShippingZone} from './ShippingZone'
 export {default as Shop} from './Shop'
 export {ShopAddress} from './Shop'
 
+export {default as SimplePrice} from './SimplePrice'
+
 export {default as Tax} from './Tax'
 
 export {default as WeightBasedPrice} from './WeightBasedPrice'

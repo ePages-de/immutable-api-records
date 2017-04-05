@@ -1,6 +1,6 @@
 import extractIdFromSelfLink from './extractIdFromSelfLink'
 import Link from './Link'
-import Price from './Price'
+import SimplePrice from './SimplePrice'
 import Immutable, {Map, Record} from 'immutable'
 
 const ShopAddressRecord = new Record({
@@ -49,7 +49,7 @@ export default class Shop extends ShopRecord {
     const parsed = immutable
       .update('_id', (id) => id || extractIdFromSelfLink(immutable))
       .update('address', (a) => a && new ShopAddress(a))
-      .update('minimumOrderValue', (mov) => mov && new Price(mov))
+      .update('minimumOrderValue', (mov) => mov && new SimplePrice(mov))
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
 
     super(parsed)

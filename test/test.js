@@ -480,7 +480,7 @@ describe('PaymentMethod', () => {
       }
     })
 
-    expect(pm.minimumOrderValue.constructor, 'to equal', Models.Price)
+    expect(pm.minimumOrderValue.constructor, 'to equal', Models.SimplePrice)
   })
 })
 
@@ -741,7 +741,7 @@ describe('ShippingMethod', () => {
       }
     })
 
-    expect(sm.freeShippingValue.constructor, 'to equal', Models.Price)
+    expect(sm.freeShippingValue.constructor, 'to equal', Models.SimplePrice)
   })
 })
 
@@ -788,11 +788,30 @@ describe('Shop', () => {
       }
     })
 
-    expect(s.minimumOrderValue.constructor, 'to equal', Models.Price)
+    expect(s.minimumOrderValue.constructor, 'to equal', Models.SimplePrice)
   })
 
   describe('ShopAddress', () => {
     testConstruction(Models.ShopAddress)
+  })
+})
+
+describe('SimplePrice', () => {
+  testConstruction(Models.SimplePrice)
+
+  it('renders formatted', () => {
+    const sp1 = new Models.SimplePrice({
+      amount: 'EUR 1'
+    })
+
+    expect(sp1.formatted, 'to equal', 'EUR 1')
+
+    const sp2 = new Models.SimplePrice({
+      amount: 1.5,
+      currency: 'USD'
+    })
+
+    expect(sp2.formatted, 'to equal', 'USD 1.50')
   })
 })
 

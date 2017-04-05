@@ -1,6 +1,6 @@
 import DiscountOrFee from './DiscountOrFee'
 import Link from './Link'
-import Price from './Price'
+import SimplePrice from './SimplePrice'
 import Immutable, {Map, Record} from 'immutable'
 
 const PaymentMethodRecord = new Record({
@@ -22,7 +22,7 @@ export default class PaymentMethod extends PaymentMethodRecord {
     const immutable = Immutable.fromJS(paymentMethod || {})
     const parsed = immutable
       .update('discountOrFee', (dof) => dof ? new DiscountOrFee(dof) : null)
-      .update('minimumOrderValue', (mov) => mov ? new Price(mov) : null)
+      .update('minimumOrderValue', (mov) => mov ? new SimplePrice(mov) : null)
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
 
     super(parsed)

@@ -5,6 +5,7 @@ const ProductAttributeRecord = new Record({
   namespace: null,
   name: null,
   type: null,
+  displayName: null,
   locale: null,
   value: null,
   _links: null,

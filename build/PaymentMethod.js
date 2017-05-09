@@ -64,6 +64,8 @@
   var PaymentMethodRecord = new _immutable.Record({
     _id: null,
     position: null,
+    officialName: null,
+    officialDescription: null,
     name: null,
     description: null,
     discountOrFee: null,
@@ -71,7 +73,6 @@
     minimumOrderValue: null,
     activated: null,
     taxClass: null,
-    selectable: false,
     _links: null,
     _embedded: new _immutable.Map()
   });

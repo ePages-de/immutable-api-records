@@ -6,6 +6,8 @@ import Immutable, {Map, Record} from 'immutable'
 const PaymentMethodRecord = new Record({
   _id: null,
   position: null,
+  officialName: null,
+  officialDescription: null,
   name: null,
   description: null,
   discountOrFee: null,
@@ -13,7 +15,6 @@ const PaymentMethodRecord = new Record({
   minimumOrderValue: null,
   activated: null,
   taxClass: null,
-  selectable: false,
   _links: null,
   _embedded: new Map()
 })

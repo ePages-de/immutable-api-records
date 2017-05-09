@@ -14,7 +14,6 @@ const ShippingMethodRecord = new Record({
   weightBasedPrice: null,
   serviceableCountries: null,
   freeShippingValue: null,
-  selectable: false,
   _links: null,
   _embedded: new Map()
 })

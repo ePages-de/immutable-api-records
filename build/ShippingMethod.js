@@ -73,7 +73,6 @@
     weightBasedPrice: null,
     serviceableCountries: null,
     freeShippingValue: null,
-    selectable: false,
     _links: null,
     _embedded: new _immutable.Map()
   });

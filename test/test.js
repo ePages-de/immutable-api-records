@@ -367,6 +367,97 @@ describe('Order', () => {
   })
 })
 
+describe('OrderEvent', () => {
+  testConstruction(Models.OrderEvent)
+  testLinkCasting(Models.OrderEvent)
+
+  it('casts details to order-created', () => {
+    const oe = new Models.OrderEvent({
+      details: {
+        type: 'order-created'
+      }
+    })
+
+    expect(oe.details.constructor, 'to equal', Models.OrderEventCreatedDetails)
+  })
+
+  it('casts details to payment-created', () => {
+    const oe = new Models.OrderEvent({
+      details: {
+        type: 'payment-created'
+      }
+    })
+
+    expect(oe.details.constructor, 'to equal', Models.OrderEventPaymentCreatedDetails)
+  })
+
+  it('casts details to payment-paid', () => {
+    const oe = new Models.OrderEvent({
+      details: {
+        type: 'payment-paid'
+      }
+    })
+
+    expect(oe.details.constructor, 'to equal', Models.OrderEventPaymentPaidDetails)
+  })
+
+  it('casts details to payment-voided', () => {
+    const oe = new Models.OrderEvent({
+      details: {
+        type: 'payment-voided'
+      }
+    })
+
+    expect(oe.details.constructor, 'to equal', Models.OrderEventPaymentVoidedDetails)
+  })
+
+  it('casts details to unknown', () => {
+    const oe = new Models.OrderEvent({
+      details: {
+        type: 'unknown'
+      }
+    })
+
+    expect(oe.details.constructor, 'to equal', Models.OrderEventUnknownDetails)
+  })
+})
+
+describe('OrderEventCreatedDetails', () => {
+  testConstruction(Models.OrderEventCreatedDetails)
+})
+
+describe('OrderEventPaymentCreatedDetails', () => {
+  testConstruction(Models.OrderEventPaymentCreatedDetails)
+
+  it('casts amount', () => {
+    const oepcd = new Models.OrderEventPaymentCreatedDetails({
+      amount: {}
+    })
+
+    expect(oepcd.amount.constructor, 'to equal', Models.SimplePrice)
+  })
+})
+
+describe('OrderEventPaymentPaidDetails', () => {
+  testConstruction(Models.OrderEventPaymentPaidDetails)
+
+  it('casts amount', () => {
+    const oeppd = new Models.OrderEventPaymentPaidDetails({
+      amount: {}
+    })
+
+    expect(oeppd.amount.constructor, 'to equal', Models.SimplePrice)
+  })
+})
+
+describe('OrderEventPaymentVoidedDetails', () => {
+  testConstruction(Models.OrderEventPaymentVoidedDetails)
+})
+
+describe('OrderEventUnknownDetails', () => {
+  testConstruction(Models.OrderEventUnknownDetails)
+})
+
 describe('OrderStatusLogEntry', () => {
   testConstruction(Models.OrderStatusLogEntry)
 })
@@ -442,6 +533,19 @@ describe('PaymentLineItem', () => {
     })
 
     expect(pli._embedded.get('payment-method').constructor, 'to equal', Models.PaymentMethod)
+  })
+})
+
+describe('PaymentProcess', () => {
+  testConstruction(Models.PaymentProcess)
+  testLinkCasting(Models.PaymentProcess)
+
+  it('casts amount', () => {
+    const pp = new Models.PaymentProcess({
+      amount: {}
+    })
+
+    expect(pp.amount.constructor, 'to equal', Models.SimplePrice)
   })
 })
 

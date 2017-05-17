@@ -21,6 +21,13 @@ export {default as LegalContent} from './LegalContent'
 export {default as Order} from './Order'
 export {ProductLineItem as OrderProductLineItem} from './Order'
 
+export {default as OrderEvent} from './OrderEvent'
+export {OrderEventCreatedDetails} from './OrderEvent'
+export {OrderEventPaymentCreatedDetails} from './OrderEvent'
+export {OrderEventPaymentPaidDetails} from './OrderEvent'
+export {OrderEventPaymentVoidedDetails} from './OrderEvent'
+export {OrderEventUnknownDetails} from './OrderEvent'
+
 export {default as OrderStatusLogEntry} from './OrderStatusLogEntry'
 
 export {default as Link} from './Link'
@@ -31,6 +38,8 @@ export {PageablePage} from './PageableContainer'
 export {default as PaymentLineItem} from './PaymentLineItem'
 
 export {default as PaymentMethod} from './PaymentMethod'
+
+export {default as PaymentProcess} from './PaymentProcess'
 
 export {default as Price} from './Price'
 

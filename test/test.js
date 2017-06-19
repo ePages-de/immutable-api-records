@@ -232,6 +232,11 @@ describe('LegalContent', () => {
   testLinkCasting(Models.LegalContent)
 })
 
+describe('OfficialApp', () => {
+  testConstruction(Models.OfficialApp)
+  testLinkCasting(Models.OfficialApp)
+})
+
 describe('Order', () => {
   testConstruction(Models.Order)
   testLinkCasting(Models.Order)

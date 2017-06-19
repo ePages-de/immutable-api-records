@@ -18,6 +18,8 @@ export {default as Image} from './Image'
 
 export {default as LegalContent} from './LegalContent'
 
+export {default as OfficialApp} from './OfficialApp'
+
 export {default as Order} from './Order'
 export {ProductLineItem as OrderProductLineItem} from './Order'
 

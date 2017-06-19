@@ -3,6 +3,7 @@ import Immutable, {Map, Record} from 'immutable'
 
 const OfficialAppRecord = new Record({
   _id: null,
+  name: null,
   clientId: null,
   callbackURL: null,
   namesOfRequiredScopes: null,

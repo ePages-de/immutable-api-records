@@ -5,5 +5,3 @@ machine:
 test:
   post:
     - npm run build
-    # Ensure build folder is up-to-date
-    - exit $(git status --porcelain | wc -l | awk '{print $1}')

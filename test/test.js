@@ -612,6 +612,11 @@ describe('Price', () => {
   })
 })
 
+describe('PrivateApp', () => {
+  testConstruction(Models.PrivateApp)
+  testLinkCasting(Models.PrivateApp)
+})
+
 describe('Product', () => {
   testConstruction(Models.Product)
   testLinkCasting(Models.Product)

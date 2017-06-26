@@ -45,6 +45,8 @@ export {default as PaymentProcess} from './PaymentProcess'
 
 export {default as Price} from './Price'
 
+export {default as PrivateApp} from './PrivateApp'
+
 export {default as Product} from './Product'
 
 export {default as ProductAttribute} from './ProductAttribute'

@@ -774,6 +774,11 @@ describe('ReferencePrice', () => {
   })
 })
 
+describe('Scope', () => {
+  testConstruction(Models.Scope)
+  testLinkCasting(Models.Scope)
+})
+
 describe('ShippingAddress', () => {
   testConstruction(Models.ShippingAddress)
 })

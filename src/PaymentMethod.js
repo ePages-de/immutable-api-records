@@ -14,6 +14,8 @@ const PaymentMethodRecord = new Record({
   serviceableCountries: null,
   minimumOrderValue: null,
   activated: null,
+  activatable: null,
+  integrationStatusUri: null,
   taxClass: null,
   _links: null,
   _embedded: new Map()

@@ -5,8 +5,8 @@ const OfficialAppRecord = new Record({
   _id: null,
   name: null,
   clientId: null,
-  callbackURL: null,
-  namesOfRequiredScopes: null,
+  scopes: null,
+  callbackUrl: null,
   _links: null,
   _embedded: new Map()
 })

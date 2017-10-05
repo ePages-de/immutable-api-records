@@ -16,6 +16,8 @@ export {default as DiscountOrFee} from './DiscountOrFee'
 
 export {default as Image} from './Image'
 
+export {default as GoogleShoppingAccessData} from './GoogleShoppingAccessData'
+
 export {default as LegalContent} from './LegalContent'
 
 export {default as OfficialApp} from './OfficialApp'

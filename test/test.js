@@ -222,6 +222,11 @@ describe('DiscountOrFee', () => {
   })
 })
 
+describe('GoogleShoppingAccessData', () => {
+  testConstruction(Models.GoogleShoppingAccessData)
+  testLinkCasting(Models.GoogleShoppingAccessData)
+})
+
 describe('Image', () => {
   testConstruction(Models.Image)
   testLinkCasting(Models.Image)

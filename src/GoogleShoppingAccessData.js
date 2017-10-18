@@ -4,8 +4,8 @@ import Immutable, {Map, Record} from 'immutable'
 const GoogleShoppingAccessDataRecord = new Record({
   _id: null,
   merchantId: null,
-  accessToken: null,
-  refreshToken: null,
+  hasAccessToken: null,
+  hasRefreshToken: null,
   tokenExpirationDate: null,
   _links: null,
   _embedded: new Map()

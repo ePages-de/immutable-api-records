@@ -24,6 +24,7 @@ export {default as OfficialApp} from './OfficialApp'
 
 export {default as Order} from './Order'
 export {ProductLineItem as OrderProductLineItem} from './Order'
+export {LineItemStatus} from './Order'
 
 export {default as OrderEvent} from './OrderEvent'
 export {OrderEventCreatedDetails} from './OrderEvent'
@@ -31,6 +32,8 @@ export {OrderEventPaymentCreatedDetails} from './OrderEvent'
 export {OrderEventPaymentPaidDetails} from './OrderEvent'
 export {OrderEventPaymentVoidedDetails} from './OrderEvent'
 export {OrderEventUnknownDetails} from './OrderEvent'
+export {OrderEventShippingPendingDetails} from './OrderEvent'
+export {OrderEventShippingShippedDetails} from './OrderEvent'
 
 export {default as OrderStatusLogEntry} from './OrderStatusLogEntry'
 
@@ -86,3 +89,6 @@ export {default as Tax} from './Tax'
 
 export {default as WeightBasedPrice} from './WeightBasedPrice'
 export {WeightPriceThreshold} from './WeightBasedPrice'
+
+export {default as ShippingProcess} from './ShippingProcess'
+export {LineItemShipping} from './ShippingProcess'

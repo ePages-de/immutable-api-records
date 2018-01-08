@@ -258,6 +258,14 @@ describe('Order', () => {
       expect(pli.product.constructor, 'to equal', Models.Product)
     })
 
+    it('casts unshipped', () => {
+      const pli = new Models.OrderProductLineItem({
+        unshipped: {}
+      })
+
+      expect(pli.unshipped.constructor, 'to equal', Models.LineItemStatus)
+    })
+
     it('casts quantity', () => {
       const pli = new Models.OrderProductLineItem({
         quantity: {}
@@ -421,6 +429,26 @@ describe('OrderEvent', () => {
     expect(oe.details.constructor, 'to equal', Models.OrderEventPaymentVoidedDetails)
   })
 
+  it('casts details to shipping-pending', () => {
+    const oe = new Models.OrderEvent({
+      details: {
+        type: 'shipping-pending'
+      }
+    })
+
+    expect(oe.details.constructor, 'to equal', Models.OrderEventShippingPendingDetails)
+  })
+
+  it('casts details to shipping-shipped', () => {
+    const oe = new Models.OrderEvent({
+      details: {
+        type: 'shipping-shipped'
+      }
+    })
+
+    expect(oe.details.constructor, 'to equal', Models.OrderEventShippingShippedDetails)
+  })
+
   it('casts details to unknown', () => {
     const oe = new Models.OrderEvent({
       details: {
@@ -464,12 +492,24 @@ describe('OrderEventPaymentVoidedDetails', () => {
   testConstruction(Models.OrderEventPaymentVoidedDetails)
 })
 
+describe('OrderEventShippingPendingDetails', () => {
+  testConstruction(Models.OrderEventShippingPendingDetails)
+})
+
+describe('OrderEventShippingShippedDetails', () => {
+  testConstruction(Models.OrderEventShippingShippedDetails)
+})
+
 describe('OrderEventUnknownDetails', () => {
   testConstruction(Models.OrderEventUnknownDetails)
 })
 
 describe('OrderStatusLogEntry', () => {
   testConstruction(Models.OrderStatusLogEntry)
+})
+
+describe('LineItemShipping', () => {
+  testConstruction(Models.LineItemShipping)
 })
 
 describe('Link', () => {
@@ -871,6 +911,11 @@ describe('ShippingMethod', () => {
 
 describe('ShippingPeriod', () => {
   testConstruction(Models.ShippingPeriod)
+})
+
+describe('ShippingProcess', () => {
+  testConstruction(Models.ShippingProcess)
+  testLinkCasting(Models.OrderProductLineItem)
 })
 
 describe('ShippingZone', () => {

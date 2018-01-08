@@ -1,11 +1,37 @@
+import { LineItemShipping } from './ShippingProcess'
 import Link from './Link'
 import SimplePrice from './SimplePrice'
-import Immutable, {Map, Record} from 'immutable'
+import Immutable, {List, Map, Record} from 'immutable'
 
 const OrderEventCreatedDetailsRecord = new Record({
   type: null
 })
 export class OrderEventCreatedDetails extends OrderEventCreatedDetailsRecord {
+}
+
+const OrderEventShippingShippedDetailsRecord = new Record({
+  type: null,
+  trackingLink: null,
+  shippingProcessId: null
+})
+export class OrderEventShippingShippedDetails extends OrderEventShippingShippedDetailsRecord {}
+
+const OrderEventShippingPendingDetailsRecord = new Record({
+  type: null,
+  trackingLink: null,
+  lineItems: null,
+  shippingProcessId: null
+})
+export class OrderEventShippingPendingDetails extends OrderEventShippingPendingDetailsRecord {
+  constructor (orderEventShippingPendingDetails) {
+    const immutable = Immutable.fromJS(orderEventShippingPendingDetails || {})
+    const parsed = immutable.update(
+      'lineItems',
+      lis => (lis ? lis.map(li => new LineItemShipping(li)) : new List())
+    )
+
+    super(parsed)
+  }
 }
 
 const OrderEventPaymentCreatedDetailsRecord = new Record({
@@ -32,7 +58,7 @@ export class OrderEventPaymentPaidDetails extends OrderEventPaymentPaidDetailsRe
   constructor (orderEventPaymentPaidDetails) {
     const immutable = Immutable.fromJS(orderEventPaymentPaidDetails || {})
     const parsed = immutable
-      .update('amount', (a) => a && new SimplePrice(a))
+    .update('amount', (a) => a && new SimplePrice(a))
 
     super(parsed)
   }
@@ -71,6 +97,8 @@ export default class OrderEvent extends OrderEventRecord {
           case 'payment-created': return new OrderEventPaymentCreatedDetails(d)
           case 'payment-paid': return new OrderEventPaymentPaidDetails(d)
           case 'payment-voided': return new OrderEventPaymentVoidedDetails(d)
+          case 'shipping-pending': return new OrderEventShippingPendingDetails(d)
+          case 'shipping-shipped': return new OrderEventShippingShippedDetails(d)
           default: return new OrderEventUnknownDetails(d)
         }
       })

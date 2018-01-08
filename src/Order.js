@@ -10,12 +10,21 @@ import ShippingLineItem from './ShippingLineItem'
 import Tax from './Tax'
 import Immutable, {List, Map, Record} from 'immutable'
 
+const LineItemStatusRecord = new Record({
+  amount: null,
+  quantity: null
+})
+export class LineItemStatus extends LineItemStatusRecord {
+}
+
 const ProductLineItemRecord = new Record({
+  _id: null,
   product: null,
   quantity: null,
   lineItemPrice: null,
   lineItemTax: null,
   unitPrice: null,
+  unshipped: null,
   _links: null,
   _embedded: new Map()
 })
@@ -28,6 +37,7 @@ export class ProductLineItem extends ProductLineItemRecord {
       .update('lineItemPrice', (lip) => lip && new Price(lip))
       .update('lineItemTax', (lit) => lit && new Tax(lit))
       .update('unitPrice', (up) => up && new Price(up))
+      .update('unshipped', (u) => u && new LineItemStatus(u))
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
 
     super(parsed)

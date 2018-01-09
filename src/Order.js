@@ -7,9 +7,9 @@ import Product from './Product'
 import Quantity from './Quantity'
 import ShippingAddress from './ShippingAddress'
 import ShippingLineItem from './ShippingLineItem'
+import SimplePrice from './SimplePrice'
 import Tax from './Tax'
 import Immutable, {List, Map, Record} from 'immutable'
-import SimplePrice from './SimplePrice';
 
 const LineItemStatusRecord = new Record({
   amount: null,

@@ -9,6 +9,7 @@ import ShippingAddress from './ShippingAddress'
 import ShippingLineItem from './ShippingLineItem'
 import Tax from './Tax'
 import Immutable, {List, Map, Record} from 'immutable'
+import SimplePrice from './SimplePrice';
 
 const LineItemStatusRecord = new Record({
   amount: null,
@@ -66,6 +67,7 @@ const OrderRecord = new Record({
   fulfillmentStatus: null,
   customerComment: null,
   createdAt: null,
+  openAmount: null,
   // legalContent
   _links: null,
   _embedded: new Map()
@@ -84,6 +86,7 @@ export default class Order extends OrderRecord {
       .update('netTotal', (nt) => nt && new Price(nt))
       .update('taxTotal', (tt) => tt && new Price(tt))
       .update('balanceDue', (bd) => bd && new Price(bd))
+      .update('openAmount', (oa) => oa && new SimplePrice(oa))
       .update('taxes', (ts) => ts && ts.map((t) => new Tax(t)))
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
 

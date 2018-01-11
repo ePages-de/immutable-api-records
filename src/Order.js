@@ -65,6 +65,7 @@ const OrderRecord = new Record({
   orderStatus: null,
   paymentStatus: null,
   fulfillmentStatus: null,
+  shippingStatus: null,
   customerComment: null,
   createdAt: null,
   openAmount: null,

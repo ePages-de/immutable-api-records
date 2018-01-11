@@ -93,4 +93,10 @@ export default class Order extends OrderRecord {
 
     super(parsed)
   }
+
+  get absoluteOpenAmount () {
+    const absoluteAmount = Math.abs(this.openAmount.amount)
+    const currency = this.openAmount.currency
+    return new SimplePrice({ amount: absoluteAmount, currency: currency })
+  }
 }

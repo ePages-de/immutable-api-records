@@ -69,6 +69,7 @@ const OrderRecord = new Record({
   customerComment: null,
   createdAt: null,
   openAmount: null,
+  canceled: null,
   // legalContent
   _links: null,
   _embedded: new Map()

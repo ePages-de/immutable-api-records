@@ -48,11 +48,9 @@ export class OrderEventItemsCanceledDetails extends OrderEventItemsCanceledDetai
 }
 
 var OrderEventOrderCanceledDetailsRecord = new Record({
-  type: null,
-  details: null
+  type: null
 })
 export class OrderEventOrderCanceledDetails extends OrderEventOrderCanceledDetailsRecord {
-
 }
 
 const OrderEventPaymentCreatedDetailsRecord = new Record({
@@ -115,6 +113,7 @@ export default class OrderEvent extends OrderEventRecord {
 
         switch (d.get('type')) {
           case 'items-canceled' : return new OrderEventItemsCanceledDetails(d)
+          case 'order-canceled' : return new OrderEventOrderCanceledDetails(d)
           case 'order-created': return new OrderEventCreatedDetails(d)
           case 'payment-created': return new OrderEventPaymentCreatedDetails(d)
           case 'payment-paid': return new OrderEventPaymentPaidDetails(d)

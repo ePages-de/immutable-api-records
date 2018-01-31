@@ -36,7 +36,6 @@ export {OrderEventShippingPendingDetails} from './OrderEvent'
 export {OrderEventShippingShippedDetails} from './OrderEvent'
 
 export {OrderEventItemsCanceledDetails} from './OrderEvent'
-export {OrderEventOrderCanceledDetails} from './OrderEvent'
 
 export {default as OrderStatusLogEntry} from './OrderStatusLogEntry'
 

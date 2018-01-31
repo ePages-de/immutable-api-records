@@ -449,16 +449,6 @@ describe('OrderEvent', () => {
     expect(oe.details.constructor, 'to equal', Models.OrderEventItemsCanceledDetails)
   })
 
-  it('casts details to order-canceled', () => {
-    const oe = new Models.OrderEvent({
-      details: {
-        type: 'order-canceled'
-      }
-    })
-
-    expect(oe.details.constructor, 'to equal', Models.OrderEventOrderCanceledDetails)
-  })
-
   it('casts details to shipping-shipped', () => {
     const oe = new Models.OrderEvent({
       details: {
@@ -518,10 +508,6 @@ describe('OrderEventShippingPendingDetails', () => {
 
 describe('OrderEventItemsCanceledDetails', () => {
   testConstruction(Models.OrderEventItemsCanceledDetails)
-})
-
-describe('OrderEventOrderCanceledDetails', () => {
-  testConstruction(Models.OrderEventOrderCanceledDetails)
 })
 
 describe('OrderEventShippingShippedDetails', () => {

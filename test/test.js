@@ -439,6 +439,16 @@ describe('OrderEvent', () => {
     expect(oe.details.constructor, 'to equal', Models.OrderEventShippingPendingDetails)
   })
 
+  it('casts details to items-canceled', () => {
+    const oe = new Models.OrderEvent({
+      details: {
+        type: 'items-canceled'
+      }
+    })
+
+    expect(oe.details.constructor, 'to equal', Models.OrderEventItemsCanceledDetails)
+  })
+
   it('casts details to shipping-shipped', () => {
     const oe = new Models.OrderEvent({
       details: {
@@ -494,6 +504,10 @@ describe('OrderEventPaymentVoidedDetails', () => {
 
 describe('OrderEventShippingPendingDetails', () => {
   testConstruction(Models.OrderEventShippingPendingDetails)
+})
+
+describe('OrderEventItemsCanceledDetails', () => {
+  testConstruction(Models.OrderEventItemsCanceledDetails)
 })
 
 describe('OrderEventShippingShippedDetails', () => {

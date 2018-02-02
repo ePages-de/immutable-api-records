@@ -120,4 +120,4 @@ export default class OrderEvent extends OrderEventRecord {
 
     super(parsed)
   }
-  }
+}

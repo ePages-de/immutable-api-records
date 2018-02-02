@@ -30,6 +30,8 @@ export {default as OrderEvent} from './OrderEvent'
 export {OrderEventCreatedDetails} from './OrderEvent'
 export {OrderEventPaymentCreatedDetails} from './OrderEvent'
 export {OrderEventPaymentPaidDetails} from './OrderEvent'
+export {OrderEventRefundCreatedDetails} from './OrderEvent'
+export {OrderEventRefundtPaidDetails} from './OrderEvent'
 export {OrderEventPaymentVoidedDetails} from './OrderEvent'
 export {OrderEventUnknownDetails} from './OrderEvent'
 export {OrderEventShippingPendingDetails} from './OrderEvent'
@@ -49,6 +51,8 @@ export {default as PaymentLineItem} from './PaymentLineItem'
 export {default as PaymentMethod} from './PaymentMethod'
 
 export {default as PaymentProcess} from './PaymentProcess'
+
+export {default as RefundProcess} from './RefundProcess'
 
 export {default as Price} from './Price'
 

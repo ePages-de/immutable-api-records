@@ -35,6 +35,8 @@ export {OrderEventUnknownDetails} from './OrderEvent'
 export {OrderEventShippingPendingDetails} from './OrderEvent'
 export {OrderEventShippingShippedDetails} from './OrderEvent'
 
+export {OrderEventItemsCanceledDetails} from './OrderEvent'
+
 export {default as OrderStatusLogEntry} from './OrderStatusLogEntry'
 
 export {default as Link} from './Link'

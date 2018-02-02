@@ -1,3 +1,4 @@
+import { LineItemsCanceled } from './CancelProcess'
 import { LineItemShipping } from './ShippingProcess'
 import Link from './Link'
 import SimplePrice from './SimplePrice'
@@ -30,6 +31,18 @@ export class OrderEventShippingPendingDetails extends OrderEventShippingPendingD
       lis => (lis ? lis.map(li => new LineItemShipping(li)) : new List())
     )
 
+    super(parsed)
+  }
+}
+
+var OrderEventItemsCanceledDetailsRecord = new Record({
+  type: null,
+  lineItems: null
+})
+export class OrderEventItemsCanceledDetails extends OrderEventItemsCanceledDetailsRecord {
+  constructor (orderEventItemsCanceledDetails) {
+    const immutable = Immutable.fromJS(orderEventItemsCanceledDetails || {})
+    const parsed = immutable.update('lineItems', lis => (lis ? lis.map(li => new LineItemsCanceled(li)) : new List()))
     super(parsed)
   }
 }
@@ -93,6 +106,7 @@ export default class OrderEvent extends OrderEventRecord {
         if (!d) return null
 
         switch (d.get('type')) {
+          case 'items-canceled' : return new OrderEventItemsCanceledDetails(d)
           case 'order-created': return new OrderEventCreatedDetails(d)
           case 'payment-created': return new OrderEventPaymentCreatedDetails(d)
           case 'payment-paid': return new OrderEventPaymentPaidDetails(d)

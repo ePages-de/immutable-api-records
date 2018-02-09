@@ -70,6 +70,7 @@ const OrderRecord = new Record({
   createdAt: null,
   openAmount: null,
   canceled: null,
+  testOrder: null,
   // legalContent
   _links: null,
   _embedded: new Map()

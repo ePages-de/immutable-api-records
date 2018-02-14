@@ -4,8 +4,8 @@
   "version": "0.0.64",
   "scripts": {
     "test": "npm run lint && npm run mocha",
-    "build": "rm -rf build/ && NODE_ENV=production babel src/ --out-dir build/",
-    "mocha": "NODE_ENV=test nyc mocha test/test.js",
+    "build": "sh -c \"rm -rf build/ && NODE_ENV=production babel src/ --out-dir build/\"",
+    "mocha": "sh -c \"NODE_ENV=test nyc mocha test/test.js\"",
     "lint": "eslint --ext js,jsx *.js src/ test/ public/",
     "prepublishOnly": "npm run build"
   },

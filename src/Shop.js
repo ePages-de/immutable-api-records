@@ -15,9 +15,7 @@ const ShopAddressRecord = new Record({
   state: null,
   phone: null,
   fax: null,
-  email: null,
-  vatId: null,
-  commercialRegister: null
+  email: null
 })
 export class ShopAddress extends ShopAddressRecord {
 }

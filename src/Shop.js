@@ -3,27 +3,9 @@ import Link from './Link'
 import SimplePrice from './SimplePrice'
 import Immutable, {Map, Record} from 'immutable'
 
-const ShopAddressRecord = new Record({
-  company: null,
-  lastName: null,
-  firstName: null,
-  street: null,
-  street2: null,
-  city: null,
-  postalCode: null,
-  country: null,
-  state: null,
-  phone: null,
-  fax: null,
-  email: null
-})
-export class ShopAddress extends ShopAddressRecord {
-}
-
 const ShopRecord = new Record({
   _id: null,
   name: null,
-  address: null,
   defaultCurrency: null,
   currencies: null,
   defaultShippingCountry: null,
@@ -46,7 +28,6 @@ export default class Shop extends ShopRecord {
     const immutable = Immutable.fromJS(shop || {})
     const parsed = immutable
       .update('_id', (id) => id || extractIdFromSelfLink(immutable))
-      .update('address', (a) => a && new ShopAddress(a))
       .update('minimumOrderValue', (mov) => mov && new SimplePrice(mov))
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())
 

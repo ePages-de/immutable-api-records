@@ -18,7 +18,6 @@ const ShopRecord = new Record({
   vatExempted: null,
   closedByMerchant: false,
   closedShopMessage: null,
-  listPriceText: null,
   minimumOrderValue: null,
   _links: null,
   _embedded: new Map()

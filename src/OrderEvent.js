@@ -1,8 +1,9 @@
-import { LineItemsCanceled } from './CancelProcess'
+import Immutable, {List, Map, Record} from 'immutable'
+
 import { LineItemShipping } from './ShippingProcess'
+import { LineItemsCanceled } from './CancelProcess'
 import Link from './Link'
 import SimplePrice from './SimplePrice'
-import Immutable, {List, Map, Record} from 'immutable'
 
 const OrderEventCreatedDetailsRecord = new Record({
   type: null
@@ -13,9 +14,20 @@ export class OrderEventCreatedDetails extends OrderEventCreatedDetailsRecord {
 const OrderEventShippingShippedDetailsRecord = new Record({
   type: null,
   trackingLink: null,
+  lineItems: null,
   shippingProcessId: null
 })
-export class OrderEventShippingShippedDetails extends OrderEventShippingShippedDetailsRecord {}
+export class OrderEventShippingShippedDetails extends OrderEventShippingShippedDetailsRecord {
+  constructor (orderEventShippingShippedDetails) {
+    const immutable = Immutable.fromJS(orderEventShippingShippedDetails || {})
+    const parsed = immutable.update(
+      'lineItems',
+      lis => (lis ? lis.map(li => new LineItemShipping(li)) : new List())
+    )
+
+    super(parsed)
+  }
+}
 
 const OrderEventShippingPendingDetailsRecord = new Record({
   type: null,

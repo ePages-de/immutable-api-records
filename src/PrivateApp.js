@@ -6,6 +6,7 @@ const PrivateAppRecord = new Record({
   name: null,
   clientId: null,
   clientSecret: null,
+  callbackUrl: null,
   _links: null,
   _embedded: new Map()
 })

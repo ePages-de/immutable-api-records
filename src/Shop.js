@@ -19,6 +19,7 @@ const ShopRecord = new Record({
   closedByMerchant: false,
   closedShopMessage: null,
   minimumOrderValue: null,
+  reseller: null,
   _links: null,
   _embedded: new Map()
 })

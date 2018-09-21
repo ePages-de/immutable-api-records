@@ -1,9 +1,9 @@
-import Immutable, {List, Map, Record} from 'immutable'
-
-import { LineItemShipping } from './ShippingProcess'
 import { LineItemsCanceled } from './CancelProcess'
+import { LineItemShipping } from './ShippingProcess'
 import Link from './Link'
 import SimplePrice from './SimplePrice'
+
+import Immutable, {List, Map, Record} from 'immutable'
 
 const OrderEventCreatedDetailsRecord = new Record({
   type: null

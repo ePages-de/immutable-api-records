@@ -1,5 +1,5 @@
-export default function extractIdFromSelfLink(item) {
-  const selfHref = item.getIn(["_links", "self", "href"]);
+export default function extractIdFromSelfLink (item) {
+  const selfHref = item.getIn(['_links', 'self', 'href'])
 
   const matchedGuid =
     selfHref &&

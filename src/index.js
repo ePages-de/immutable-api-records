@@ -56,7 +56,7 @@ export {default as RefundProcess} from './RefundProcess'
 
 export {default as Price} from './Price'
 
-export {default as PrivateApp} from './PrivateApp'
+export {default as CustomApp} from './CustomApp'
 
 export {default as Product} from './Product'
 

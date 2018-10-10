@@ -1,8 +1,8 @@
-import Immutable, {Map, Record} from 'immutable'
-
 import DiscountOrFee from './DiscountOrFee'
 import Link from './Link'
 import SimplePrice from './SimplePrice'
+
+import Immutable, {Map, Record} from 'immutable'
 
 const PaymentMethodRecord = new Record({
   _id: null,

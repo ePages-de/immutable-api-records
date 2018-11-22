@@ -92,14 +92,6 @@ describe('Cart', () => {
     testConstruction(Models.CartProductLineItem)
     testLinkCasting(Models.CartProductLineItem)
 
-    it('casts quantity', () => {
-      const pli = new Models.CartProductLineItem({
-        quantity: {}
-      })
-
-      expect(pli.quantity.constructor, 'to equal', Models.Quantity)
-    })
-
     it('casts single item price', () => {
       const pli = new Models.CartProductLineItem({
         singleItemPrice: {}
@@ -264,14 +256,6 @@ describe('Order', () => {
       })
 
       expect(pli.unshipped.constructor, 'to equal', Models.LineItemStatus)
-    })
-
-    it('casts quantity', () => {
-      const pli = new Models.OrderProductLineItem({
-        quantity: {}
-      })
-
-      expect(pli.quantity.constructor, 'to equal', Models.Quantity)
     })
 
     it('casts line item price', () => {
@@ -813,10 +797,6 @@ describe('ProductAvailability', () => {
 
 describe('ProductIdentifier', () => {
   testConstruction(Models.ProductIdentifier)
-})
-
-describe('Quantity', () => {
-  testConstruction(Models.Quantity)
 })
 
 describe('ReferencePrice', () => {

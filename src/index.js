@@ -68,8 +68,6 @@ export {default as ProductAvailability} from './ProductAvailability'
 
 export {default as ProductIdentifier} from './ProductIdentifier'
 
-export {default as Quantity} from './Quantity'
-
 export {default as ReferencePrice} from './ReferencePrice'
 
 export {default as Scope} from './Scope'

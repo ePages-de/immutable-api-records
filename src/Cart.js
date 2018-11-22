@@ -3,7 +3,6 @@ import Link from './Link'
 import PaymentLineItem from './PaymentLineItem'
 import Price from './Price'
 import Product from './Product'
-import Quantity from './Quantity'
 import ShippingAddress from './ShippingAddress'
 import ShippingLineItem from './ShippingLineItem'
 import Immutable, {List, Map, Record} from 'immutable'
@@ -38,7 +37,6 @@ export class ProductLineItem extends ProductLineItemRecord {
   constructor (cart) {
     const immutable = Immutable.fromJS(cart || {})
     const parsed = immutable
-      .update('quantity', (q) => q && new Quantity(q))
       .update('singleItemPrice', (sip) => sip && new Price(sip))
       .update('lineItemPrice', (lip) => lip && new Price(lip))
       .update('_links', (ls) => ls ? ls.map((l) => new Link(l)) : new Map())

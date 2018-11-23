@@ -20,7 +20,7 @@ export class LineItemStatus extends LineItemStatusRecord {
 const ProductLineItemRecord = new Record({
   _id: null,
   product: null,
-  quantityInt: null,
+  quantity: null,
   lineItemPrice: null,
   lineItemTax: null,
   unitPrice: null,

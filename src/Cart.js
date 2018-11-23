@@ -26,7 +26,7 @@ const ProductLineItemRecord = new Record({
   _ref: null,
   name: null,
   description: null,
-  quantityInt: null,
+  quantity: null,
   singleItemPrice: null,
   lineItemPrice: null,
   _links: null,

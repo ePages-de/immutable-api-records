@@ -7,7 +7,7 @@ import ProductIdentifier from './ProductIdentifier'
 import ReferencePrice from './ReferencePrice'
 import ShippingDimension from './ShippingDimension'
 import ShippingPeriod from './ShippingPeriod'
-import Immutable, {List, Map, Record} from 'immutable'
+import Immutable, { List, Map, Record } from 'immutable'
 
 const ProductRecord = new Record({
   _id: null,
@@ -24,7 +24,7 @@ const ProductRecord = new Record({
   productIdentifiers: null,
   tags: null,
   attributes: null,
-  variationAttributes: null,
+  variationAttributes: undefined,
   visible: null,
   maxOrderQuantity: null,
   shippingPeriod: null,
@@ -35,7 +35,7 @@ const ProductRecord = new Record({
   _embedded: new Map()
 })
 export default class Product extends ProductRecord {
-  constructor (product) {
+  constructor(product) {
     const immutable = Immutable.fromJS(product || {})
     const parsed = immutable
       .update('_id', (id) => id || extractIdFromSelfLink(immutable))

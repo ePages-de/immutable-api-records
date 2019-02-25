@@ -17,6 +17,7 @@ const ProductRecord = new Record({
   salesPrice: null,
   listPrice: null,
   onSale: null,
+  manufacturerPrice: null,
   refPrice: null,
   taxClass: null,
   manufacturer: null,
@@ -41,6 +42,7 @@ export default class Product extends ProductRecord {
       .update('_id', (id) => id || extractIdFromSelfLink(immutable))
       .update('salesPrice', (sp) => sp && new Price(sp))
       .update('listPrice', (lp) => lp && new Price(lp))
+      .update('manufacturerPrice', (mp) => mp && new Price(mp))
       .update('refPrice', (rp) => rp && new ReferencePrice(rp))
       .update('shippingPeriod', (sp) => sp && new ShippingPeriod(sp))
       .update('shippingDimension', (sd) => sd && new ShippingDimension(sd))

@@ -8,7 +8,7 @@ import ShippingAddress from './ShippingAddress'
 import ShippingLineItem from './ShippingLineItem'
 import SimplePrice from './SimplePrice'
 import Tax from './Tax'
-import Immutable, {List, Map, Record} from 'immutable'
+import Immutable, { List, Map, Record } from 'immutable'
 
 const LineItemStatusRecord = new Record({
   amount: null,
@@ -20,6 +20,7 @@ export class LineItemStatus extends LineItemStatusRecord {
 const ProductLineItemRecord = new Record({
   _id: null,
   product: null,
+  variationProduct: undefined,
   quantity: null,
   lineItemPrice: null,
   lineItemTax: null,
@@ -29,10 +30,11 @@ const ProductLineItemRecord = new Record({
   _embedded: new Map()
 })
 export class ProductLineItem extends ProductLineItemRecord {
-  constructor (cart) {
+  constructor(cart) {
     const immutable = Immutable.fromJS(cart || {})
     const parsed = immutable
       .update('product', (p) => p && new Product(p))
+      .update('variationProduct', (vm) => vm && new Product(vm))
       .update('lineItemPrice', (lip) => lip && new Price(lip))
       .update('lineItemTax', (lit) => lit && new Tax(lit))
       .update('unitPrice', (up) => up && new Price(up))
@@ -74,7 +76,7 @@ const OrderRecord = new Record({
   _embedded: new Map()
 })
 export default class Order extends OrderRecord {
-  constructor (order) {
+  constructor(order) {
     const immutable = Immutable.fromJS(order || {})
     const parsed = immutable
       .update('_id', (id) => id || extractIdFromSelfLink(immutable))
@@ -94,7 +96,7 @@ export default class Order extends OrderRecord {
     super(parsed)
   }
 
-  get absoluteOpenAmount () {
+  get absoluteOpenAmount() {
     const absoluteAmount = Math.abs(this.openAmount.amount)
     const currency = this.openAmount.currency
     return new SimplePrice({ amount: absoluteAmount, currency: currency })

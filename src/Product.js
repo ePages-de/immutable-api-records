@@ -26,6 +26,7 @@ const ProductRecord = new Record({
   tags: null,
   attributes: null,
   variationAttributes: undefined,
+  variationAttributeValues: undefined,
   visible: null,
   maxOrderQuantity: null,
   shippingPeriod: null,

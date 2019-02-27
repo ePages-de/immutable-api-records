@@ -27,7 +27,7 @@ const ProductRecord = new Record({
   attributes: null,
   variationAttributes: undefined,
   variationAttributeValues: undefined,
-  variationMaster: undefined,
+  variationProduct: undefined,
   visible: null,
   maxOrderQuantity: null,
   shippingPeriod: null,
@@ -45,7 +45,7 @@ export default class Product extends ProductRecord {
       .update('salesPrice', (sp) => sp && new Price(sp))
       .update('listPrice', (lp) => lp && new Price(lp))
       .update('manufacturerPrice', (mp) => mp && new Price(mp))
-      .update('variationMaster', (vm) => vm && new Product(vm))
+      .update('variationProduct', (vm) => vm && new Product(vm))
       .update('refPrice', (rp) => rp && new ReferencePrice(rp))
       .update('shippingPeriod', (sp) => sp && new ShippingPeriod(sp))
       .update('shippingDimension', (sd) => sd && new ShippingDimension(sd))

@@ -7,6 +7,7 @@ const ProductAttributeRecord = new Record({
   type: null,
   displayName: null,
   locale: null,
+  key: null,
   value: null,
   _links: null,
   _embedded: new Map()

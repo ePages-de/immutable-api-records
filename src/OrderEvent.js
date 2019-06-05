@@ -98,7 +98,7 @@ export class OrderEventRefundPaidDetails extends OrderEventRefundPaidDetailsReco
   constructor (orderEventRefundPaidDetails) {
     const immutable = Immutable.fromJS(orderEventRefundPaidDetails || {})
     const parsed = immutable
-    .update('amount', (a) => a && new SimplePrice(a))
+      .update('amount', (a) => a && new SimplePrice(a))
 
     super(parsed)
   }
@@ -113,7 +113,7 @@ export class OrderEventPaymentPaidDetails extends OrderEventPaymentPaidDetailsRe
   constructor (orderEventPaymentPaidDetails) {
     const immutable = Immutable.fromJS(orderEventPaymentPaidDetails || {})
     const parsed = immutable
-    .update('amount', (a) => a && new SimplePrice(a))
+      .update('amount', (a) => a && new SimplePrice(a))
 
     super(parsed)
   }
@@ -132,6 +132,24 @@ const OrderEventUnknownDetailsRecord = new Record({
 export class OrderEventUnknownDetails extends OrderEventUnknownDetailsRecord {
 }
 
+const OrderEventItemsReturnedDetailsRecord = new Record({
+  type: null,
+  returnProcessId: null,
+  shippingPriceRefund: null,
+  lineItems: null
+})
+
+export class OrderEventItemsReturnedDetails extends OrderEventItemsReturnedDetailsRecord {
+  constructor (orderEventItemsReturnedDetails) {
+    const immutable = Immutable.fromJS(orderEventItemsReturnedDetails || {})
+    const parsed = immutable
+      .update('lineItems', lis => (lis ? lis.map(li => new LineItemShipping(li)) : new List()))
+      .update('shippingPriceRefund', (a) => a && new SimplePrice(a))
+
+    super(parsed)
+  }
+}
+
 const OrderEventRecord = new Record({
   triggeredBy: null,
   comment: null,
@@ -148,7 +166,7 @@ export default class OrderEvent extends OrderEventRecord {
         if (!d) return null
 
         switch (d.get('type')) {
-          case 'items-canceled' : return new OrderEventItemsCanceledDetails(d)
+          case 'items-canceled': return new OrderEventItemsCanceledDetails(d)
           case 'order-created': return new OrderEventCreatedDetails(d)
           case 'payment-created': return new OrderEventPaymentCreatedDetails(d)
           case 'payment-paid': return new OrderEventPaymentPaidDetails(d)
@@ -157,6 +175,7 @@ export default class OrderEvent extends OrderEventRecord {
           case 'payment-voided': return new OrderEventPaymentVoidedDetails(d)
           case 'shipping-pending': return new OrderEventShippingPendingDetails(d)
           case 'shipping-shipped': return new OrderEventShippingShippedDetails(d)
+          case 'items-returned': return new OrderEventItemsReturnedDetails(d)
           default: return new OrderEventUnknownDetails(d)
         }
       })

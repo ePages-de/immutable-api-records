@@ -2,6 +2,7 @@ import Link from './Link'
 import Immutable, {List, Map, Record} from 'immutable'
 
 const LineItemShippingRecord = new Record({
+  status: null,
   quantity: null,
   productLineItemId: null
 })

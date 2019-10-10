@@ -184,7 +184,7 @@ export default class OrderEvent extends OrderEventRecord {
           case 'shipping-pending': return new OrderEventShippingPendingDetails(d)
           case 'shipping-shipped': return new OrderEventShippingShippedDetails(d)
           case 'items-returned': return new OrderEventItemsReturnedDetails(d)
-          case 'invoice-correction-created': return new OrderEventInvoiceCancelationCreatedDetails(d)
+          case 'invoice-cancelation-created': return new OrderEventInvoiceCancelationCreatedDetails(d)
           default: return new OrderEventUnknownDetails(d)
         }
       })

@@ -19,12 +19,22 @@ const OrderEventInvoiceCancelationCreatedDetailsRecord = new Record({
 
 export class OrderEventInvoiceCancelationCreatedDetails extends OrderEventInvoiceCancelationCreatedDetailsRecord {}
 
+const OrderEventInvoiceCorrectionDetailsRecord = new Record({
+  type: null,
+  previousInvoiceNumber: null,
+  invoicePdfUri: null,
+  newInvoiceNumber: null
+})
+
+export class OrderEventInvoiceCorrectionDetails extends OrderEventInvoiceCorrectionDetailsRecord {}
+
 const OrderEventShippingShippedDetailsRecord = new Record({
   type: null,
   trackingLink: null,
   lineItems: null,
   shippingProcessId: null
 })
+
 export class OrderEventShippingShippedDetails extends OrderEventShippingShippedDetailsRecord {
   constructor (orderEventShippingShippedDetails) {
     const immutable = Immutable.fromJS(orderEventShippingShippedDetails || {})
@@ -185,6 +195,7 @@ export default class OrderEvent extends OrderEventRecord {
           case 'shipping-shipped': return new OrderEventShippingShippedDetails(d)
           case 'items-returned': return new OrderEventItemsReturnedDetails(d)
           case 'invoice-cancelation-created': return new OrderEventInvoiceCancelationCreatedDetails(d)
+          case 'invoice-correction-created': return new OrderEventInvoiceCorrectionDetails(d)
           default: return new OrderEventUnknownDetails(d)
         }
       })

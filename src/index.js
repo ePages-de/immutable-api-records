@@ -36,6 +36,8 @@ export {OrderEventPaymentVoidedDetails} from './OrderEvent'
 export {OrderEventUnknownDetails} from './OrderEvent'
 export {OrderEventShippingPendingDetails} from './OrderEvent'
 export {OrderEventShippingShippedDetails} from './OrderEvent'
+export {OrderEventInvoiceCancelationCreatedDetails} from './OrderEvent'
+export {OrderEventInvoiceCorrectionDetails} from './OrderEvent'
 
 export {OrderEventItemsCanceledDetails} from './OrderEvent'
 

@@ -11,6 +11,14 @@ const OrderEventCreatedDetailsRecord = new Record({
 export class OrderEventCreatedDetails extends OrderEventCreatedDetailsRecord {
 }
 
+const OrderEventInvoiceCreatedDetailsRecord = new Record({
+  type: null,
+  invoiceNumber: null,
+  invoicePdfUri: null
+})
+
+export class OrderEventInvoiceCreatedDetails extends OrderEventInvoiceCreatedDetailsRecord {}
+
 const OrderEventInvoiceCancelationCreatedDetailsRecord = new Record({
   type: null,
   invoiceNumber: null,
@@ -194,6 +202,7 @@ export default class OrderEvent extends OrderEventRecord {
           case 'shipping-pending': return new OrderEventShippingPendingDetails(d)
           case 'shipping-shipped': return new OrderEventShippingShippedDetails(d)
           case 'items-returned': return new OrderEventItemsReturnedDetails(d)
+          case 'invoice-created': return new OrderEventInvoiceCreatedDetails(d)
           case 'invoice-cancelation-created': return new OrderEventInvoiceCancelationCreatedDetails(d)
           case 'invoice-correction-created': return new OrderEventInvoiceCorrectionDetails(d)
           default: return new OrderEventUnknownDetails(d)
